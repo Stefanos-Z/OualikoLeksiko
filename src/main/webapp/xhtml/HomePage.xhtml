@@ -1,17 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Home Page</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="css/styles.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Home Page</title> <!-- Head Title -->
+        <link rel="icon" href="images/HomePage.png"/> <!-- Home Page Favicon -->
+        <!-- Reference Cascade Style Sheet-->
+        <link rel="stylesheet" type="text/css" href="/css/homePageStyles.css"/> 
     </head>
     <body>
+        <div class="menuBar">
+            <ul>
+                <li><a href="/OualikoLeksiko/xhtml/HomePage.xhtml">Home</a></li>
+                <li><a href="/OualikoLeksiko/xhtml/wordsManager.xhtml">Add/Remove Words</a></li>
+                <li><a href="/OualikoLeksiko/xhtml/editEntries.xhtml">Edit Entries</a></li>
+                <li><a href="/OualikoLeksiko/xhtml/Test.xhtml">Take a Test</a></li>
+                <li><a href="/OualikoLeksiko/xhtml/History.xhtml">History Search</a></li>
+                <li id="logoutButton"><a href="/OualikoLeksiko/login.html">Logout</a></li>
+            </ul>
+        </div>
         
+        <div class="mainContainer">
+            <div class="rows">
+              <div class="column">
+                <a href="/OualikoLeksiko/xhtml/wordsManager.xhtml">
+                  <h4>Add/Remove Words</h4>
+                </a>
+              </div>
+              <div class="column">
+                    <a href="/OualikoLeksiko/xhtml/editEntries.xhtml">
+                      <h4>Edit Entries</h4>
+                    </a>
+              </div>
+            </div>
+            <br />            
+            <div class="rows">
+              <div class="column">
+                  <a href="/OualikoLeksiko/xhtml/Test.xhtml">
+                <h4>Take a Test</h4>
+                  </a>
+              </div>
+              <div class="column">
+                  <a href="/OualikoLeksiko/xhtml/History.xhtml">
+                <h4>View History Search</h4>
+                  </a>
+              </div>
+            </div>
+        </div>
     </body>
 </html>

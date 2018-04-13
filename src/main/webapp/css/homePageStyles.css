@@ -1,0 +1,9 @@
+body{
+    
+    font-size: 100px;
+}
+.menuBar{
+    font-size: 150px;
+    font-family: Arial;
+    background-color: red;
+}
