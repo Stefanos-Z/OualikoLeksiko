@@ -55,7 +55,7 @@ public class DatbaseInterface {
     public void createSession(Sessions session)
     {
         sessions.put("session_id",session.getSessionID());
-        sessions.put("user_id",""+session.getUserID());
+        sessions.put("user_id",session.getUserName());
         sessions.put("expiration_date",""+session.getExpirationDate());
         try {
             manager.addNewRowToTable(sessions);
@@ -117,7 +117,7 @@ public class DatbaseInterface {
     public static void main(String[] args) {
         DatbaseInterface ins = new DatbaseInterface();
         ins.getConection();
-        Sessions sesh = new Sessions(1);
+        Sessions sesh = new Sessions("loizos");
         ins.createSession(sesh);
         
     }

@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Add/Remove Words</title>
+        <title>Add Members </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" href="images/add_remove_words.png"/> <!-- Login Favicon -->
+        <link rel="icon" href="images/add_member.png"/> <!-- Login Favicon -->
         <!-- Reference Cascade Style Sheet-->
         <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
-        <link rel="stylesheet" type="text/css" href="css/wordsManager.css"/> 
+        <link rel="stylesheet" type="text/css" href="css/login_register.css"/> 
         <!-- Reference JavaScript -->
         <script src="js/displayMenuButtons.js"></script>
     </head>
@@ -36,6 +31,29 @@ and open the template in the editor.
             </ul>
         </div>
         
-        <h1 style="font-size: 100px; text-align: center;">Add/Remove Words</h1>
+        <div>
+            <h1>Register a User</h1>
+            <br/>
+            <label>Select User Type</label>
+            <select name="userType">
+                <option value="Student">Student</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+            <br/>
+            <label>Enter Username : </label>
+            <input name="username" type="text" placeholder="Username"/>
+            <br/>
+            <label>Enter Password : </label>
+            <input name="password" type="password" placeholder="Password"/>
+            <br/>
+            <label>Enter your Email : </label>
+            <input name="email" type="text" placeholder="Email"/>
+            
+            <br/>
+            <input type="submit" value="Create User"/>
+
+            <input type="submit" value="Cancel Request"/>
+        </div>
     </body>
 </html>

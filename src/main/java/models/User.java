@@ -6,24 +6,14 @@ package models;
  */
 public class User {
     
-    private int userID;
     private String userName;
     private String userPassword;
     private String userEmail; 
 
-    public User(int userID, String userName, String userPassword, String userEmail) {
-        this.userID = userID;
+    public User(String userName, String userPassword, String userEmail) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
     }
 
     public String getUserName() {
