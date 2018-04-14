@@ -1,0 +1,55 @@
+body {
+    overflow: scroll; /* Add Scroll Bar at the right */
+    background: #339958; 
+    background: -webkit-linear-gradient(right, #339958 , #7FCC9B);
+    background: -moz-linear-gradient(right, #339958, #7FCC9B);
+    background: -o-linear-gradient(right, #339958, #7FCC9B);
+    background: linear-gradient(to left, #7FCC9B, #339958);
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;        
+}
+.menuBar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 100px;
+}
+
+#listHolder{ /* Group of Lists */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111;   
+    border-radius:13px;
+    -moz-border-radius:13px;
+    -webkit-border-radius:13px;
+    border-style: solid;
+    border-width: 5px;
+    
+}
+li a{
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: bold;
+}
+li{ /* Menu List (Every Element) */
+    float: left;
+    padding: 14px 16px;
+}
+li:hover{ /* Menu List (Every Element on hover) */
+    cursor:pointer;
+    background-color: #b3b3b3;
+}
+#link{ /* Menu List (Every Link) */
+    text-decoration: none; /* Remove Underline from links */
+    text-align: center;
+}
+#logoutButton{
+    float: right;
+}
+#logoutButton:hover{
+    background-color: red;
+}
