@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import models.User;
 
 
 public class DatabaseManager {
@@ -288,88 +289,7 @@ public class DatabaseManager {
         return rows;
     }
     
-    /**
-     * Set query- finds the modules taught by
-     * @param staffID the staff needed to search
-     * @return a list with the results of the query
-     * @throws SQLException 
-     */
-    public List<String[]> findModulesTaughtBy(String staffID) throws SQLException
-    {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        //specific Query
-        String query = "SELECT m.module_Id, m.module_name " +
-            "FROM module m INNER JOIN teaches t ON m.module_Id = t.module_Id "+
-            "WHERE t.staff_Id = ?";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setString(1, staffID);
-        
-        ResultSet rs = pstat.executeQuery();
-        
-        //gets the list from the result set
-        List<String[]> queryResults = getRows(rs);
-        
-        queryResults.add(0, new String[]{"%-20s","%-20s"});//add a formater
-        queryResults.add(1, new String[]{"Module ID","Module Name"});//coloumn titles of the query
-        queryResults.add(2, new String[]{"*********","***********"});//Coloumn title underline
-        
-        rs.close();
-        pstat.close();
-        conn.close();
-        return queryResults;
-    }
     
-    /**
-     * Finds student who are registered in the 
-     * @param moduleID specified 
-     * @return a formated list with the results of the query
-     * @throws SQLException 
-     */
-    public List<String[]> findStudentsRegisteredIn(String moduleID) throws SQLException
-    {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        //specific Query
-        String query = "SELECT s.student_Id, s.student_name " +
-            "FROM student s INNER JOIN registered r ON s.student_Id = r.student_Id "+
-            "WHERE r.module_Id = ?";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setString(1, moduleID);
-        ResultSet rs = pstat.executeQuery();
-        List<String[]> queryResults = getRows(rs);
-        queryResults.add(0, new String[]{"%-20s","%-20s"});//add a formater
-        queryResults.add(1, new String[]{"Student ID","Student Name"});//coloumn titles of the query
-        queryResults.add(2, new String[]{"**********","************"});//Coloumn title underline
-        conn.close();
-        return queryResults;
-    }
-    
-    /**
-     * Finds the staff and the module they teach to a specified student 
-     * @param studentID the student's ID
-     * @return a formated list with the results of the query
-     * @throws SQLException 
-     */
-    public List<String[]> findStaffWhoTeach(String studentID) throws SQLException
-    {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "SELECT s.staff_Id, s.staff_name, t.module_Id " +
-            "FROM staff s INNER JOIN teaches t ON s.staff_Id = t.staff_Id "+
-            "INNER JOIN registered r ON r.module_Id = t.module_Id "+
-            "WHERE r.student_Id = ?";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setString(1, studentID);
-        ResultSet rs = pstat.executeQuery();
-        
-        List<String[]> queryResults = getRows(rs);
-        queryResults.add(0, new String[]{"%-20s","%-20s","%-20s"});//add a formater
-        queryResults.add(1, new String[]{"Staff ID","Staff Name","Module ID"});//coloumn titles of the query
-        queryResults.add(2, new String[]{"********","**********","*********"});//Coloumn title underline
-        
-        rs.close();
-        pstat.close();
-        conn.close();
-        return queryResults;
-    }
     
     /**
      * finds the teachers who teach more than 1 module
@@ -434,5 +354,47 @@ public class DatabaseManager {
         }
         
         return resultList;
+    }
+    
+    /**
+     * Searchers the database for a specific user 
+     * @param usernameID the unique username
+     * @param thisMap the map that represents the table
+     * @return a User object with all parameters
+     * @throws SQLException if user with provided username doesn't exist
+     */
+    User getUser(String usernameID, Map<String, String> thisMap) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * " +
+            "FROM "+thisMap.get("Table")+
+            " WHERE "+findPrimaryKey(thisMap) + "='"+usernameID+"';";
+        PreparedStatement pstat = conn.prepareStatement(query);
+
+        ResultSet rs = pstat.executeQuery();
+
+
+        rs.next();
+        
+        String user = rs.getString(1);
+        String pass = rs.getString(2);
+        String email = rs.getString(3);
+        String type = rs.getString(4);
+        
+        pstat.close();
+        conn.close();
+        return new User(user, pass, email, type);
+    }
+    
+    
+    private String findPrimaryKey(Map<String, String> thisMap)
+    {
+        for (Map.Entry<String, String> e : thisMap.entrySet())
+        {
+            if (checkIfPrimaryKey(e.getKey()))
+            {
+                return e.getValue();
+            }
+        }
+        return null;
     }
 }

@@ -9,11 +9,12 @@ public class User {
     private String userName;
     private String userPassword;
     private String userEmail; 
-
-    public User(String userName, String userPassword, String userEmail) {
+    private String userType;
+    public User(String userName, String userPassword, String userEmail, String userType) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userEmail = userEmail;
+        this.userType = userType;
     }
 
     public String getUserName() {

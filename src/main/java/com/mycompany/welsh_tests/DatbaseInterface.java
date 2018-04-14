@@ -55,7 +55,7 @@ public class DatbaseInterface {
     public void createSession(Sessions session)
     {
         sessions.put("session_id",session.getSessionID());
-        sessions.put("user_id",session.getUserName());
+        sessions.put("user_name",session.getUserName());
         sessions.put("expiration_date",""+session.getExpirationDate());
         try {
             manager.addNewRowToTable(sessions);
@@ -68,12 +68,11 @@ public class DatbaseInterface {
 
     private void intatiateMaps() {
         users.put("Table","Users");
-        users.put("user_id","");
         users.put("user_name","");
         users.put("user_password","");
         users.put("user_email","");
         users.put("user_type","");
-        users.put("PRIMARY KEY1","user_id");
+        users.put("PRIMARY KEY1","user_name");
         
         
         questionType.put("Table","QuestionType");
@@ -92,22 +91,22 @@ public class DatbaseInterface {
         tests.put("test_id", "");
         tests.put("test_title", "");
         tests.put("date_created", "");
-        tests.put("user_id", "");
+        tests.put("user_name", "");
         tests.put("PRIMARY KEY1", "test_id");
         
         
         testsTaken.put("Table","TestsTaken");
         testsTaken.put("test_id","");
-        testsTaken.put("user_id","");
+        testsTaken.put("user_name","");
         testsTaken.put("grade","");
         testsTaken.put("date_submitted","");
         testsTaken.put("PRIMARY KEY1","test_id");
-        testsTaken.put("PRIMARY KEY2","user_id");
+        testsTaken.put("PRIMARY KEY2","user_name");
         
         
         sessions.put("Table", "Sessions");
         sessions.put("session_id", "");
-        sessions.put("user_id", "");
+        sessions.put("user_name", "");
         sessions.put("expiration_date", "");
         sessions.put("PRIMARY KEY1", "session_id");
         
@@ -123,6 +122,12 @@ public class DatbaseInterface {
     }
 
     public User verificationUserID(String username, String password) {
+        try {
+            User thisUser = manager.getUser(username, users);
+            return thisUser;
+        } catch (SQLException ex) {
+            System.out.println("!!!!!!!!!No User Found!!!!!!");
+        }
         return null;
     }
 
