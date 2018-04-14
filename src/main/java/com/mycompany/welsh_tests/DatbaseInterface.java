@@ -68,7 +68,6 @@ public class DatbaseInterface {
 
     private void intatiateMaps() {
         users.put("Table","Users");
-        users.put("user_id","");
         users.put("user_name","");
         users.put("user_password","");
         users.put("user_email","");
@@ -92,13 +91,13 @@ public class DatbaseInterface {
         tests.put("test_id", "");
         tests.put("test_title", "");
         tests.put("date_created", "");
-        tests.put("user_id", "");
+        tests.put("user_name", "");
         tests.put("PRIMARY KEY1", "test_id");
         
         
         testsTaken.put("Table","TestsTaken");
         testsTaken.put("test_id","");
-        testsTaken.put("user_id","");
+        testsTaken.put("user_name","");
         testsTaken.put("grade","");
         testsTaken.put("date_submitted","");
         testsTaken.put("PRIMARY KEY1","test_id");
@@ -107,7 +106,7 @@ public class DatbaseInterface {
         
         sessions.put("Table", "Sessions");
         sessions.put("session_id", "");
-        sessions.put("user_id", "");
+        sessions.put("user_name", "");
         sessions.put("expiration_date", "");
         sessions.put("PRIMARY KEY1", "session_id");
         
@@ -123,6 +122,13 @@ public class DatbaseInterface {
     }
 
     public User verificationUserID(String username, String password) {
+        try {
+            User thisUser = manager.getUser(username, users);
+            System.out.println("\n\n"+thisUser.getUserPassword()+"\n\n");
+            return thisUser;
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return null;
     }
 
