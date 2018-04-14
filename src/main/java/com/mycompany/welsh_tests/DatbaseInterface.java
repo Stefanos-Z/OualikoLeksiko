@@ -55,7 +55,7 @@ public class DatbaseInterface {
     public void createSession(Sessions session)
     {
         sessions.put("session_id",session.getSessionID());
-        sessions.put("user_id",session.getUserName());
+        sessions.put("user_name",session.getUserName());
         sessions.put("expiration_date",""+session.getExpirationDate());
         try {
             manager.addNewRowToTable(sessions);
@@ -72,7 +72,7 @@ public class DatbaseInterface {
         users.put("user_password","");
         users.put("user_email","");
         users.put("user_type","");
-        users.put("PRIMARY KEY1","user_id");
+        users.put("PRIMARY KEY1","user_name");
         
         
         questionType.put("Table","QuestionType");
@@ -101,7 +101,7 @@ public class DatbaseInterface {
         testsTaken.put("grade","");
         testsTaken.put("date_submitted","");
         testsTaken.put("PRIMARY KEY1","test_id");
-        testsTaken.put("PRIMARY KEY2","user_id");
+        testsTaken.put("PRIMARY KEY2","user_name");
         
         
         sessions.put("Table", "Sessions");
@@ -124,10 +124,9 @@ public class DatbaseInterface {
     public User verificationUserID(String username, String password) {
         try {
             User thisUser = manager.getUser(username, users);
-            System.out.println("\n\n"+thisUser.getUserPassword()+"\n\n");
             return thisUser;
         } catch (SQLException ex) {
-            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("!!!!!!!!!No User Found!!!!!!");
         }
         return null;
     }

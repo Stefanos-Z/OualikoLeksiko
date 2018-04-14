@@ -355,15 +355,26 @@ public class DatabaseManager {
         
         return resultList;
     }
-
-    User getUser(String username, Map<String, String> thisMap) throws SQLException {
+    
+    /**
+     * Searchers the database for a specific user 
+     * @param usernameID the unique username
+     * @param thisMap the map that represents the table
+     * @return a User object with all parameters
+     * @throws SQLException if user with provided username doesn't exist
+     */
+    User getUser(String usernameID, Map<String, String> thisMap) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
-        
         String query = "SELECT * " +
             "FROM "+thisMap.get("Table")+
-            "WHERE "+findPrimaryKey(thisMap) + "='"+username+"'";
+            " WHERE "+findPrimaryKey(thisMap) + "='"+usernameID+"';";
         PreparedStatement pstat = conn.prepareStatement(query);
+
         ResultSet rs = pstat.executeQuery();
+
+
+        rs.next();
+        
         String user = rs.getString(1);
         String pass = rs.getString(2);
         String email = rs.getString(3);
