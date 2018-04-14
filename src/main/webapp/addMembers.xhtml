@@ -10,9 +10,12 @@
         <link rel="stylesheet" type="text/css" href="css/login_register.css"/> 
         <!-- Reference JavaScript -->
         <script src="js/displayMenuButtons.js"></script>
+        <script src="js/addMemberModal.js"></script>
     </head>
     <body>
-        <div class="menuBar"> <!-- Menu Bar -->
+        
+        <!-- Menu -->
+        <div id="addMemberModal" class="menuBar"> <!-- Menu Bar -->
             <ul id="listHolder">
                 <!-- Home Button -->
                 <li><a class="type_any" id="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
@@ -31,29 +34,42 @@
             </ul>
         </div>
         
-        <div>
-            <h1>Register a User</h1>
-            <br/>
-            <label>Select User Type</label>
-            <select name="userType">
-                <option value="Student">Student</option>
-                <option value="Instructor">Instructor</option>
-                <option value="Administrator">Administrator</option>
-            </select>
-            <br/>
-            <label>Enter Username : </label>
-            <input name="username" type="text" placeholder="Username"/>
-            <br/>
-            <label>Enter Password : </label>
-            <input name="password" type="password" placeholder="Password"/>
-            <br/>
-            <label>Enter your Email : </label>
-            <input name="email" type="text" placeholder="Email"/>
-            
-            <br/>
-            <input type="submit" value="Create User"/>
+        <!-- Add Button -->
+        <button id="myButton" type="submit">Add Member</button>
+        
+        <!-- Add Member Modal -->
+        <div id="addMemberModal">
+            <div class="modal-content">
+                <span class="close">text</span>
+                <div class="form">
+                    <!-- Login Section -->
+                    <form class="login-form" method="post" action="/OualikoLeksiko/homePage.xhtml">
+                        <h1>Register a User</h1>
+                        <br/>
+                        <label>Select User Type</label>
+                        <select class="dropBoxMenu" name="userType">
+                            <option value="Student">Student</option>
+                            <option value="Instructor">Instructor</option>
+                            <option value="Administrator">Administrator</option>
+                        </select>
+                        <br/><br/><br/>
+                        <input name="username" type="text" placeholder="Username"/>
+                        <br/>
+                        <input name="password" type="password" placeholder="Password"/>
+                        <br/>
+                        <input name="email" type="text" placeholder="Email"/>
 
-            <input type="submit" value="Cancel Request"/>
+                        <br/>
+                        <form action="/OualikoLeksiko/homePage.xhtml">
+                            <input class="button" type="submit" value="Create User"/>
+                        </form>
+                        
+                        <form action="/OualikoLeksiko/addMembers.xhtml">
+                            <input class="button" type="submit" value="Cancel Request"/>
+                        </form>
+                    </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

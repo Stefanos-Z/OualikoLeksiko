@@ -1,19 +1,18 @@
 package com.mycompany.welsh_tests;
 
-/* Libraries Declaration */
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.User;
 
 /**
  *
- * @author Loizos Vasileiou (eeu905)
+ * @author loizo
  */
-public class LoginServlet extends HttpServlet {
-    
+public class ManageUserServlet extends HttpServlet {
+
     /**
      * Called by the server (via the service method) 
      * to allow a servlet to handle a GET request.
@@ -25,8 +24,37 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Empty Abstract Method.
-        System.out.println("\n\n................!!..............\n\n");
+   
+        response.setContentType("text/html;charset=UTF-8");
+        
+        //Declare Needed ArrayList
+        
+        PrintWriter out = response.getWriter();//Declare print writer for HTML Parsing
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>List of Locations</title>"); //ADD HEAD TITLE
+        out.println("<style> .backButton { font-size:25px; position:fixed; top:0; left:0; width:250px; height:70;}</style>");
+        out.println("</head>"); //End of <head> tag
+        out.println("<body style=\"text-align:center\">");
+
+        /* Add a Return Button (SetTimeZone) */
+        out.println("<form method=\"post\" action=\"SetTimeZone.xhtml\">");
+        out.println("<input class=\"backButton\" type=\"submit\" value=\"← Set Time-Zone\">");
+        out.println("</form>");
+
+        /* Add Text Title */
+        out.println("<h1 style=\"color:red;\" style=\"font-size:50px;\">"
+                + "<b>List of Locations</b></h1>");
+        
+        /* Print the list of locations 
+        for(int i=0; i<ids.length; i++){
+            out.println("<h2 style=\"color:green;\">"+ids[i].toString()+"</h2>");
+        }
+        */
+        
+        out.println("</body>");//End of <body> tag
+        out.println("</html>");//End of <html> tag
+        out.close();//Close Print Writer
     }
 
     /**
@@ -40,24 +68,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        DatbaseInterface inter = new DatbaseInterface();
-        inter.getConection();
-        
-        response.setContentType("text/html;charset=UTF-8");
-        
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        
-        System.out.println("username = " + username);
-        System.out.println("password  = " + password);
-        
-        User user= inter.verificationUserID(username, password);
-        
-        response.sendRedirect("homePage.xhtml");
-
+        //Empty Abstract Method.
     }
-    
+
     /**
      * Returns information about the servlet, such as author, 
      * version, and copyright; By default, this method returns an 
