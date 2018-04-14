@@ -1,6 +1,7 @@
 package models;
 
 import java.sql.Date;
+import java.util.UUID;
 
 /**
  *
@@ -8,21 +9,21 @@ import java.sql.Date;
  */
 public class Sessions {
     
-    private int sessionID;
+    private String sessionID;
     private int userID;
     private Date expirationDate;    
 
-    public Sessions(int sessionID, int userID, Date expirationDate) {
-        this.sessionID = sessionID;
+    public Sessions(String sessionID, int userID, Date expirationDate) {
+        this.sessionID = UUID.randomUUID().toString();
         this.userID = userID;
         this.expirationDate = expirationDate;
     }
     
-    public int getSessionID() {
+    public String getSessionID() {
         return sessionID;
     }
 
-    public void setSessionID(int sessionID) {
+    public void setSessionID(String sessionID) {
         this.sessionID = sessionID;
     }
 
