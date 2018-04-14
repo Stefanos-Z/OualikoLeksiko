@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.User;
 
 /**
  *
@@ -40,7 +41,9 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        System.out.println("\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!00!\n\n");
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        
         response.setContentType("text/html;charset=UTF-8");
         
         String username = request.getParameter("username");
@@ -49,9 +52,10 @@ public class LoginServlet extends HttpServlet {
         System.out.println("user name = " + username);
         System.out.println("password  = " + password);
         
-        //if(VALID) {
-            response.sendRedirect("homePage.xhtml");
-        //}
+        User user= inter.verificationUserID(username, password);
+        
+        response.sendRedirect("homePage.xhtml");
+
     }
     
     /**
