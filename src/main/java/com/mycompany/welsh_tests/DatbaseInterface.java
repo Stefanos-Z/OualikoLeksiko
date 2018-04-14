@@ -7,10 +7,14 @@ package com.mycompany.welsh_tests;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Sessions;
 
 /**
  *
@@ -18,6 +22,10 @@ import java.util.logging.Logger;
  */
 public class DatbaseInterface {
     private DatabaseManager manager = null;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    
+    
+    
     Map<String, String> users = new HashMap<>();//map for the student table
     Map<String, String> questionType = new HashMap<>();//map for the staff table
     Map<String, String> welshWords = new HashMap<>();//map for the module table
@@ -33,21 +41,28 @@ public class DatbaseInterface {
     public boolean getConection(){
         try {
             manager = new DatabaseManager();
-            manager.createTable();
         } catch (IOException ex) {
             System.out.println("error IO");
             return false;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        } catch (SQLException ex) {
-            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
         }
         return true;
     }
     
-    //public createSession()
+    public void createSession(Sessions session)
+    {
+        sessions.put("session_id",session.getSessionID());
+        sessions.put("user_id",""+session.getUserID());
+        sessions.put("expiration_date",""+session.getExpirationDate());
+        try {
+            manager.addNewRowToTable(sessions);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
 
     private void intatiateMaps() {
@@ -96,6 +111,13 @@ public class DatbaseInterface {
         sessions.put("PRIMARY KEY1", "session_id");
         
         
+        
+    }
+    public static void main(String[] args) {
+        DatbaseInterface ins = new DatbaseInterface();
+        ins.getConection();
+        Sessions sesh = new Sessions(1);
+        ins.createSession(sesh);
         
     }
     

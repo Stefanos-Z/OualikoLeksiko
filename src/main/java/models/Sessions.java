@@ -1,6 +1,8 @@
 package models;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -13,10 +15,14 @@ public class Sessions {
     private int userID;
     private Date expirationDate;    
 
-    public Sessions(String sessionID, int userID, Date expirationDate) {
+    public Sessions(int userID) {
         this.sessionID = UUID.randomUUID().toString();
         this.userID = userID;
-        this.expirationDate = expirationDate;
+        Date rightNow = new Date();
+        rightNow.setHours(rightNow.getHours()+1);
+        Timestamp sss = new Timestamp(rightNow.getTime());
+        expirationDate=sss;
+        
     }
     
     public String getSessionID() {
@@ -39,8 +45,8 @@ public class Sessions {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setExpirationDate() {
+        expirationDate.setHours(expirationDate.getHours()+1);
     }
 
     

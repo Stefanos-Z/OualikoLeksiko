@@ -23,12 +23,12 @@ INSERT INTO Users(user_name, user_password, user_email, user_type) VALUES
 
 
 CREATE TABLE QuestionType(
-	qustion_id INT AUTO_INCREMENT NOT NULL,
-    qustion_text VARCHAR(100) NOT NULL,
-	PRIMARY KEY (qustion_id)
+	question_id INT AUTO_INCREMENT NOT NULL,
+    question_text VARCHAR(100) NOT NULL,
+	PRIMARY KEY (question_id)
 ) Engine = InnoDB;
 
-INSERT INTO QuestionType(qustion_text) VALUES
+INSERT INTO QuestionType(question_text) VALUES
 ('What is the gender of the Welsh noun +?'),
 ('What is the meaning of the Welsh noun +?'),
 ('What is the Welsh noun for the English word for +?');
@@ -87,7 +87,7 @@ INSERT INTO TestsTaken(test_id, user_id, grade, date_submitted) VALUES
 CREATE TABLE Sessions(
 	session_id VARCHAR(100) NOT NULL,
     user_id INT NOT NULL,
-    exiration_date DATETIME NOT NULL,
+    expiration_date DATETIME NOT NULL,
     PRIMARY KEY(session_id),
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
     ON UPDATE CASCADE ON DELETE CASCADE
