@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Sessions;
+import models.User;
 
 /**
  *
@@ -120,6 +121,11 @@ public class DatbaseInterface {
         ins.createSession(sesh);
         
     }
+
+    public User verificationUserID(String username, String password) {
+        return null;
+    }
+
     
     
 }
