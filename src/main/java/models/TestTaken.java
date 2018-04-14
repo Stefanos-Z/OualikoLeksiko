@@ -14,13 +14,13 @@ import java.sql.Date;
 public class TestTaken {
     
     private int testID;
-    private int userID;
+    private String userName;
     private double grade;
     private Date dateSubmitted;
 
-    public TestTaken(int testID, int userID, double grade, Date dateSubmitted) {
+    public TestTaken(int testID, String userName, double grade, Date dateSubmitted) {
         this.testID = testID;
-        this.userID = userID;
+        this.userName = userName;
         this.grade = grade;
         this.dateSubmitted = dateSubmitted;
     }
@@ -33,12 +33,12 @@ public class TestTaken {
         this.testID = testID;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public double getGrade() {

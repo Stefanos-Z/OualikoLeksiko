@@ -11,13 +11,13 @@ public class Tests {
     private int testID;
     private String testTitle;
     private Date dateCreated;
-    private int userID;
+    private String userName;
 
-    public Tests(int testID, String testTitle, Date dateCreated, int userID) {
+    public Tests(int testID, String testTitle, Date dateCreated, String userName) {
         this.testID = testID;
         this.testTitle = testTitle;
         this.dateCreated = dateCreated;
-        this.userID = userID;
+        this.userName = userName;
     }
 
     public int getTestID() {
@@ -44,11 +44,11 @@ public class Tests {
         this.dateCreated = dateCreated;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

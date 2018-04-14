@@ -10,12 +10,12 @@ import java.util.UUID;
 public class Sessions {
     
     private String sessionID;
-    private int userID;
+    private String userName;
     private Date expirationDate;    
 
-    public Sessions(String sessionID, int userID, Date expirationDate) {
+    public Sessions(String sessionID, String userName, Date expirationDate) {
         this.sessionID = UUID.randomUUID().toString();
-        this.userID = userID;
+        this.userName = userName;
         this.expirationDate = expirationDate;
     }
     
@@ -27,12 +27,12 @@ public class Sessions {
         this.sessionID = sessionID;
     }
 
-    public int getUserID() {
-        return userID;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Date getExpirationDate() {
