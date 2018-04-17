@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import models.User;
+import models.WelshWord;
 
 
 public class DatabaseManager {
@@ -125,28 +126,7 @@ public class DatabaseManager {
         return listOfContent;
     }
 
-    /**
-     * Adds student to student table
-     * @param id the new student's ID
-     * @param name the new student's name
-     * @param scheme the new student's scheme
-     * @throws SQLException if the connection is faulty or the PK is already in the table or
-     * the inputed values are null or invalid type 
-     */
-    public void addStudent(String id, String name, String scheme) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "INSERT INTO student VALUES (?, ?, ?)";
-        
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setString(1, id);
-        pstat.setString(2, name);
-        pstat.setString(3, scheme);
-        
-        pstat.executeUpdate();
-        
-        pstat.close();
-        conn.close();
-    }
+
 
     /**
      * Deletes a student from the student table
@@ -195,7 +175,7 @@ public class DatabaseManager {
      */
     public void addNewRowToTable(Map<String, String> thisMap) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
-        
+
         //example INSERT INTO "student" (student_id,student_name, student_scheme)  VALUES
         String query = "INSERT INTO "+thisMap.get("Table")+"(";
         
@@ -212,7 +192,6 @@ public class DatabaseManager {
         
         query = query.substring(0,query.length()-1)+")";
         values = values.substring(0,values.length()-1)+")";
-        
         query = query+" VALUES "+values;
         
         PreparedStatement pstat = conn.prepareStatement(query);
@@ -397,4 +376,72 @@ public class DatabaseManager {
         }
         return null;
     }
+
+    public int getNumberOfRecords(Map<String, String> thisMap) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT COUNT("+ findPrimaryKey(thisMap)+") FROM "+thisMap.get("Table")+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+        ResultSet rs = pstat.executeQuery();
+        rs.next();
+        
+        int numberOfRecords = rs.getInt(1);
+        
+        pstat.close();
+        conn.close();
+        return numberOfRecords;
+    }
+
+    String getQuestionText(int questionTypeID, Map<String, String> thisMap) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * FROM "+thisMap.get("Table")+" WHERE "+findPrimaryKey(thisMap)+" = "+questionTypeID+";";
+        System.out.println("this is the query  "+query);
+        PreparedStatement pstat = conn.prepareStatement(query);
+        System.out.println("hello 0");
+        ResultSet rs = pstat.executeQuery();
+        rs.next();
+        System.out.println("hello 1 ");
+        String questionText = rs.getString(2);
+        
+        System.out.println("hello 2");
+        pstat.close();
+        conn.close();
+        return questionText;
+    }
+
+    WelshWord getWelshWord(Map<String, String> thisMap, int wordID) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * FROM "+thisMap.get("Table")+" WHERE "+findPrimaryKey(thisMap)+" = "+wordID+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+        ResultSet rs = pstat.executeQuery();
+        rs.next();
+        WelshWord thisWord = new WelshWord(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
+        
+        
+        pstat.close();
+        conn.close();
+        
+        return thisWord;
+    }
+
+    public ArrayList<WelshWord> getAllWelshWords(Map<String, String> thisMap) throws SQLException {
+        ArrayList<WelshWord> allWords = new ArrayList<>();
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * FROM "+thisMap.get("Table")+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+        ResultSet rs = pstat.executeQuery();
+        while(rs.next()){
+            
+            WelshWord thisWord = new WelshWord(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
+            allWords.add(thisWord);
+        }
+        
+        pstat.close();
+        conn.close();
+        
+        
+        return allWords;
+        
+    }
+
+    
 }
