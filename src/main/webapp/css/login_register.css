@@ -6,6 +6,7 @@
     color: #FFFFFF;
     text-align: center;
 }
+
 .login-container, .modal-content{
     font-family: "Roboto", sans-serif;
     width: 360px;
@@ -76,7 +77,7 @@
 
 /* Modal Content/Box */
 .modal-content {
-    display: block; /* Hidden by default */
+    /* display: none;  Hidden by default */
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
