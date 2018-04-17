@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS TestQuestionsFull;
+DROP TABLE IF EXISTS TestQuestions;
 DROP TABLE IF EXISTS Sessions;
 DROP TABLE IF EXISTS TestsTaken;
 DROP TABLE IF EXISTS QuestionType;
@@ -28,9 +30,9 @@ CREATE TABLE QuestionType(
 ) Engine = InnoDB;
 
 INSERT INTO QuestionType(question_text) VALUES
-('What is the gender of the Welsh noun +?'),
-('What is the meaning of the Welsh noun +?'),
-('What is the Welsh noun for the English word for +?');
+('What is the gender of the Welsh noun <>?'),
+('What is the meaning of the Welsh noun <>?'),
+('What is the Welsh noun for the English word for <>?');
 
 CREATE TABLE WelshWords(
 	word_id INT AUTO_INCREMENT NOT NULL,
@@ -65,8 +67,9 @@ INSERT INTO WelshWords(welsh_word, english_meaning,gender) VALUES
 ('coeden','tree','M'),
 ('tŷ','house','M'),
 ('dŵr','water','M'),
-('cerddoriaeth','music','M')
-;
+('cerddoriaeth','music','M');
+
+
 
 CREATE TABLE Tests(
 	test_id INT AUTO_INCREMENT NOT NULL,
@@ -115,13 +118,12 @@ CREATE TABLE Sessions(
 
 
 CREATE TABLE TestQuestions(
-	respondent_question_id INT AUTO_INCREMENT NOT NULL,
-    test_id INT NOT NULL,    
+	respondent_question_id INT AUTO_INCREMENT NOT NULL, 
 	question_id INT NOT NULL,
     word_id INT NOT NULL,
+    question_full VARCHAR(100) NOT NULL,
+    correct_answer VARCHAR(100) NOT NULL,
     PRIMARY KEY(respondent_question_id),
-    FOREIGN KEY(test_id) REFERENCES Tests(test_id)
-    ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(question_id) REFERENCES QuestionType(question_id)
 	ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(word_id) REFERENCES WelshWords(word_id)
@@ -129,9 +131,8 @@ CREATE TABLE TestQuestions(
 )ENGINE=InnoDB;
 
 CREATE VIEW TestQuestionsFull AS(
-	SELECT tq.respondent_question_id, tq.test_id, t.test_title, qt.question_id, qt.question_text, w.welsh_word, w.english_meaning, w.gender
-    FROM TestQuestions tq, Tests t, QuestionType qt, WelshWords w
-    WHERE tq.test_id=t.test_id AND 
-		tq.question_id = qt.question_id AND
+	SELECT tq.respondent_question_id, qt.question_id, tq.question_full, w.welsh_word, w.english_meaning, w.gender, tq.correct_answer
+    FROM TestQuestions tq, QuestionType qt, WelshWords w
+    WHERE tq.question_id = qt.question_id AND
         w.word_id = tq.word_id
 );

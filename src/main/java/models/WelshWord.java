@@ -4,14 +4,14 @@ package models;
  *
  * @author Loizos Vasileiou (eeu905)
  */
-public class WelshWords {
+public class WelshWord {
     
     private int wordID;
     private String welshWord;
     private String englishMeaning;
     private String gender;
 
-    public WelshWords(int wordID, String welshWord, String englishMeaning, String gender) {
+    public WelshWord(int wordID, String welshWord, String englishMeaning, String gender) {
         this.wordID = wordID;
         this.welshWord = welshWord;
         this.englishMeaning = englishMeaning;

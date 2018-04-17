@@ -9,13 +9,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Sessions;
 import models.User;
+import models.WelshWord;
 
 /**
  *
@@ -24,7 +27,7 @@ import models.User;
 public class DatbaseInterface {
     private DatabaseManager manager = null;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    
+    private Random r = new Random();
     
     
     Map<String, String> users = new HashMap<>();//map for the student table
@@ -33,6 +36,7 @@ public class DatbaseInterface {
     Map<String, String> tests = new HashMap<>();//map for the registration table
     Map<String, String> testsTaken = new HashMap<>();//map for the teaches table
     Map<String, String> sessions = new HashMap<>();//map for the teaches table
+    Map<String, String> testQuestions = new HashMap<>();//map for the teaches table
     
     public DatbaseInterface()
     {
@@ -110,14 +114,19 @@ public class DatbaseInterface {
         sessions.put("expiration_date", "");
         sessions.put("PRIMARY KEY1", "session_id");
         
-        
+        testQuestions.put("Table","TestQuestions");
+        testQuestions.put("question_id","");
+        testQuestions.put("word_id","");
+        testQuestions.put("question_full","");
+        testQuestions.put("correct_answer","");
+        //testQuestions.put("PRIMARY KEY1","respondent_question_id");
         
     }
     public static void main(String[] args) {
         DatbaseInterface ins = new DatbaseInterface();
         ins.getConection();
-        Sessions sesh = new Sessions("loizos");
-        ins.createSession(sesh);
+        //ins.createAndGetQuestions(5);
+        ins.getWelshWords();
         
     }
 
@@ -130,6 +139,63 @@ public class DatbaseInterface {
         }
         return null;
     }
+    
+    public void createAndGetQuestions(int numOfQuestions)
+    {
+        
+        try {
+            int numOfWelshWords = manager.getNumberOfRecords(welshWords);
+            int numOfQuestionType = manager.getNumberOfRecords(questionType);
+            
+            for(int i =0; i<numOfQuestions;i++)
+            {
+                int questionTypeID = r.nextInt(numOfQuestionType)+1;
+                testQuestions.put("question_id",""+questionTypeID);
+                int welshWordID = r.nextInt(numOfWelshWords)+1;
+                testQuestions.put("word_id",""+welshWordID);
+                WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
+
+                String questionText = manager.getQuestionText(questionTypeID,questionType);
+                switch (questionTypeID){
+                    case 1:
+                        questionText= questionText.replaceAll("<>", thisWord.getWelshWord());
+                        testQuestions.put("correct_answer",thisWord.getGender());
+                    break;
+                    case 2:
+                        questionText = questionText.replaceAll("<>", thisWord.getWelshWord());
+                        testQuestions.put("correct_answer",thisWord.getEnglishMeaning());
+                    case 3:
+                        questionText= questionText.replaceAll("<>", thisWord.getEnglishMeaning());
+                        testQuestions.put("correct_answer",thisWord.getWelshWord());
+                        break;
+                }
+                testQuestions.put("question_full",questionText);
+                
+                manager.addNewRowToTable(testQuestions);
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+    }
+    public ArrayList<WelshWord> getWelshWords()
+    {
+        ArrayList<WelshWord> allWords = null;
+        try {
+            allWords = manager.getAllWelshWords(welshWords);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(WelshWord e: allWords)
+            System.out.println(e.getWordID()+"     "+ e.getEnglishMeaning()+"       "+e.getWelshWord()+"       "+e.getGender() );
+        return allWords;
+    }
+
 
     
     
