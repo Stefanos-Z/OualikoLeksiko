@@ -114,3 +114,24 @@ CREATE TABLE Sessions(
 )ENGINE=InnoDB;
 
 
+CREATE TABLE TestQuestions(
+	respondent_question_id INT AUTO_INCREMENT NOT NULL,
+    test_id INT NOT NULL,    
+	question_id INT NOT NULL,
+    word_id INT NOT NULL,
+    PRIMARY KEY(respondent_question_id),
+    FOREIGN KEY(test_id) REFERENCES Tests(test_id)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(question_id) REFERENCES QuestionType(question_id)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(word_id) REFERENCES WelshWords(word_id)
+	ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+CREATE VIEW TestQuestionsFull AS(
+	SELECT tq.respondent_question_id, tq.test_id, t.test_title, qt.question_id, qt.question_text, w.welsh_word, w.english_meaning, w.gender
+    FROM TestQuestions tq, Tests t, QuestionType qt, WelshWords w
+    WHERE tq.test_id=t.test_id AND 
+		tq.question_id = qt.question_id AND
+        w.word_id = tq.word_id
+);
