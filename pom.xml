@@ -94,9 +94,9 @@
                 </dependency>
             </dependencies>
             <properties>
-                <jdbc.url>jdbc:mysql://sql2.freemysqlhosting.net/sql2232307</jdbc.url>
-                <jdbc.username>sql2232307</jdbc.username>
-                <jdbc.password>dB7!mE8!</jdbc.password>
+                <jdbc.url>jdbc:mysql://den1.mysql4.gear.host/javegroupproject</jdbc.url>
+                <jdbc.username>javegroupproject</jdbc.username>
+                <jdbc.password>Fw8IIn?!7b4M</jdbc.password>
                 <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
             </properties>
         </profile>
