@@ -2,18 +2,25 @@
 var modal = document.getElementById('addMemberModal');
 
 // Get the button that opens the modal
-var button = document.getElementById("myButton");
+var modalButton = document.getElementById('myButton');
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+var closeButton = document.getElementsByClassName('close');
 
+modalButton.addEventListener("click", openModal);
+
+function openModal(){
+    
+    console.log(123);
+}
+/*
 // When the user clicks on the button, open the modal 
-button.onclick = function() {
+modalButton.onclick = function() {
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+closeButton.onclick = function() {
     modal.style.display = "none";
 }
 
@@ -23,3 +30,4 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+ */
