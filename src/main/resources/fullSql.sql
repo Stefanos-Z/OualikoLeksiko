@@ -45,7 +45,28 @@ INSERT INTO WelshWords(welsh_word, english_meaning,gender) VALUES
 ('Cyfrifiadur','computer','M'),
 ('brechdan','sandwich','F'),
 ('myfyriwr','student','M'),
-('myfyrwraig','student','F');
+('myfyrwraig','student','F'),
+('ciwcymbr','cucumber','M'),
+('oren','orange','M'),
+('lemwn','lemon','M'),
+('ystafell','room','M'),
+('llyfr','book','M'),
+('pensil','pencil','M'),
+('cath','cat','M'),
+('ceffyl','horse','M'),
+('coffi','coffee','M'),
+('cwch','boat','M'),
+('cyflymder','speed','M'),
+('amser','time','M'),
+('ffordd','road','M'),
+('cyllell','knife','M'),
+('fforc','fork','M'),
+('llwy','spoon','M'),
+('coeden','tree','M'),
+('tŷ','house','M'),
+('dŵr','water','M'),
+('cerddoriaeth','music','M')
+;
 
 CREATE TABLE Tests(
 	test_id INT AUTO_INCREMENT NOT NULL,
