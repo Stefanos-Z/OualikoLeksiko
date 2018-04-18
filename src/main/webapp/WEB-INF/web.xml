@@ -8,6 +8,14 @@
         <servlet-name>ManageUserServlet</servlet-name>
         <servlet-class>com.mycompany.welsh_tests.ManageUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TakeTestServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.TakeTestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditWordsServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.EditWordsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>ManageUserServlet</servlet-name>
         <url-pattern>/ManageUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TakeTestServlet</servlet-name>
+        <url-pattern>/TakeTestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditWordsServlet</servlet-name>
+        <url-pattern>/EditWordsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

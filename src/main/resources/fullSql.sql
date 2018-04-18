@@ -60,7 +60,7 @@ INSERT INTO WelshWords(welsh_word, english_meaning,gender) VALUES
 ('cwch','boat','M'),
 ('cyflymder','speed','M'),
 ('amser','time','M'),
-('ffordd','road','M'),
+('lon','road','M'),
 ('cyllell','knife','M'),
 ('fforc','fork','M'),
 ('llwy','spoon','M'),
@@ -72,7 +72,7 @@ INSERT INTO WelshWords(welsh_word, english_meaning,gender) VALUES
 
 
 CREATE TABLE Tests(
-	test_id INT AUTO_INCREMENT NOT NULL,
+    test_id INT AUTO_INCREMENT NOT NULL,
     test_title VARCHAR(100) NOT NULL,
     date_created DATE NOT NULL,
     user_name VARCHAR(50),

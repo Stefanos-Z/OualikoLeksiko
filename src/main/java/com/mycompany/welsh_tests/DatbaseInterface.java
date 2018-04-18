@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.Question;
 import models.Sessions;
 import models.User;
 import models.WelshWord;
@@ -140,9 +141,9 @@ public class DatbaseInterface {
         return null;
     }
     
-    public void createAndGetQuestions(int numOfQuestions)
+    public ArrayList<Question> createAndGetQuestions(int numOfQuestions)
     {
-        
+        ArrayList<Question> allQuestions = new ArrayList<>();
         try {
             int numOfWelshWords = manager.getNumberOfRecords(welshWords);
             int numOfQuestionType = manager.getNumberOfRecords(questionType);
@@ -156,28 +157,33 @@ public class DatbaseInterface {
                 WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
 
                 String questionText = manager.getQuestionText(questionTypeID,questionType);
+                String answer = "";
                 switch (questionTypeID){
                     case 1:
                         questionText= questionText.replaceAll("<>", thisWord.getWelshWord());
                         testQuestions.put("correct_answer",thisWord.getGender());
+                        answer = thisWord.getGender();
                     break;
                     case 2:
                         questionText = questionText.replaceAll("<>", thisWord.getWelshWord());
                         testQuestions.put("correct_answer",thisWord.getEnglishMeaning());
+                        answer = thisWord.getEnglishMeaning();
                     case 3:
                         questionText= questionText.replaceAll("<>", thisWord.getEnglishMeaning());
                         testQuestions.put("correct_answer",thisWord.getWelshWord());
+                        answer = thisWord.getWelshWord();
                         break;
                 }
                 testQuestions.put("question_full",questionText);
-                
-                manager.addNewRowToTable(testQuestions);
+                allQuestions.add(new Question(questionText,answer,questionTypeID));
+                //manager.addNewRowToTable(testQuestions);
                 
                 
             }
         } catch (SQLException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return allQuestions;
         
         
         
