@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.wordsTable {
+    font-family: "Roboto", sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    margin: 0 auto 100px;
+    background-color: #FFFFFF;
+}
+.columnLabel{
+    text-align: center;
+    border: 5px;
+    font-size: 30px;
+    
+}
+#columnData, .columnLabel {
+    
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+.columnRow:nth-child(even) {
+    background-color: #dddddd;
+}
+.columnDataImage{
+    width: 40px;
+    height: 30px;
+}
