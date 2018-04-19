@@ -25,8 +25,12 @@
         <url-pattern>/ManageUserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>TakeTest</servlet-name>
-        <url-pattern>/TakeTest</url-pattern>
+        <servlet-name>TakeTestServlet</servlet-name>
+        <url-pattern>/TakeTestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditWordsServlet</servlet-name>
+        <url-pattern>/EditWordsServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
