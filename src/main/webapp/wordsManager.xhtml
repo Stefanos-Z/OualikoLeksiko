@@ -9,22 +9,21 @@
         <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
         <link rel="stylesheet" type="text/css" href="css/tables.css"/>
         <link rel="stylesheet" type="text/css" href="css/wordsManager.css"/> 
+        
         <!-- Reference JavaScript -->
         <script src="js/displayMenuButtons.js"></script>
+        
     </head>
     <body>
-        
-        <!-- Menu Bar -->
-        <div class="menuBar"> 
+        <div class="menuBar"> <!-- Menu Bar -->
             <ul id="listHolder">
                 <!-- Home Button -->
                 <li><a class="type_any" id="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
                 <!-- Add/Remove Words Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/wordsManager.xhtml">Add/Remove Words</a></li>
-                <!-- Edit Entries Button ( * ONLY INSTRUCTORS * ) -->
-                <li><a class="type_instructors" id="link" href="/OualikoLeksiko/editEntries.xhtml">Edit Entries</a></li>
-                <!-- Take a Test Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/takeTest.xhtml">Take a Test</a></li>
+                <li><a class="type_any" id="link" href="EditWordsServlet">Words Manager</a></li>
+                
+                <li><a class="type_any" id="link" href="TakeTestServlet">Take a Test</a></li>
+                
                 <!-- View History Button -->
                 <li><a class="type_any" id="link" href="/OualikoLeksiko/history.xhtml">View History Search</a></li>
                 <!-- Add Members Button ( * ONLY ADMINISTRATORS * )  -->
@@ -34,95 +33,5 @@
             </ul>
         </div>
 
-        <!-- Manage Buttons -->
-            <input class="buttons" type="button" value="Add Word"/>
-            <br/><br/>
-        
-        <!-- Table of words loaded from the database -->
-        <table class="wordsTable">
-            <tr>
-                <th align="center" class="columnLabel">
-                    Welsh Language <img class="columnDataImage" src="images/welsh-flag.png"/>
-                </th>
-                <th class="columnLabel">
-                    English Language <img class="columnDataImage" src="images/uk-flag.png"/></th>
-                <th class="columnLabel">
-                    Gender of the word <img class="columnDataImage" src="images/gender.png"/></th>              
-                <th class="columnLabel">
-                    Options<img class="columnDataImage" src="images/option.png"/></th>
-            </tr>
-            <tr class="columnRow">
-                <td id="columnData">tatws</td>
-                <td id="columnData">potato</td>
-                <td id="columnData">F</td>
-                <td id="columnData">
-                    <img class="editWordImage" src="images/editWord.png"/>
-                    <img class="deleteWordImage" src="images/deleteWord.png"/>
-
-                </td>
-            </tr>
-            <tr class="columnRow">
-                <td id="columnData">cyfrifiadur</td>
-                <td id="columnData">computer</td>
-                <td id="columnData">M</td>
-                <td id="columnData">
-                    <img class="editWordImage" src="images/editWord.png"/>
-                    <img class="deleteWordImage" src="images/deleteWord.png"/>
-
-                </td>
-            </tr>
-            <tr class="columnRow">
-                <td id="columnData">brechdan</td>
-                <td id="columnData">sandwich</td>
-                <td id="columnData">F</td>
-                <td id="columnData">
-                    <img class="editWordImage" src="images/editWord.png"/>
-                    <img class="deleteWordImage" src="images/deleteWord.png"/>
-
-                </td>
-            </tr>
-            <tr class="columnRow">
-                <td id="columnData">myfyriwr</td>
-                <td id="columnData">student</td>
-                <td id="columnData">M</td>
-                <td id="columnData">
-                    <img class="editWordImage" src="images/editWord.png"/>
-                    <img class="deleteWordImage" src="images/deleteWord.png"/>
-
-                </td>
-            </tr>
-            <tr class="columnRow">
-                <td id="columnData">myfyrwraig</td>
-                <td id="columnData">student</td>
-                <td id="columnData">F</td>
-                <td id="columnData">
-                    <img class="editWordImage" src="images/editWord.png"/>
-                    <img class="deleteWordImage" src="images/deleteWord.png"/>
-                </td>
-            </tr>
-        </table>
-        
-        <div class="login-container">
-            <div class="form">
-                <span class="close">&#215;</span>
-                <!-- Login Section -->
-                <form class="login-form" method="post">
-                    
-                    <input name="word_welsh" type="text" placeholder="word in Welsh"/>
-                    <input name="word_english" type="text" placeholder="word in English"/>
-                    <br/>
-                    
-                    <label>Male</label>
-                    <input type="radio" name="gender" value="male" checked="checked"/>
-                    <label>Female</label>
-                    <input type="radio" name="gender" value="female"/>
-                    <br/>
-                    
-                    <input class="addWordButtons" type="submit" value="ADD WORD"/>
-                    <input class="addWordButtons" type="submit" value="CANCEL"/>
-                    <br/>
-                </form>
-            </div>
-        </div>
     </body>
 </html>

@@ -34,12 +34,12 @@ public class EditWordsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
         ArrayList<WelshWord> allWords = inter.getWelshWords();
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+                
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<head>");
@@ -49,10 +49,35 @@ public class EditWordsServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
         out.println("<script src=\"js/displayMenuButtons.js\"></script>");
+        out.println("<script src=\"js/addWordModal.js\"></script>");
+        
+
         out.println("</head>");
         out.println("<body>");
+        
+        out.println("<div class=\"menuBar\">" +
+            "<ul id=\"listHolder\">" +
+                "<li><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                "<li><a class=\"type_any\" id=\"link\" href=\"EditWordsServlet\">Words Manager</a></li>" +
+                "<li><a class=\"type_any\" id=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
+                "<li><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/history.xhtml\">View History Search</a></li>" +
+                "<li><a class=\"type_administrators\" id=\"link\" href=\"/OualikoLeksiko/addMembers.xhtml\">Add Members</a></li>" +
+                "<li id=\"logoutButton\"><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/login.xhtml\">Logout</a></li>" +
+            "</ul>" +
+        "</div>");
+        
+        out.println("<input class=\"addWordButton\" type=\"button\" value=\" + Add a Word\"/>");
+
+        out.println("<button id=\"myBtn\">Open Modal</button>"+
+                    "<div id=\"myModal\" class=\"modal\">" +
+                        "<div class=\"modal-content\">" +   
+                            "<span class=\"close\">&times;</span>" +
+                            "<p>Some text in the Modal..</p>\n" +
+                        "</div>" +
+                    "</div>");
+        
         out.println("<table class=\"wordsTable\">");
-        out.println("<tr>");
+            out.println("<tr>");
                 out.println("<th align=\"center\" class=\"columnLabel\">");
                     out.println("Welsh Language <img class=\"columnDataImage\" src=\"images/welsh-flag.png\"/>");
                 out.println("</th>");
@@ -62,7 +87,8 @@ public class EditWordsServlet extends HttpServlet {
                     out.println("Gender of the word <img class=\"columnDataImage\" src=\"images/gender.png\"/></th>");
                 out.println("<th class=\"columnLabel\">");
                     out.println("Options<img class=\"columnDataImage\" src=\"images/option.png\"/></th>");
-            out.println("</tr>");
+                out.println("</tr>");
+        
         for(int i =0; i<allWords.size();i++){
                 out.println("<tr class=\"columnRow\">");
                     out.println("<td id=\"columnData\">"+allWords.get(i).getWelshWord()+"</td>");
