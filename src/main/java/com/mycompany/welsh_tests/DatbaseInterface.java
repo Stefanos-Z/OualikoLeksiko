@@ -202,6 +202,32 @@ public class DatbaseInterface {
         return allWords;
     }
 
+    public void updateSession(Sessions session) {
+        sessions.put("session_id",session.getSessionID());
+        sessions.put("user_name",session.getUserName());
+        sessions.put("expiration_date",""+session.getExpirationDate());
+        try {
+            ArrayList<String> thisPrimaryKey = new ArrayList<>();
+            thisPrimaryKey.add(""+session.getExpirationDate());
+            manager.updateRowFromTable(sessions, thisPrimaryKey);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Sessions getSessionbyID(String sessionID) {
+        Sessions thisSession = null;
+        
+        try {
+            thisSession = manager.getSessionByID(sessions, sessionID);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return thisSession;
+                 
+    }
+
 
     
     

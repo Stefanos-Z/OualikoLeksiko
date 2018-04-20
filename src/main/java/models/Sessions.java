@@ -15,6 +15,12 @@ public class Sessions {
     private String userName;
     private Date expirationDate;    
 
+    public Sessions(String sessionID, String userName, Date expirationDate) {
+        this.sessionID = sessionID;
+        this.userName = userName;
+        this.expirationDate = expirationDate;
+    }
+
     public Sessions(String userName) {
         this.sessionID = UUID.randomUUID().toString();
 
@@ -24,7 +30,6 @@ public class Sessions {
         expirationDate=sss;
         
         this.userName = userName;
-
     }
     
     public String getSessionID() {
@@ -47,8 +52,8 @@ public class Sessions {
         return expirationDate;
     }
 
-    public void setExpirationDate() {
-        expirationDate.setHours(expirationDate.getHours()+1);
+    public void setExpirationDate(Date newDate) {
+        this.expirationDate = newDate;
     }
 
     

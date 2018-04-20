@@ -14,10 +14,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import models.Sessions;
 import models.User;
 import models.WelshWord;
 
@@ -47,23 +50,7 @@ public class DatabaseManager {
 
     }
     
-    public void createTable() throws SQLException
-    {
-        Connection conn = DriverManager.getConnection(url, username, password);//establish a connection
-        Statement stmt = conn.createStatement();
-        String sql = "CREATE TABLE REGISTRATION " +
-                   "(id INTEGER not NULL, " +
-                   " first VARCHAR(255), " + 
-                   " last VARCHAR(255), " + 
-                   " age INTEGER, " + 
-                   " PRIMARY KEY ( id ))"; 
-        
-        
-        stmt.executeUpdate(sql);
-        stmt.close();
-        conn.close();
-        
-    }
+
     
     /**
      * Decides the formated message and titles to add in the array list returned
@@ -234,7 +221,7 @@ public class DatabaseManager {
      * @param thesePrimaryKeyValues the values for the entry that needs to be updated
      * @throws SQLException 
      */
-    public int UpdateRowFromTable(Map<String, String> thisMap, ArrayList<String> thesePrimaryKeyValues) throws SQLException {
+    public int updateRowFromTable(Map<String, String> thisMap, ArrayList<String> thesePrimaryKeyValues) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
         
         //EXAMPLE: UPDATE student SET student_ID = '1234',student_name='stefanos', student_scheme = 'Maths'
@@ -440,6 +427,32 @@ public class DatabaseManager {
         
         
         return allWords;
+        
+    }
+
+    public Sessions getSessionByID(Map<String, String> thisMap, String sessionID) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * " +
+            "FROM "+thisMap.get("Table")+
+            " WHERE "+findPrimaryKey(thisMap) + "='"+sessionID+"';";
+        PreparedStatement pstat = conn.prepareStatement(query);
+
+        ResultSet rs = pstat.executeQuery();
+
+
+        rs.next();
+        
+        String thisSessionID = rs.getString(1);
+        String username = rs.getString(2);
+        //Date thisDate = rs.getDate(3);
+        Timestamp thisDate = rs.getTimestamp(3);
+
+        
+        pstat.close();
+        conn.close();
+        return new Sessions(thisSessionID, username, thisDate);
+        
+        
         
     }
 

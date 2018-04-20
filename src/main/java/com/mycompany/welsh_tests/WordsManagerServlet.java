@@ -35,6 +35,10 @@ public class WordsManagerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        if(!CookieAndSessionManager.checkValidation(request))
+            response.sendRedirect("login.xhtml");
+        
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
         ArrayList<WelshWord> allWords = inter.getWelshWords();
