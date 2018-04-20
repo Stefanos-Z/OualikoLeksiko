@@ -29,6 +29,10 @@ public class User {
         return userPassword;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
