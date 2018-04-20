@@ -3,6 +3,7 @@ package com.mycompany.welsh_tests;
 /* Libraries Declaration */
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +27,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Empty Abstract Method.
-        System.out.println("\n\n................!!..............\n\n");
+        deleteCookiesOnPage(request, response);
+        response.sendRedirect("login.xhtml");
+        
     }
 
     /**
@@ -62,6 +64,13 @@ public class LoginServlet extends HttpServlet {
                 Sessions newSession = new Sessions(user.getUserName());
                 inter.createSession(newSession);
                 
+                Cookie myCookie = new Cookie(user.getUserName(), newSession.getSessionID());
+                myCookie.setMaxAge(60*60);//sets the the lifespan of the cooki in seconds
+                myCookie.setPath("/");
+                
+                response.addCookie(myCookie);
+                
+                
                 response.sendRedirect("homePage.xhtml");
             }
             else
@@ -79,5 +88,22 @@ public class LoginServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "info";
+    }
+    
+    
+    
+    private void deleteCookiesOnPage(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] allCookies = request.getCookies();
+        if (allCookies != null)
+        {
+            for(Cookie thisCookie: allCookies)
+            {
+                Cookie cookie = new Cookie(thisCookie.getName(), null);
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                
+                response.addCookie(cookie);
+            }
+        }
     }
 }
