@@ -9,8 +9,16 @@
         <servlet-class>com.mycompany.welsh_tests.TakeTestServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditWordsServlet</servlet-name>
-        <servlet-class>com.mycompany.welsh_tests.EditWordsServlet</servlet-class>
+        <servlet-name>WordsManagerServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.WordsManagerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddMemberServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.AddMemberServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HistoryServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.HistoryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -21,8 +29,16 @@
         <url-pattern>/TakeTestServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditWordsServlet</servlet-name>
-        <url-pattern>/EditWordsServlet</url-pattern>
+        <servlet-name>WordsManagerServlet</servlet-name>
+        <url-pattern>/WordsManagerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMemberServlet</servlet-name>
+        <url-pattern>/AddMemberServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoryServlet</servlet-name>
+        <url-pattern>/HistoryServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
