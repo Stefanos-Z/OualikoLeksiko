@@ -18,7 +18,7 @@ import models.WelshWord;
  *
  * @author oneZt
  */
-public class EditWordsServlet extends HttpServlet {
+public class WordsManagerServlet extends HttpServlet {
 
 
 
