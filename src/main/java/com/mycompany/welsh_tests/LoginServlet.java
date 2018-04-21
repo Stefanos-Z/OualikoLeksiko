@@ -54,8 +54,8 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
-        System.out.println("username = " + username);
-        System.out.println("password  = " + password);
+//        System.out.println("username = " + username);
+//        System.out.println("password  = " + password);
         
         User user= inter.verificationUserID(username, password);
         
@@ -124,44 +124,6 @@ public class LoginServlet extends HttpServlet {
     }
     
     
-//    private boolean checkValidation(HttpServletRequest request, String role)
-//    {
-//
-//        Cookie[] c = request.getCookies();
-//        if(c == null)
-//        {
-//            System.out.println("no cookies found");
-//            return false;
-//        }
-//        
-//        
-//        //System.out.println(c.length);
-//        Cookie myCookie = c[0];
-//
-//        Sessions session = sessionsDao.findBySessionId(myCookie.getValue());
-//        
-//        //Find user role
-//        Users u = usersDao.findByUserId(session.getUserId());
-//        
-//        boolean isValid = false;
-//        
-//        //true if valid
-//        if(u.getRole().equals(role) && session.getExpiryTime().after(new Date()))
-//        {
-//            isValid = true;
-//        }
-//        
-//        //extends the validity of the page
-//        if(isValid)
-//        {
-//            Date newExpiryDate = new Date();//create a new date refference
-//            newExpiryDate.setHours(newExpiryDate.getHours()+1);//adds an hour to the expiry date
-//            session.setExpiryTime(newExpiryDate);//updates the new expiry date
-//            sessionsDao.save(session);
-//            myCookie.setMaxAge(60*60);
-//        }
-//        
-//        return isValid;
-//    }
+
     
 }
