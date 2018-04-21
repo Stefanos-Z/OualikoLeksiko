@@ -7,29 +7,23 @@
         <link rel="icon" href="images/add_member.png"/> <!-- Login Favicon -->
         <!-- Reference Cascade Style Sheet-->
         <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
-        <link rel="stylesheet" type="text/css" href="css/login_register.css"/> 
+        <link rel="stylesheet" type="text/css" href="css/login.css"/> 
         <!-- Reference JavaScript -->
         <script src="js/displayMenuButtons.js"></script>
         <script src="js/addMemberModal.js"></script>
     </head>
     <body>
         
-        <!-- Menu -->
-        <div class="menuBar"> <!-- Menu Bar -->
+        <!-- Menu Bar -->
+        <div class="menuBar"> 
             <ul id="listHolder">
-                <!-- Home Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
-                <!-- Add/Remove Words Button -->
-                <li><a class="type_any" id="link" href="WordsManagerServlet">Words Manager</a></li>
-                
-                <li><a class="type_any" id="link" href="TakeTestServlet">Take a Test</a></li>
-                
-                <!-- View History Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/history.xhtml">View History Search</a></li>
-                <!-- Add Members Button ( * ONLY ADMINISTRATORS * )  -->
-                <li><a class="type_administrators" id="link" href="/OualikoLeksiko/addMembers.xhtml">Add Members</a></li>
+                <li><a id="userType_HOME" class="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
+                <li><a id="userType_INSTRUCTOR" class="link" href="WordsManagerServlet">Words Manager</a></li>
+                <li><a id="userType_STUDENT" class="link" href="TakeTestServlet">Take a Test</a></li>
+                <li><a id="userType_HISTORY" class="link" href="/OualikoLeksiko/HistoryServlet">View History</a></li>
+                <li><a id="userType_ADMINISTRATOR" class="link" href="/OualikoLeksiko/AddUserServlet">Add Users</a></li>
                 <!-- Logout Button -->
-                <li id="logoutButton"><a class="type_any" id="link" href="/OualikoLeksiko/login.xhtml">Logout</a></li>
+                <li id="logoutButton"><a id="userType_LOGOUT" class="link" href="LoginServlet">Logout</a></li>
             </ul>
         </div>
         

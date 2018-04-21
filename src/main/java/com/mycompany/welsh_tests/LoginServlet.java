@@ -94,7 +94,12 @@ public class LoginServlet extends HttpServlet {
         return "info";
     }
 
+    /**
+     * Gets the type of the user currently logged-in
+     * @return a String representation of the user Type
+     */
     public String getUserType() {
+        System.out.println("user Type = " + userType);
         return userType;
     }
     

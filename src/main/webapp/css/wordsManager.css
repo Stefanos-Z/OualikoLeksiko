@@ -1,24 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
-body{
-    font-family: "Roboto", sans-serif;
-}
 /* Table of Words in Welsh | English | Gender| Options */
-.buttons {
-  text-transform: uppercase;
-  outline: 0;
-  background: #dddddd;
-  
-  border: 0;
-  padding: 15px;
-  color: #111;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.buttons:hover,.button:active,.button:focus {
-  background: #FFFFFF;
-}
 .editWordImage{
     float: left;
 }
@@ -26,7 +6,6 @@ body{
     float: right;
 }
 .editWordImage, .deleteWordImage{
-
     width: 25px;
     height: 25px;
 }
@@ -34,58 +13,27 @@ body{
     cursor: pointer;
 }
 
-.login-container, .modal-content{
-    width: 360px;
+.modal-content{
+    left: 40%;
+    right: 40%;
+    width: 30%;
+    margin: auto;
+    background-color: #888; /* Silver Background Color for MODAL */
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#myModal{
+    /* display: none;  Hidden by default */
+    width: 500px;
     margin: auto;
 }
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-.button {
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #111;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.button:hover,.button:active,.button:focus, 
-.addWordButtons:hover, .addWordButtons:active, .addWordButtons:focus {
-  background: #43A047;
-}
-.notification {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.notification a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-.notification a:hover{
-    color: blue;
-}
-

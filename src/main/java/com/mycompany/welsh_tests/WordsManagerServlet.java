@@ -44,38 +44,58 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("<html>");
         out.println("<head>");
         out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>");
-        out.println("<link rel=\"icon\" href=\"images/add_remove_words.png\"/>");
+        out.println("<title>Words Manager</title>");
+        out.println("<link rel=\"icon\" href=\"images/words_manager.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
-        out.println("<script src=\"js/displayMenuButtons.js\"></script>");
-        out.println("<script src=\"js/addWordModal.js\"></script>");
-        
-
         out.println("</head>");
         out.println("<body>");
         
+        /* DISPLAY MENU */
         out.println("<div class=\"menuBar\">" +
-            "<ul id=\"listHolder\">" +
-                "<li><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
-                "<li><a class=\"type_any\" id=\"link\" href=\"EditWordsServlet\">Words Manager</a></li>" +
-                "<li><a class=\"type_any\" id=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
-                "<li><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/history.xhtml\">View History Search</a></li>" +
-                "<li><a class=\"type_administrators\" id=\"link\" href=\"/OualikoLeksiko/addMembers.xhtml\">Add Members</a></li>" +
-                "<li id=\"logoutButton\"><a class=\"type_any\" id=\"link\" href=\"/OualikoLeksiko/login.xhtml\">Logout</a></li>" +
-            "</ul>" +
-        "</div>");
-        
-        out.println("<input class=\"addWordButton\" type=\"button\" value=\" + Add a Word\"/>");
-
-        out.println("<button id=\"myBtn\">Open Modal</button>"+
-                    "<div id=\"myModal\" class=\"modal\">" +
-                        "<div class=\"modal-content\">" +   
-                            "<span class=\"close\">&times;</span>" +
-                            "<p>Some text in the Modal..</p>\n" +
-                        "</div>" +
+                    "<ul id=\"listHolder\">" +
+                    "<li><a id=\"userType_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                    "<li><a id=\"userType_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
+                    "<li><a id=\"userType_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
+                    "<li><a id=\"userType_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                    "<li><a id=\"userType_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
+                    "<li id=\"logoutButton\"><a id=\"userType_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                    "</ul>" +
                     "</div>");
         
+        /* MANAGE MENU WITH JAVASCRIPT */
+        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
+        
+        /* Create the button that will display the modal */
+        out.println("<input id=\"myButton\" type=\"button\" value=\"+ Add a Word\"/>");
+        
+        out.println("<div id=\"myModal\" class=\"modal\">" +
+                        "<div class=\"modal-content\">" +   
+                            "<span class=\"close\">&times;</span>" +
+                            "<label>Enter the following data to create a word</label>" + 
+                            "<input id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+                            "<input id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+                            "<select>" +
+                            "<option>Choose Gender</option>" +
+                            "<option value=\"gender\" name=\"male\" >Male</option>" +
+                            "<option value=\"gender\" name=\"female\" >Female</option>" +
+                            "</select>" +
+                            "<form>" + 
+                            "<input type=\"submit\" value=\"Create Word\"/>" +
+                            "</form>" +
+                            "<form>" +
+                            "<input type=\"submit\" value=\"Cancel\"/>" +
+                            "</form>" +
+                        "</div>");
+        out.println("</div>"); //End of MODAL DIV
+        
+        
+        /* MANAGE MODAL WITH JAVASCRIPT */
+        out.println("<script src=\"js/addWordModal.js\"></script>");
+        
+
+                
         out.println("<table class=\"wordsTable\">");
             out.println("<tr>");
                 out.println("<th align=\"center\" class=\"columnLabel\">");
@@ -119,6 +139,7 @@ public class WordsManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Empty Abstract Method.
     }
 
     /**

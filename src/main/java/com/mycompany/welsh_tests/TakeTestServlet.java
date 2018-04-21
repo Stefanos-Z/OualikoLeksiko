@@ -19,8 +19,10 @@ import models.Question;
  * @author oneZt
  */
 public class TakeTestServlet extends HttpServlet {
+    
     private final int numberOfQuestions = 20;
     private ArrayList<Question> allQuestions;
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -33,19 +35,45 @@ public class TakeTestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        
         allQuestions = inter.createAndGetQuestions(numberOfQuestions);
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         out.println("<html>");
         out.println("<head>");
+        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>");
+        out.println("<title>Take a Test</title>");
+        out.println("<link rel=\"icon\" href=\"images/take_test.png\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
         out.println("</head>");
         out.println("<body>");
+        
+        /* Display MENU */ 
+        out.println("<div class=\"menuBar\">" +
+                    "<ul id=\"listHolder\">" +
+                    "<li><a id=\"userType_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                    "<li><a id=\"userType_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
+                    "<li><a id=\"userType_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
+                    "<li><a id=\"userType_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                    "<li><a id=\"userType_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
+                    "<li id=\"logoutButton\"><a id=\"userType_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                    "</ul>" +
+                    "</div>");
+        
+        /* MANAGE MENU WITH JAVASCRIPT */
+        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
+        
+        /* DISPLAY TEST */
         out.println("<form method=\"post\" action=\"TakeTestServlet\">");
         for(int i = 0;i<numberOfQuestions;i++)
         {
-            //<input type="radio" name="deliveryOption" value="Same Day" checked="checked"/>Same Day<br/>
             out.println("<label>"+ allQuestions.get(i).getFullQuestion()+"</label><br/>");
             if(allQuestions.get(i).getQuestionType()==1){
                 out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"Male\" checked=\"checked\" />Male<br/>");
@@ -56,7 +84,10 @@ public class TakeTestServlet extends HttpServlet {
             out.println("<br/><br/>");
             
         }
+        
+        /* SUBMIT BUTTON */
         out.println("<input type=\"submit\" value\"Submit\" />");
+        
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
@@ -75,19 +106,50 @@ public class TakeTestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         int score=0;
         for(int i = 0;i<numberOfQuestions;i++){
             String thisAnswer = request.getParameter("answer"+i);
             if(thisAnswer.equalsIgnoreCase(allQuestions.get(i).getCorrectAnswer()))
                 score++;
         }
+        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         out.println("<html>");
         out.println("<head>");
+        out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>");
+        out.println("<title>Take a Test</title>");
+        out.println("<link rel=\"icon\" href=\"images/take_test.png\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
         out.println("</head>");
         out.println("<body>");
+        
+        /* DISPLAY MENU */
+        out.println("<div class=\"menuBar\">" +
+                    "<ul id=\"listHolder\">" +
+                    "<li><a id=\"userType_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                    "<li><a id=\"userType_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
+                    "<li><a id=\"userType_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
+                    "<li><a id=\"userType_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                    "<li><a id=\"userType_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
+                    "<li id=\"logoutButton\"><a id=\"userType_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                    "</ul>" +
+                    "</div>");
+        
+        /* MANAGE MENU WITH JAVASCRIPT */
+        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
+        
+        /* DISPLAY SCORE TO THE USER */
         out.println("<h2>Your score is"+score+"</h2>");
+        
+        /* RETURN BUTTON */
+        
+        
+        
         out.println("</body>");
         out.println("</html>");
         out.close();

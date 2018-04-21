@@ -10,46 +10,98 @@ body {
     -moz-osx-font-smoothing: grayscale;        
 }
 .menuBar{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    margin-bottom: 100px;
+
+    margin-bottom: 150px;
 }
 
 #listHolder{ /* Group of Lists */
+    
+    /* Keep elements in line */
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    
+    /* Style */
     background-color: #111;   
-    border-radius:13px;
-    -moz-border-radius:13px;
-    -webkit-border-radius:13px;
+    border-radius: 5px;
+
     border-style: solid;
-    border-width: 5px;
+    border-width: 3px;
     
 }
-li a{
+.link{ /* Menu List (Every Link) */
+    float: left;
+    padding: 14px 16px;
+    text-decoration: none; /* Remove Underline from links */
+    text-align: center;
     color: #FFFFFF;
     font-size: 25px;
     font-weight: bold;
 }
-li{ /* Menu List (Every Element) */
-    float: left;
-    padding: 14px 16px;
-}
-li:hover{ /* Menu List (Every Element on hover) */
+
+.link:hover{ /* Menu List (Every Element on hover) */
     cursor:pointer;
     background-color: #b3b3b3;
 }
-#link{ /* Menu List (Every Link) */
-    text-decoration: none; /* Remove Underline from links */
-    text-align: center;
-}
+
 #logoutButton{
     float: right;
 }
-#logoutButton:hover{
-    background-color: red;
+
+/* Menu List (All Elements) Hide all elements, show only from javascript */
+#userType_HOME, #userType_INSTRUCTOR, #userType_STUDENT, 
+#userType_HISTORY, #userType_ADMINISTRATOR, #userType_LOGOUT{
+   display: none;
+}
+
+
+/* Elements in the body (4 possible options (Words Manager, Take a Test, View History, Add Members) ) */
+/* Change the size of the images according to the screen size */
+@media (min-width: 768px) {
+  .mainContainer {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .mainContainer {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .mainContainer {
+    width: 1170px;
+  }
+}
+
+.mainContainer {
+    width: 50%;
+    margin: auto;
+    display: grid;
+    grid-column-gap: 150px;
+    grid-row-gap: 100px;
+    padding: 10px;
+}
+.rows{
+    display: flex;
+}
+.column {
+    margin: auto;
+    float: left;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    padding:1px;
+    border:1px solid #021a40;
+    background-color: #cce5d5;
+    width: 290px;
+    height: 270px;
+}
+.column a label{
+    color: #111;
+}
+.container_image{
+    width: 100%;
+    height: 100%;
+    
 }

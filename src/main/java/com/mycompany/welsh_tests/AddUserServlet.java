@@ -2,14 +2,16 @@ package com.mycompany.welsh_tests;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.User;
 
+public class AddUserServlet extends HttpServlet {
 
-public class HistoryServlet extends HttpServlet {
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -23,17 +25,17 @@ public class HistoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        DatbaseInterface inter = new DatbaseInterface();
-        inter.getConection();
-        
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         out.println("<html>");
         out.println("<head>");
         out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>");
-        out.println("<link rel=\"icon\" href=\"images/history.png\"/>");
+        out.println("<title>Add Users</title>");
+        out.println("<link rel=\"icon\" href=\"images/add_member.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
         out.println("</head>");
         out.println("<body>");
         
@@ -52,8 +54,16 @@ public class HistoryServlet extends HttpServlet {
         /* MANAGE MENU WITH JAVASCRIPT */
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
         
-        /* DISPLAY TABLE OF HISTORY FROM DATABASE */
         
+        
+        /* ADD USER BUTTON - MODAL */
+        
+        
+        
+        
+        
+        
+        /* DISPLAY TABLE OF USERS FROM DATABASE */
         
         
         
@@ -65,7 +75,14 @@ public class HistoryServlet extends HttpServlet {
         out.close();
     }
 
-
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -81,5 +98,4 @@ public class HistoryServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

@@ -13,8 +13,8 @@
         <servlet-class>com.mycompany.welsh_tests.WordsManagerServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddMemberServlet</servlet-name>
-        <servlet-class>com.mycompany.welsh_tests.AddMemberServlet</servlet-class>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.AddUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>HistoryServlet</servlet-name>
@@ -33,8 +33,8 @@
         <url-pattern>/WordsManagerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddMemberServlet</servlet-name>
-        <url-pattern>/AddMemberServlet</url-pattern>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>

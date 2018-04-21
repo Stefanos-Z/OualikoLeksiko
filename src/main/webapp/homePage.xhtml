@@ -8,56 +8,58 @@
         <!-- Reference Cascade Style Sheet-->
         <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
         <link rel="stylesheet" type="text/css" href="css/homePageStyles.css"/> 
-        <!-- Reference JavaScript -->
-        <script src="js/displayMenuButtons.js"></script>
+        
     </head>
     <body>
-        <div class="menuBar"> <!-- Menu Bar -->
+        <!-- Menu Bar -->
+        <div class="menuBar"> 
             <ul id="listHolder">
-                <!-- Home Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
-                <!-- Add/Remove Words Button -->
-                <li><a class="type_any" id="link" href="WordsManagerServlet">Words Manager</a></li>
-                
-                <li><a class="type_any" id="link" href="TakeTestServlet">Take a Test</a></li>
-                
-                <!-- View History Button -->
-                <li><a class="type_any" id="link" href="/OualikoLeksiko/history.xhtml">View History Search</a></li>
-                <!-- Add Members Button ( * ONLY ADMINISTRATORS * )  -->
-                <li><a class="type_administrators" id="link" href="/OualikoLeksiko/addMembers.xhtml">Add Members</a></li>
+                <li><a id="userType_HOME" class="link" href="/OualikoLeksiko/homePage.xhtml">Home</a></li>
+                <li><a id="userType_INSTRUCTOR" class="link" href="WordsManagerServlet">Words Manager</a></li>
+                <li><a id="userType_STUDENT" class="link" href="TakeTestServlet">Take a Test</a></li>
+                <li><a id="userType_HISTORY" class="link" href="HistoryServlet">View History</a></li>
+                <li><a id="userType_ADMINISTRATOR" class="link" href="AddUserServlet">Add Users</a></li>
                 <!-- Logout Button -->
-                <li id="logoutButton"><a class="type_any" id="link" href="LoginServlet">Logout</a></li>
+                <li id="logoutButton"><a id="userType_LOGOUT" class="link" href="LoginServlet">Logout</a></li>
             </ul>
         </div>
         
+        
+        
         <div class="mainContainer">
             <div class="rows">
-                <div class="column">
+                <div id="menuInstructor" class="column">
                     <a id="link" href="/OualikoLeksiko/WordsManagerServlet">
-                        <img class="container_image" src="images/add_remove_words.png" />
+                        <img class="container_image" src="images/words_manager.png" />
                         <br/>
-                        <label>Add/Remove Words</label>
+                        <label>Words Manager</label>
                     </a>
                 </div>
-                
-            </div>
-            
-            <div class="rows">
-                <div class="column">
-                    <a id="link" href="/OualikoLeksiko/takeTest.xhtml">
+                <div id="menuStudent" class="column">
+                    <a id="link" href="/OualikoLeksiko/TakeTestServlet">
                         <img class="container_image" src="images/take_test.png"/>
                         <br/>
                         <label>Take a Test</label>
                     </a>
                 </div>
                 <div class="column">
-                    <a id="link" href="/OualikoLeksiko/history.xhtml">
+                    <a id="link" href="/OualikoLeksiko/HistoryServlet">
                         <img class="container_image" src="images/history.png"/>
                         <br/>
-                        <label>View History Search</label>
+                        <label>View History</label>
+                    </a>
+                </div>
+                <div id="menuAdministrator" class="column">
+                    <a id="link" href="/OualikoLeksiko/AddUserServlet">
+                        <img class="container_image" src="images/add_member.png"/>
+                        <br/>
+                        <label>Add Users</label>
                     </a>
                 </div>
             </div>
-        </div>
+        </div> <!-- End of main Container -->
+        
+        <!-- Reference JavaScript to display the appropriate elements in the Menu Bar -->
+        <script src="js/displayHomePageElements.js"></script>
     </body>
 </html>
