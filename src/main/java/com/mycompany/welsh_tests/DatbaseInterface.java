@@ -189,6 +189,26 @@ public class DatbaseInterface {
         
         
     }
+    
+    //MODAL
+    public ArrayList<WelshWord> addWelshWord(int wordID, String welshMeaning,
+            String englishMeaning, String gender){
+        
+        ArrayList<WelshWord> allWords = null;
+        
+        try {
+            
+            allWords = manager.getAllWelshWords(welshWords);
+            
+            WelshWord newWord = new WelshWord(wordID,welshMeaning,englishMeaning,gender);
+            allWords.add(newWord);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allWords;        
+    }
+    
     public ArrayList<WelshWord> getWelshWords()
     {
         ArrayList<WelshWord> allWords = null;
