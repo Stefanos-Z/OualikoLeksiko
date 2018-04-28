@@ -53,7 +53,7 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("<link rel=\"icon\" href=\"images/words_manager.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
-        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
         out.println("</head>");
         out.println("<body>");
         
@@ -152,8 +152,8 @@ public class WordsManagerServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">"+allWords.get(i).getEnglishMeaning()+"</td>");
                     out.println("<td id=\"columnData\">"+allWords.get(i).getGender()+"</td>");
                     out.println("<td id=\"columnData\">");
-                        out.println("<img class=\"editWordImage\" src=\"images/editWord.png\"/>");
-                        out.println("<img class=\"deleteWordImage\" src=\"images/deleteWord.png\"/>");
+                        out.println("<img class=\"editImage\" src=\"images/editWord.png\"/>");
+                        out.println("<img class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>");
                 out.println("</tr>");
 

@@ -78,11 +78,31 @@ public class AddUserServlet extends HttpServlet {
         /* MANAGE MENU WITH JAVASCRIPT */
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
         
-        
-        
         /* ADD USER BUTTON - MODAL */
+        out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Member\"/>");
         
+        out.println("<div id=\"myModal\" class=\"modal\">" +
+                        "<div class=\"modal-content\">" +   
+                            "<span class=\"close\">&times;</span>" +
+                            "<label>Enter the following data to add a Member</label>" + 
+                            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"username\"/>"+
+                            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"password\" placeholder=\"password\"/>"+
+                            "<select>" +
+                            "<option>Choose Gender</option>" +
+                            "<option name=\"wordGender\" value=\"gender\" name=\"male\" >Male</option>" +
+                            "<option name=\"wordGender\" value=\"gender\" name=\"female\" >Female</option>" +
+                            "</select>" +
+                            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
+                            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
+                            "</form>" +
+                            "<form>" +
+                            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
+                            "</form>" +
+                        "</div>");
+        out.println("</div>"); //End of MODAL DIV
         
+        /* MANAGE MODAL WITH JAVASCRIPT */
+        out.println("<script src=\"js/addWordModal.js\"></script>");
         
         
         

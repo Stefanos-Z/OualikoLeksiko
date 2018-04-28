@@ -26,3 +26,17 @@
     width: 40px;
     height: 30px;
 }
+/* Table of Words in Welsh | English | Gender| Options */
+.editImage{
+    float: left;
+}
+.deleteImage{
+    float: right;
+}
+.editImage, .deleteImage{
+    width: 25px;
+    height: 25px;
+}
+.editImage:hover, .deleteImage:hover{
+    cursor: pointer;
+}
