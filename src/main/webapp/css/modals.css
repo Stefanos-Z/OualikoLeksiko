@@ -1,17 +1,3 @@
-/* Table of Words in Welsh | English | Gender| Options */
-.editWordImage{
-    float: left;
-}
-.deleteWordImage{
-    float: right;
-}
-.editWordImage, .deleteWordImage{
-    width: 25px;
-    height: 25px;
-}
-.editWordImage:hover, .deleteWordImage:hover{
-    cursor: pointer;
-}
 
 /* MODAL DIV */
 #myModal {
