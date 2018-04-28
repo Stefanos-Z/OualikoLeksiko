@@ -266,12 +266,29 @@ public class DatbaseInterface {
         testResults.put("user_name",newTestResult.getUserName());
         testResults.put("grade",""+newTestResult.getGrade());
         testResults.put("date_submitted",""+newTestResult.getDateSubmitted());
-        System.out.println("****************************"+newTestResult.getDateSubmitted());
         try {
             manager.addNewRowToTable(testResults);
         } catch (SQLException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public ArrayList<TestsResults> getTestHistory(User thisUser) {
+        ArrayList<TestsResults> results = null;
+        try {
+            if(thisUser.getUserType().equals("Student"))
+            {
+                results = manager.getTestResultsForStudent(testResults, thisUser.getUserName());
+            }else
+            {
+                results = manager.getTestAllResults(testResults);
+            }
+        } catch (SQLException ex) {
+            System.out.println("sql exception");
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return results;
     }
     
     

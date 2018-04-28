@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Properties;
 import models.QuestionType;
 import models.Sessions;
+import models.TestsResults;
 import models.User;
 import models.WelshWord;
 
@@ -477,6 +478,53 @@ public class DatabaseManager {
         
         
         
+    }
+
+    public ArrayList<TestsResults> getTestAllResults(Map<String, String> thisMap) throws SQLException {
+        
+        Connection conn = DriverManager.getConnection(url, username, password);
+        ArrayList<TestsResults> results = new ArrayList<>();
+        String query = "SELECT * " +
+            "FROM "+thisMap.get("Table")+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+
+        ResultSet rs = pstat.executeQuery();
+
+
+        while(rs.next()){
+            TestsResults thisResult = new TestsResults(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getTimestamp(4));
+            results.add(thisResult);
+        }
+
+
+        
+        pstat.close();
+        conn.close();
+        return results;
+    }
+
+    public ArrayList<TestsResults> getTestResultsForStudent(Map<String, String> thisMap, String name) throws SQLException {
+        
+        Connection conn = DriverManager.getConnection(url, username, password);
+        ArrayList<TestsResults> results = new ArrayList<>();
+        String query = "SELECT * " +
+            "FROM "+thisMap.get("Table")+
+            " WHERE user_name" + "='"+name+"';";
+        PreparedStatement pstat = conn.prepareStatement(query);
+
+        ResultSet rs = pstat.executeQuery();
+
+
+        while(rs.next()){
+            TestsResults thisResult = new TestsResults(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getTimestamp(4));
+            results.add(thisResult);
+        }
+
+
+        
+        pstat.close();
+        conn.close();
+        return results;
     }
 
     

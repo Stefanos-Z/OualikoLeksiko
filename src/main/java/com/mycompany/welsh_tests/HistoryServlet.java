@@ -2,11 +2,13 @@ package com.mycompany.welsh_tests;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Sessions;
+import models.TestsResults;
 import models.User;
 
 
@@ -25,8 +27,14 @@ public class HistoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        User thisUser = CookieAndSessionManager.getUserFromSession(request);
+        ArrayList<TestsResults> testResults = inter.getTestHistory(thisUser);
+        
+        
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -43,7 +51,7 @@ public class HistoryServlet extends HttpServlet {
 //        String password = request.getParameter("password");
 //        User user= inter.getUseByUserName(username);
 //        String userType = user.getUserType();
-        User thisUser = CookieAndSessionManager.getUserFromSession(request);
+//        User thisUser = CookieAndSessionManager.getUserFromSession(request);
         /* DISPLAY MENU BAR */
         if(thisUser.getUserType().equals("Administrator")){
 
@@ -85,7 +93,7 @@ public class HistoryServlet extends HttpServlet {
         
         
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
-        
+
         
         
         

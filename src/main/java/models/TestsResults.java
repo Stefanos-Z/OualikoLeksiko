@@ -26,6 +26,13 @@ public class TestsResults {
         dateSubmitted = new Timestamp(new Date().getTime());
     }
 
+    public TestsResults(int testID, String userName, int grade, Date dateSubmitted) {
+        this.testID = testID;
+        this.userName = userName;
+        this.grade = grade;
+        this.dateSubmitted = dateSubmitted;
+    }
+
     public int getTestID() {
         return testID;
     }
