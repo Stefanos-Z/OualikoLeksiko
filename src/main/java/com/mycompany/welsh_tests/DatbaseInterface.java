@@ -86,7 +86,6 @@ public class DatbaseInterface {
         questionType.put("PRIMARY KEY1","question_id");
         
         welshWords.put("Table","WelshWords");
-        welshWords.put("word_id","");
         welshWords.put("welsh_word","");
         welshWords.put("english_meaning","");
         welshWords.put("gender","");
@@ -123,15 +122,14 @@ public class DatbaseInterface {
         //testQuestions.put("PRIMARY KEY1","respondent_question_id");
         
     }
-    public static void main(String[] args) {
-        DatbaseInterface ins = new DatbaseInterface();
-        ins.getConection();
-        //ins.createAndGetQuestions(5);
-        ins.getWelshWords();
-        
-    }
+//    public static void main(String[] args) {
+//        DatbaseInterface ins = new DatbaseInterface();
+//        ins.getConection();
+//        //ins.createAndGetQuestions(5);
+//        
+//    }
 
-    public User verificationUserID(String username, String password) {
+    public User getUseByUserName(String username) {
         try {
             User thisUser = manager.getUser(username, users);
             return thisUser;
@@ -191,22 +189,19 @@ public class DatbaseInterface {
     }
     
     //MODAL
-    public ArrayList<WelshWord> addWelshWord(int wordID, String welshMeaning,
-            String englishMeaning, String gender){
-        
-        ArrayList<WelshWord> allWords = null;
+    public void addWelshWord(String welshMeaning, String englishMeaning, String gender)
+    {
+        welshWords.put("welsh_word",welshMeaning);
+        welshWords.put("english_meaning",englishMeaning);
+        welshWords.put("gender",gender);
         
         try {
-            
-            allWords = manager.getAllWelshWords(welshWords);
-            
-            WelshWord newWord = new WelshWord(wordID,welshMeaning,englishMeaning,gender);
-            allWords.add(newWord);
-            
+            manager.addNewRowToTable(welshWords);
         } catch (SQLException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return allWords;        
+        
+
     }
     
     public ArrayList<WelshWord> getWelshWords()
@@ -247,8 +242,9 @@ public class DatbaseInterface {
         return thisSession;
                  
     }
-
-
     
+    
+
+
     
 }

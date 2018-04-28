@@ -113,6 +113,8 @@ CREATE TABLE Sessions(
     expiration_date DATETIME NOT NULL,
     PRIMARY KEY(session_id),
     FOREIGN KEY (user_name) REFERENCES Users(user_name)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (user_name) REFERENCES Users(user_name)
     ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE=InnoDB;
 
