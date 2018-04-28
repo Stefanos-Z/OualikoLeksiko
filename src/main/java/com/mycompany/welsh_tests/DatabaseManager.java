@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import models.QuestionType;
 import models.Sessions;
 import models.User;
 import models.WelshWord;
@@ -377,6 +378,8 @@ public class DatabaseManager {
         conn.close();
         return numberOfRecords;
     }
+    
+    
 
     String getQuestionText(int questionTypeID, Map<String, String> thisMap) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
@@ -427,6 +430,26 @@ public class DatabaseManager {
         
         
         return allWords;
+        
+    }
+    
+    public ArrayList<QuestionType> getAllQuestionTypes(Map<String, String> thisMap) throws SQLException {
+        ArrayList<QuestionType> allQuestionTypes = new ArrayList<>();
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String query = "SELECT * FROM "+thisMap.get("Table")+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+        ResultSet rs = pstat.executeQuery();
+        while(rs.next()){
+            
+            QuestionType thisQuestionType = new QuestionType(rs.getInt(1),rs.getString(2));
+            allQuestionTypes.add(thisQuestionType);
+        }
+        
+        pstat.close();
+        conn.close();
+        
+        
+        return allQuestionTypes;
         
     }
 

@@ -17,6 +17,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Question;
+import models.QuestionType;
 import models.Sessions;
 import models.User;
 import models.WelshWord;
@@ -143,8 +144,10 @@ public class DatbaseInterface {
     {
         ArrayList<Question> allQuestions = new ArrayList<>();
         try {
-            int numOfWelshWords = manager.getNumberOfRecords(welshWords);
-            int numOfQuestionType = manager.getNumberOfRecords(questionType);
+            ArrayList<QuestionType> allQT = manager.getAllQuestionTypes(questionType);
+            ArrayList<WelshWord> allWelshWords = manager.getAllWelshWords(welshWords);
+            int numOfWelshWords = allWelshWords.size();
+            int numOfQuestionType = allQT.size();
             
             for(int i =0; i<numOfQuestions;i++)
             {
@@ -152,9 +155,12 @@ public class DatbaseInterface {
                 testQuestions.put("question_id",""+questionTypeID);
                 int welshWordID = r.nextInt(numOfWelshWords)+1;
                 testQuestions.put("word_id",""+welshWordID);
-                WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
-
-                String questionText = manager.getQuestionText(questionTypeID,questionType);
+                
+                //WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
+                //String questionText = manager.getQuestionText(questionTypeID,questionType);
+                
+                WelshWord thisWord = allWelshWords.get(welshWordID);
+                String questionText = allQT.get(questionTypeID).getQuestionText();
                 String answer = "";
                 switch (questionTypeID){
                     case 1:
