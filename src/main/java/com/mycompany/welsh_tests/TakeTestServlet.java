@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Question;
+import models.TestsResults;
+import models.User;
 
 /**
  *
@@ -20,7 +22,7 @@ import models.Question;
  */
 public class TakeTestServlet extends HttpServlet {
     
-    private final int numberOfQuestions = 20;
+    private int numberOfQuestions = 5;
     private ArrayList<Question> allQuestions;
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,9 +77,9 @@ public class TakeTestServlet extends HttpServlet {
         for(int i = 0;i<numberOfQuestions;i++)
         {
             out.println("<label>"+ allQuestions.get(i).getFullQuestion()+"</label><br/>");
-            if(allQuestions.get(i).getQuestionType()==1){
-                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"Male\" checked=\"checked\" />Male<br/>");
-                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"Female\" />Female<br/>");
+            if(allQuestions.get(i).getQuestionType()==0){
+                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"M\" checked=\"checked\" />Male<br/>");
+                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"F\" />Female<br/>");
             }
             else
                 out.println("<input name=\"answer"+i+"\" type=\"text\" placeholder=\"Enter Answer\"/>");
@@ -106,13 +108,19 @@ public class TakeTestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
         int score=0;
+        
+        
         for(int i = 0;i<numberOfQuestions;i++){
             String thisAnswer = request.getParameter("answer"+i);
             if(thisAnswer.equalsIgnoreCase(allQuestions.get(i).getCorrectAnswer()))
                 score++;
         }
+        User thisStudent = CookieAndSessionManager.getUserFromSession(request);
+        
+        TestsResults newResult = new TestsResults(thisStudent.getUserName(), score);
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();

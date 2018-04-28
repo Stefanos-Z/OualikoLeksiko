@@ -1,10 +1,10 @@
 DROP VIEW IF EXISTS TestQuestionsFull;
 DROP TABLE IF EXISTS TestQuestions;
 DROP TABLE IF EXISTS Sessions;
-DROP TABLE IF EXISTS TestsTaken;
+DROP TABLE IF EXISTS TestsResults;
 DROP TABLE IF EXISTS QuestionType;
 DROP TABLE IF EXISTS WelshWords;
-DROP TABLE IF EXISTS Tests;
+-- DROP TABLE IF EXISTS Tests;
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
@@ -70,41 +70,39 @@ INSERT INTO WelshWords(welsh_word, english_meaning,gender) VALUES
 ('cerddoriaeth','music','M');
 
 
+-- 
+-- CREATE TABLE Tests(
+--     test_id INT AUTO_INCREMENT NOT NULL,
+--     test_title VARCHAR(100) NOT NULL,
+--     date_created DATE NOT NULL,
+--     user_name VARCHAR(50),
+--     PRIMARY KEY (test_id),
+--     FOREIGN KEY (user_name) REFERENCES Users (user_name)
+--     ON UPDATE CASCADE ON DELETE NO ACTION
+-- ) Engine = InnoDB;
+-- 
+-- INSERT INTO Tests(test_title, date_created, user_name) VALUES
+-- ('Test Num1','2018-04-14','loizos'),
+-- ('Test Num2','2018-04-13','loizos'),
+-- ('Test Num3','2018-04-12','loizos'),
+-- ('Test Num4','2018-04-11','loizos');
 
-CREATE TABLE Tests(
-    test_id INT AUTO_INCREMENT NOT NULL,
-    test_title VARCHAR(100) NOT NULL,
-    date_created DATE NOT NULL,
-    user_name VARCHAR(50),
-    PRIMARY KEY (test_id),
-    FOREIGN KEY (user_name) REFERENCES Users (user_name)
-    ON UPDATE CASCADE ON DELETE NO ACTION
-) Engine = InnoDB;
 
-INSERT INTO Tests(test_title, date_created, user_name) VALUES
-('Test Num1','2018-04-14','loizos'),
-('Test Num2','2018-04-13','loizos'),
-('Test Num3','2018-04-12','loizos'),
-('Test Num4','2018-04-11','loizos');
-
-
-CREATE TABLE TestsTaken(
-	test_id INT NOT NULL,
+CREATE TABLE TestsResults(
+	test_id INT AUTO_INCREMENT NOT NULL,
     user_name VARCHAR(50) NOT NULL,
-    grade FLOAT(5,2) NOT NULL,
+    grade INT NOT NULL,
 	date_submitted DATE,
-    PRIMARY KEY (test_id, user_name),
-    FOREIGN KEY (test_id) REFERENCES Tests (test_id)
-    ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY (test_id),
     FOREIGN KEY (user_name) REFERENCES Users (user_name)
     ON UPDATE CASCADE ON DELETE CASCADE
 ) Engine = InnoDB;
 
-INSERT INTO TestsTaken(test_id, user_name, grade, date_submitted) VALUES
-(1,'nickolas',12.33,'2018-02-12'),
-(2,'nickolas',20,'2018-02-03'),
-(3,'nickolas',19.23,'2018-02-01'),
-(4,'nickolas',11,'2018-02-11');
+INSERT INTO TestsResults(user_name, grade, date_submitted) VALUES
+('nickolas',12,'2018-02-12'),
+('nickolas',20,'2018-02-03'),
+('nickolas',19,'2018-02-01'),
+('nickolas',11,'2018-02-11');
 
 
 CREATE TABLE Sessions(

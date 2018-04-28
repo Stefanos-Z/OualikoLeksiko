@@ -201,7 +201,7 @@ public class WordsManagerServlet extends HttpServlet {
         System.out.println("word info " + englishMeaning);
         System.out.println("word info " + gender);
         /* Add Words to the Database Table */
-        inter.addWelshWord(wordID, welshMeaning, englishMeaning, gender);
+        inter.addWelshWord(welshMeaning, englishMeaning, gender);
         
         ArrayList<WelshWord> allWords = inter.getWelshWords();
         

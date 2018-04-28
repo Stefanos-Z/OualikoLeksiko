@@ -36,7 +36,7 @@ public class DatbaseInterface {
     Map<String, String> questionType = new HashMap<>();//map for the staff table
     Map<String, String> welshWords = new HashMap<>();//map for the module table
     Map<String, String> tests = new HashMap<>();//map for the registration table
-    Map<String, String> testsTaken = new HashMap<>();//map for the teaches table
+    Map<String, String> testResults = new HashMap<>();//map for the teaches table
     Map<String, String> sessions = new HashMap<>();//map for the teaches table
     Map<String, String> testQuestions = new HashMap<>();//map for the teaches table
     
@@ -100,13 +100,12 @@ public class DatbaseInterface {
         tests.put("PRIMARY KEY1", "test_id");
         
         
-        testsTaken.put("Table","TestsTaken");
-        testsTaken.put("test_id","");
-        testsTaken.put("user_name","");
-        testsTaken.put("grade","");
-        testsTaken.put("date_submitted","");
-        testsTaken.put("PRIMARY KEY1","test_id");
-        testsTaken.put("PRIMARY KEY2","user_name");
+        testResults.put("Table","TestsResults");
+        testResults.put("user_name","");
+        testResults.put("grade","");
+        testResults.put("date_submitted","");
+        testResults.put("PRIMARY KEY1","test_id");
+        
         
         
         sessions.put("Table", "Sessions");
@@ -151,9 +150,9 @@ public class DatbaseInterface {
             
             for(int i =0; i<numOfQuestions;i++)
             {
-                int questionTypeID = r.nextInt(numOfQuestionType)+1;
+                int questionTypeID = r.nextInt(numOfQuestionType);
                 testQuestions.put("question_id",""+questionTypeID);
-                int welshWordID = r.nextInt(numOfWelshWords)+1;
+                int welshWordID = r.nextInt(numOfWelshWords);
                 testQuestions.put("word_id",""+welshWordID);
                 
                 //WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
@@ -163,16 +162,17 @@ public class DatbaseInterface {
                 String questionText = allQT.get(questionTypeID).getQuestionText();
                 String answer = "";
                 switch (questionTypeID){
-                    case 1:
+                    case 0:
                         questionText= questionText.replaceAll("<>", thisWord.getWelshWord());
                         testQuestions.put("correct_answer",thisWord.getGender());
                         answer = thisWord.getGender();
                     break;
-                    case 2:
+                    case 1:
                         questionText = questionText.replaceAll("<>", thisWord.getWelshWord());
                         testQuestions.put("correct_answer",thisWord.getEnglishMeaning());
                         answer = thisWord.getEnglishMeaning();
-                    case 3:
+                        break;
+                    case 2:
                         questionText= questionText.replaceAll("<>", thisWord.getEnglishMeaning());
                         testQuestions.put("correct_answer",thisWord.getWelshWord());
                         answer = thisWord.getWelshWord();

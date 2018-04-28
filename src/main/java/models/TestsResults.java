@@ -5,33 +5,30 @@
  */
 package models;
 
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  *
  * @author Loizos Vasileiou (eeu905)
  */
-public class TestTaken {
+public class TestsResults {
     
     private int testID;
     private String userName;
-    private double grade;
+    private int grade;
     private Date dateSubmitted;
 
-    public TestTaken(int testID, String userName, double grade, Date dateSubmitted) {
-        this.testID = testID;
+    public TestsResults(String userName, int grade) {
         this.userName = userName;
         this.grade = grade;
-        this.dateSubmitted = dateSubmitted;
+        dateSubmitted = new Date();
     }
 
     public int getTestID() {
         return testID;
     }
 
-    public void setTestID(int testID) {
-        this.testID = testID;
-    }
 
     public String getUserName() {
         return userName;
@@ -45,7 +42,7 @@ public class TestTaken {
         return grade;
     }
 
-    public void setGrade(double grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
