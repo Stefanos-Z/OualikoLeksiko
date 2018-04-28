@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 //        System.out.println("username = " + username);
 //        System.out.println("password  = " + password);
         
-        User user= inter.verificationUserID(username, password);
+        User user= inter.getUseByUserName(username);
         
         if(user!=null)
         {

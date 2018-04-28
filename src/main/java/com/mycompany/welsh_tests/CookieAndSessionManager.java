@@ -65,4 +65,23 @@ public class CookieAndSessionManager {
         
         return isValid;
     }
+    
+    
+    public static User getUserFromSession(HttpServletRequest request)
+    {
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        
+        Cookie[] c = request.getCookies();
+        if(c == null)
+        {
+            System.out.println("no cookies found");
+            return null;
+        }
+        Cookie myCookie = c[0];
+
+        Sessions session = inter.getSessionbyID(myCookie.getValue());
+        String username = session.getUserName();
+        return inter.getUseByUserName(username);
+    }
 }

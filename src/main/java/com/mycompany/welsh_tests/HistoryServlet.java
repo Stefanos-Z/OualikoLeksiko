@@ -39,13 +39,13 @@ public class HistoryServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User user= inter.verificationUserID(username, password);
-        String userType = user.getUserType();
-        
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//        User user= inter.getUseByUserName(username);
+//        String userType = user.getUserType();
+        User thisUser = CookieAndSessionManager.getUserFromSession(request);
         /* DISPLAY MENU BAR */
-        if(userType.equals("Administrator")){
+        if(thisUser.getUserType().equals("Administrator")){
 
             //String test = showMenu(userType);
             
@@ -58,7 +58,7 @@ public class HistoryServlet extends HttpServlet {
                 "</ul>" +
                 "</div>");
         }
-        else if(userType.equals("Instructor")){
+        else if(thisUser.getUserType().equals("Instructor")){
 
             out.println("<div class=\"menuBar\">" +
                 "<ul id=\"listHolder\">" +
@@ -69,7 +69,7 @@ public class HistoryServlet extends HttpServlet {
                 "</ul>" +
                 "</div>");
         }
-        else if(userType.equals("Student")){
+        else if(thisUser.getUserType().equals("Student")){
 
             out.println("<div class=\"menuBar\">" +
                 "<ul id=\"listHolder\">" +
