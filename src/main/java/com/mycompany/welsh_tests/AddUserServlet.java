@@ -27,6 +27,9 @@ public class AddUserServlet extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        ArrayList<User> users = inter.getAllUsers();
         
         out.println("<html>");
         out.println("<head>");
@@ -104,11 +107,30 @@ public class AddUserServlet extends HttpServlet {
         /* MANAGE MODAL WITH JAVASCRIPT */
         out.println("<script src=\"js/addWordModal.js\"></script>");
         
-        
-        
-        
         /* DISPLAY TABLE OF USERS FROM DATABASE */
+        out.println("<table class=\"wordsTable\">");
+            out.println("<tr>");
+                out.println("<th align=\"center\" class=\"columnLabel\">Username</th>");
+                out.println("<th class=\"columnLabel\">Password</th>");
+                out.println("<th class=\"columnLabel\">Email</th>");
+                out.println("<th class=\"columnLabel\">Type</th>");
+                out.println("<th class=\"columnLabel\">Options</th>");
+            out.println("</tr>");
         
+        for(int i =0; i<users.size();i++){
+                out.println("<tr class=\"columnRow\">");
+                    out.println("<td id=\"columnData\">"+users.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
+                    out.println("<td id=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
+                    out.println("<td id=\"columnData\">"+users.get(i).getUserType()+"</td>");
+                    out.println("<td id=\"columnData\">");
+                        out.println("<img class=\"editImage\" src=\"images/editWord.png\"/>");
+                        out.println("<img class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                    out.println("</td>");
+                out.println("</tr>");
+
+        }
+        out.println("</table>");
         
         
         
