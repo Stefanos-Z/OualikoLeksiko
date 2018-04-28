@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -22,7 +23,7 @@ public class TestsResults {
     public TestsResults(String userName, int grade) {
         this.userName = userName;
         this.grade = grade;
-        dateSubmitted = new Date();
+        dateSubmitted = new Timestamp(new Date().getTime());
     }
 
     public int getTestID() {

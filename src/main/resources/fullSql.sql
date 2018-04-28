@@ -92,7 +92,7 @@ CREATE TABLE TestsResults(
 	test_id INT AUTO_INCREMENT NOT NULL,
     user_name VARCHAR(50) NOT NULL,
     grade INT NOT NULL,
-	date_submitted DATE,
+	date_submitted DATETIME,
     PRIMARY KEY (test_id),
     FOREIGN KEY (user_name) REFERENCES Users (user_name)
     ON UPDATE CASCADE ON DELETE CASCADE

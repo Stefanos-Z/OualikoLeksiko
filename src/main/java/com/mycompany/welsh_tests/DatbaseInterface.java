@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import models.Question;
 import models.QuestionType;
 import models.Sessions;
+import models.TestsResults;
 import models.User;
 import models.WelshWord;
 
@@ -247,6 +248,30 @@ public class DatbaseInterface {
         }
         return thisSession;
                  
+    }
+
+    public void addTestResult(TestsResults newTestResult) {
+        testResults.put("user_name",newTestResult.getUserName());
+        testResults.put("grade",""+newTestResult.getGrade());
+        testResults.put("date_submitted",""+newTestResult.getDateSubmitted());
+        System.out.println("****************************"+newTestResult.getDateSubmitted());
+        try {
+            manager.addNewRowToTable(testResults);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void addToNewTable(TestsResults newTestResult) {
+        testResults.put("user_name",newTestResult.getUserName());
+        testResults.put("grade",""+newTestResult.getGrade());
+        testResults.put("date_submitted",""+newTestResult.getDateSubmitted());
+        System.out.println("****************************"+newTestResult.getDateSubmitted());
+        try {
+            manager.addNewRowToTable(testResults);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
