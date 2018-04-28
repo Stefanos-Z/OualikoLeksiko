@@ -50,11 +50,13 @@ body {
 }
 
 /* Menu List (All Elements) Hide all elements, show only from javascript */
-#userType_HOME, #userType_INSTRUCTOR, #userType_STUDENT, 
-#userType_HISTORY, #userType_ADMINISTRATOR, #userType_LOGOUT{
-   display: none;
+#menuBar_HOME, #menuBar_INSTRUCTOR, #menuBar_STUDENT, 
+#menuBar_HISTORY, #menuBar_ADMINISTRATOR, #menuBar_LOGOUT{
+   display: block;
 }
-
+#menuBar_LOGOUT:hover{
+    background-color: red;
+}
 
 /* Elements in the body (4 possible options (Words Manager, Take a Test, View History, Add Members) ) */
 /* Change the size of the images according to the screen size */

@@ -74,8 +74,17 @@ public class LoginServlet extends HttpServlet {
                 
                 response.addCookie(myCookie);
                 
+                System.out.println("\n\nuserType = " + userType);
                 
-                response.sendRedirect("homePage.xhtml");
+                if(userType.equals("Administrator")){
+                    response.sendRedirect("adminsLandingPage.xhtml");
+                }
+                else if(userType.equals("Instructor")){
+                    response.sendRedirect("instructorsLandingPage.xhtml");
+                }
+                else if(userType.equals("Student")){
+                    response.sendRedirect("studentsLandingPage.xhtml");
+                }
             }
             else
                 response.sendRedirect("login.xhtml");
@@ -121,9 +130,5 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
         }
-    }
-    
-    
-
-    
+    }   
 }

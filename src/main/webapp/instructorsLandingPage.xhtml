@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>Home Page</title> <!-- Head Title -->
+        <link rel="icon" href="images/homePage.png"/> <!-- Home Page Favicon -->
+        <!-- Reference Cascade Style Sheet-->
+        <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
+    </head>
+    <body>
+        
+        <!-- Menu Bar -->
+        <div class="menuBar"> 
+            <ul id="listHolder">
+                <li><a id="menuBar_HOME" class="link" href="/OualikoLeksiko/instructorsLandingPage.xhtml">Home</a></li>
+                <li><a id="menuBar_INSTRUCTOR" class="link" href="WordsManagerServlet">Words Manager</a></li>
+                <li><a id="menuBar_HISTORY" class="link" href="HistoryServlet">View History</a></li>
+                <!-- Logout Button -->
+                <li id="logoutButton"><a id="menuBar_LOGOUT" class="link" href="LoginServlet">Logout</a></li>
+            </ul>
+        </div>
+        
+        
+        <!-- Main Container -->
+        <div class="mainContainer">
+            <div class="rows">
+                <div id="menuInstructor" class="column">
+                    <a id="link" href="/OualikoLeksiko/WordsManagerServlet">
+                        <img class="container_image" src="images/words_manager.png" />
+                        <br/>
+                        <label>Words Manager</label>
+                    </a>
+                </div>
+                <div class="column">
+                    <a id="link" href="/OualikoLeksiko/HistoryServlet">
+                        <img class="container_image" src="images/history.png"/>
+                        <br/>
+                        <label>View History</label>
+                    </a>
+                </div>
+            </div>
+        </div> <!-- End of main Container -->
+    </body>
+</html>

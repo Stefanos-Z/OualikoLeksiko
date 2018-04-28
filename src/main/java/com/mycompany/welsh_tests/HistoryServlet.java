@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.Sessions;
+import models.User;
 
 
 public class HistoryServlet extends HttpServlet {
@@ -37,20 +39,50 @@ public class HistoryServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         
-        /* DISPLAY MENU */
-        out.println("<div class=\"menuBar\">" +
-                    "<ul id=\"listHolder\">" +
-                    "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
-                    "<li><a id=\"menuBar_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
-                    "<li><a id=\"menuBar_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
-                    "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                    "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
-                    "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                    "</ul>" +
-                    "</div>");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        User user= inter.verificationUserID(username, password);
+        String userType = user.getUserType();
         
-        /* MANAGE MENU WITH JAVASCRIPT */
-        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
+        /* DISPLAY MENU BAR */
+        if(userType.equals("Administrator")){
+
+            String test = showMenu(userType);
+            
+            out.println("<div class=\"menuBar\">" +
+                "<ul id=\"listHolder\">" +
+                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
+                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                "</ul>" +
+                "</div>");
+        }
+        else if(userType.equals("Instructor")){
+
+            out.println("<div class=\"menuBar\">" +
+                "<ul id=\"listHolder\">" +
+                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                "<li><a id=\"menuBar_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
+                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                "</ul>" +
+                "</div>");
+        }
+        else if(userType.equals("Student")){
+
+            out.println("<div class=\"menuBar\">" +
+                "<ul id=\"listHolder\">" +
+                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/homePage.xhtml\">Home</a></li>" +
+                "<li><a id=\"menuBar_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
+                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
+                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
+                "</ul>" +
+                "</div>");
+        }
+        
+            
+        
         
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
         
