@@ -89,11 +89,44 @@ public class HistoryServlet extends HttpServlet {
                 "</div>");
         }
         
-            
-        
-        
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
+        out.println("<table class=\"wordsTable\">");
+        if(thisUser.getUserType().equals("Student")){
+        
+            out.println("<tr>");
+                out.println("<th class=\"columnLabel\">Student Name</th>");
+                out.println("<th class=\"columnLabel\">Grade</th>");
+                out.println("<th class=\"columnLabel\">Date Submitted</th>");
+            out.println("</tr>");
 
+            for(int i =0; i<testResults.size();i++){
+                out.println("<tr class=\"columnRow\">");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
+                out.println("</tr>");
+            }
+        }else{
+            
+            out.println("<tr>");
+                out.println("<th class=\"columnLabel\">Student Name</th>");
+                out.println("<th class=\"columnLabel\">Grade</th>");
+                out.println("<th class=\"columnLabel\">Date Submitted</th>");
+                out.println("<th class=\"columnLabel\">Settings</th>");
+            out.println("</tr>");
+
+            for(int i =0; i<testResults.size();i++){
+                out.println("<tr class=\"columnRow\">");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
+                    out.println("<td id=\"columnData\">");
+                        out.println("<img class=\"deleteWordImage\" src=\"images/deleteWord.png\"/>");
+                    out.println("</td>");
+                out.println("</tr>");
+            }
+        }
+        out.println("</table>");
         
         
         
