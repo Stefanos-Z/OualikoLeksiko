@@ -46,22 +46,18 @@
     font-size: 14px;    
 }
 /* MODALS BUTTONS (CREATE WORD & CANCEL) */
-#myButton{
+#addWordButton{
     text-transform: uppercase;
-    outline: 0;
-    background: #4CAF50;
-    width: 100%;
     border: 0;
     padding: 15px;
     color: #111;
-    font-size: 14px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-    width: 30%;
+    width: 20%;
 }
 /* MODALS BUTTONS ACTIONS */
-#myButton:hover,#myButton:active,#myButton:focus {
+#addWordButton:hover,#addWordButton:active,#addWordButton:focus {
   background: #43A047;
 }
 /* MODAL CLOSE BUTTON */
