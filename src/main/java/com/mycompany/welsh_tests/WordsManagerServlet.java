@@ -68,9 +68,6 @@ public class WordsManagerServlet extends HttpServlet {
                     "</ul>" +
                     "</div>");
         
-        /* MANAGE MENU WITH JAVASCRIPT */
-        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
-        
         /* Create the button that will display the modal */
         out.println("<input id=\"myButton\" type=\"button\" value=\"+ Add a Word\"/>");
         
@@ -78,18 +75,18 @@ public class WordsManagerServlet extends HttpServlet {
                         "<div class=\"modal-content\">" +   
                             "<span class=\"close\">&times;</span>" +
                             "<label>Enter the following data to create a word</label>" + 
-                            "<input name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
-                            "<input name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+                            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+                            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
                             "<select>" +
                             "<option>Choose Gender</option>" +
                             "<option name=\"wordGender\" value=\"gender\" name=\"male\" >Male</option>" +
                             "<option name=\"wordGender\" value=\"gender\" name=\"female\" >Female</option>" +
                             "</select>" +
                             "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
-                            "<input type=\"submit\" value=\"Create Word\"/>" +
+                            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
                             "</form>" +
                             "<form>" +
-                            "<input type=\"submit\" value=\"Cancel\"/>" +
+                            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
                             "</form>" +
                         "</div>");
         out.println("</div>"); //End of MODAL DIV
