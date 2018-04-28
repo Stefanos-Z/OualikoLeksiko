@@ -527,5 +527,27 @@ public class DatabaseManager {
         return results;
     }
 
+    public ArrayList<User> getAllUsers(Map<String, String> thisMap) throws SQLException {
+        Connection conn = DriverManager.getConnection(url, username, password);
+        ArrayList<User> allUsers = new ArrayList<>();
+        String query = "SELECT * " +
+            "FROM "+thisMap.get("Table")+";";
+        PreparedStatement pstat = conn.prepareStatement(query);
+
+        ResultSet rs = pstat.executeQuery();
+
+
+        while(rs.next()){
+            User thisUser = new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+            allUsers.add(thisUser);
+        }
+
+
+        
+        pstat.close();
+        conn.close();
+        return allUsers;
+    }
+
     
 }

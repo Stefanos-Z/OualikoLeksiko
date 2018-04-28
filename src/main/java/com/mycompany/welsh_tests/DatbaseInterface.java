@@ -292,7 +292,16 @@ public class DatbaseInterface {
     }
     
     
-
+    public ArrayList<User> getAllUsers(){
+        ArrayList<User> allUsers = null;
+        
+        try {
+            allUsers = manager.getAllUsers(users);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allUsers;
+    }
 
     
 }
