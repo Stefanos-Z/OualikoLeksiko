@@ -47,7 +47,7 @@ public class HistoryServlet extends HttpServlet {
         /* DISPLAY MENU BAR */
         if(userType.equals("Administrator")){
 
-            String test = showMenu(userType);
+            //String test = showMenu(userType);
             
             out.println("<div class=\"menuBar\">" +
                 "<ul id=\"listHolder\">" +
