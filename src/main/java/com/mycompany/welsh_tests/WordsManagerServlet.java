@@ -96,24 +96,26 @@ public class WordsManagerServlet extends HttpServlet {
         /* Create the button that will display the modal */
         out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Word\"/>");
         
+        /* Create the modal for adding a new word */
         out.println("<div id=\"myModal\" class=\"modal\">" +
-                        "<div class=\"modal-content\">" +   
-                            "<span class=\"close\">&times;</span>" +
-                            "<label>Enter the following data to create a word</label>" + 
-                            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
-                            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
-                            "<select>" +
-                            "<option>Choose Gender</option>" +
-                            "<option name=\"wordGender\" value=\"gender\" name=\"male\" >Male</option>" +
-                            "<option name=\"wordGender\" value=\"gender\" name=\"female\" >Female</option>" +
-                            "</select>" +
-                            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
-                            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
-                            "</form>" +
-                            "<form>" +
-                            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
-                            "</form>" +
-                        "</div>");
+        "<div class=\"modal-content\">" +   
+            "<span class=\"close\">&times;</span>" +
+            "<label>Enter the following data to create a word</label>" + 
+            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+
+            "<input class=\"modal-radio-input\" type=\"radio\" name=\"male\" value=\"gender\">"+
+            "<label class=\"modal-radio-label\"> Male </label>" +
+            "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
+            "<label class=\"modal-radio-label\"> Female </label>" +
+            
+            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
+            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
+            "</form>" +
+            "<form>" +
+            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
+            "</form>" +
+        "</div>"); //End of MODAL CONTENT
         out.println("</div>"); //End of MODAL DIV
         
         /* GET  VALUES FROM MODAL */

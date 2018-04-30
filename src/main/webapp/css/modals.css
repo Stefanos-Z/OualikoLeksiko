@@ -20,6 +20,10 @@
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
 }
+
+/* MODAL TITLE */
+
+
 /* MODAL TEXT FIELDS */
 .modal-textField{
     outline: 0;
@@ -31,6 +35,19 @@
     box-sizing: border-box;
     font-size: 14px;    
 }
+
+/* MODALS RADIO BUTTONS */
+.modal-radio-label {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 3%;
+}
+.modal-radio-input {
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+}
+
 /* MODALS BUTTONS (CREATE WORD & CANCEL) */
 #addWordButton{
     text-transform: uppercase;
@@ -46,6 +63,9 @@
 #addWordButton:hover,#addWordButton:active,#addWordButton:focus {
   background: #43A047;
 }
+
+
+
 /* MODAL CLOSE BUTTON */
 .close {
     color: #aaa;
