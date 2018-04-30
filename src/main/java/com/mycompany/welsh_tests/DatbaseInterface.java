@@ -146,20 +146,21 @@ public class DatbaseInterface {
         try {
             ArrayList<QuestionType> allQT = manager.getAllQuestionTypes(questionType);
             ArrayList<WelshWord> allWelshWords = manager.getAllWelshWords(welshWords);
-            int numOfWelshWords = allWelshWords.size();
+//            int numOfWelshWords = allWelshWords.size();
             int numOfQuestionType = allQT.size();
-            
+            java.util.Collections.shuffle(allWelshWords);
             for(int i =0; i<numOfQuestions;i++)
             {
+                
                 int questionTypeID = r.nextInt(numOfQuestionType);
                 testQuestions.put("question_id",""+questionTypeID);
-                int welshWordID = r.nextInt(numOfWelshWords);
-                testQuestions.put("word_id",""+welshWordID);
+//                int welshWordID = r.nextInt(numOfWelshWords);
+//                testQuestions.put("word_id",""+welshWordID);
                 
                 //WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
                 //String questionText = manager.getQuestionText(questionTypeID,questionType);
                 
-                WelshWord thisWord = allWelshWords.get(welshWordID);
+                WelshWord thisWord = allWelshWords.get(i);
                 String questionText = allQT.get(questionTypeID).getQuestionText();
                 String answer = "";
                 switch (questionTypeID){
