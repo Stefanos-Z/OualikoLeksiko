@@ -102,8 +102,11 @@ public class WordsManagerServlet extends HttpServlet {
         /* Create the modal for adding a new word */
         out.println("<div id=\"myModal\" class=\"modal\">" +
         "<div class=\"modal-content\">" +   
+            "<h1 class=\"modal-title\">Enter the following data to create a word</h1>" + 
             "<span class=\"close\">&times;</span>" +
-            "<label>Enter the following data to create a word</label>" + 
+            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                
+            
             "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
             "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
 
@@ -112,11 +115,8 @@ public class WordsManagerServlet extends HttpServlet {
             "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
             "<label class=\"modal-radio-label\"> Female </label>" +
             
-            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
+            
             "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
-            "</form>" +
-            "<form>" +
-            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
             "</form>" +
         "</div>"); //End of MODAL CONTENT
         out.println("</div>"); //End of MODAL DIV
