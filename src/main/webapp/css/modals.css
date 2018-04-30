@@ -22,7 +22,12 @@
 }
 
 /* MODAL TITLE */
-
+.modal-title{
+    background: #339958;
+    color: #FFFFFF;
+    font-size: 20px;
+    
+}
 
 /* MODAL TEXT FIELDS */
 .modal-textField{
