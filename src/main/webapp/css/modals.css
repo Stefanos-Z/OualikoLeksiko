@@ -21,13 +21,15 @@
 }
 
 /* MODAL HEADER */
-.modal-header{
-    background: #339958;
+.modal-header h1{
+    background-color: #339958;
     color: #FFFFFF;
-    padding: 0;
+    padding: 15;
     margin: 0;
 }
-
+.modal-form{
+    padding: 20;
+}
 /* MODAL TEXT FIELDS */
 .modal-textField{
     outline: 0;
@@ -43,13 +45,9 @@
 /* MODALS RADIO BUTTONS */
 .modal-radio-label {
     display: inline-block;
-    vertical-align: top;
-    margin-right: 3%;
+    vertical-align: middle;
 }
 .modal-radio-input {
-    display: inline-block;
-    vertical-align: top;
-    float: left;
 }
 
 /* MODALS BUTTONS (CREATE WORD & CANCEL) */

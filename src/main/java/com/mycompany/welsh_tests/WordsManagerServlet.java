@@ -69,25 +69,26 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Word\"/>");
         
         /* Create the modal for adding a new word */
-        out.println("<div id=\"myModal\" class=\"modal\">" +
-        "<div class=\"modal-content\">" +   
-            "<header class=\"modal-header\">"+
-                "<span class=\"close\">&times;</span>" + //Close Button
-                "<h1>Enter the following data to create a word</h1>" + 
-            "</header>"+
-                
-            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
-                "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
-                "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
-
-                "<input class=\"modal-radio-input\" type=\"radio\" name=\"male\" value=\"gender\">"+
-                "<label class=\"modal-radio-label\"> Male </label>" +
-                "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
-                "<label class=\"modal-radio-label\"> Female </label>" +
-                "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
-            "</form>" +
-        "</div>"); //End of MODAL CONTENT
-        out.println("</div>"); //End of MODAL DIV
+out.println("<div id=\"myModal\" class=\"modal\">" +
+    "<div class=\"modal-content\">" + 
+        "<header class=\"modal-header\">"+
+            "<span class=\"close\">&times;</span>" + //Close Button
+            "<h1>Enter the following data to create a word</h1>" + 
+        "</header>" + //End of MODAL <header>
+        "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+            "<br/>" +
+            "<input class=\"modal-radio-input\" type=\"radio\" name=\"male\" value=\"gender\">"+
+            "<label class=\"modal-radio-label\"> Male </label>" +
+            "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
+            "<label class=\"modal-radio-label\"> Female </label>" +
+            
+            "<br/>" +
+            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
+        "</form>" + //End of MODAL <form>
+    "</div>"); //End of MODAL CONTENT <div>
+out.println("</div>"); //End of MODAL <div>
         
         /* GET  VALUES FROM MODAL */
         int wordID = inter.getWelshWords().size()+1;
