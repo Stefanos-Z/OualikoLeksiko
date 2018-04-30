@@ -60,8 +60,8 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("</head>");
         out.println("<body>");
         
+        /* GET USER TYPE AND DISPLAY APPROPRIATE MENU BAR */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
-        /* DISPLAY MENU BAR */
         String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
         out.println(menuBar);
         
@@ -71,21 +71,20 @@ public class WordsManagerServlet extends HttpServlet {
         /* Create the modal for adding a new word */
         out.println("<div id=\"myModal\" class=\"modal\">" +
         "<div class=\"modal-content\">" +   
-            "<h1 class=\"modal-title\">Enter the following data to create a word</h1>" + 
-            "<span class=\"close\">&times;</span>" +
-            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+            "<header class=\"modal-header\">"+
+                "<span class=\"close\">&times;</span>" + //Close Button
+                "<h1>Enter the following data to create a word</h1>" + 
+            "</header>"+
                 
-            
-            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
-            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+                "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
 
-            "<input class=\"modal-radio-input\" type=\"radio\" name=\"male\" value=\"gender\">"+
-            "<label class=\"modal-radio-label\"> Male </label>" +
-            "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
-            "<label class=\"modal-radio-label\"> Female </label>" +
-            
-            
-            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
+                "<input class=\"modal-radio-input\" type=\"radio\" name=\"male\" value=\"gender\">"+
+                "<label class=\"modal-radio-label\"> Male </label>" +
+                "<input class=\"modal-radio-input\" type=\"radio\" name=\"female\" value=\"gender\">"+
+                "<label class=\"modal-radio-label\"> Female </label>" +
+                "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
             "</form>" +
         "</div>"); //End of MODAL CONTENT
         out.println("</div>"); //End of MODAL DIV

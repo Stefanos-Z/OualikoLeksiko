@@ -16,17 +16,16 @@
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
 }
 
-/* MODAL TITLE */
-.modal-title{
+/* MODAL HEADER */
+.modal-header{
     background: #339958;
     color: #FFFFFF;
-    font-size: 20px;
-    
+    padding: 0;
+    margin: 0;
 }
 
 /* MODAL TEXT FIELDS */
@@ -35,7 +34,7 @@
     background: #f2f2f2;
     width: 100%;
     border: 0;
-    margin: 0 0 15px;
+    margin: 15 0 15px;
     padding: 15px;
     box-sizing: border-box;
     font-size: 14px;    
