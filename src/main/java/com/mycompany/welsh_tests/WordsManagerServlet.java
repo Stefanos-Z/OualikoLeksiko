@@ -62,39 +62,8 @@ public class WordsManagerServlet extends HttpServlet {
         
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
         /* DISPLAY MENU BAR */
-        if(thisUser.getUserType().equals("Administrator")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/adminsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
-        else if(thisUser.getUserType().equals("Instructor")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/instructorsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
-        else if(thisUser.getUserType().equals("Student")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/studentsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        out.println(menuBar);
         
         /* Create the button that will display the modal */
         out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Word\"/>");
