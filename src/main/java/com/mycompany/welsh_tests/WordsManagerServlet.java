@@ -106,19 +106,25 @@ public class WordsManagerServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">");
                         
                         out.println("<img id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                        String editModal = Modals.getEditWordModal("edit1","edit2","edit3");
+                        String editModal = Modals.getEditWordModal(allWords.get(i).getWelshWord(),
+                                allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
                         out.println(editModal);
-                        out.println("<script src\"js/editWordModal.js\"></script>");
+                        
                         
                         out.println("<img id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                        String deleteModal = Modals.getDeleteWordModal("test","test2","test3");
+                        String deleteModal = Modals.getDeleteWordModal(allWords.get(i).getWelshWord(),
+                                allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
                         out.println(deleteModal);
-                        out.println("<script src=\"js/deleteWordModal.js\"></script>");
+                        
         
                     out.println("</td>");
                 out.println("</tr>");
 
         }
+        
+        out.println("<script src=\"js/editWordModal.js\"></script>");
+        out.println("<script src=\"js/deleteWordModal.js\"></script>");
+        
         out.println("</table>");
         out.println("</body>");
         out.println("</html>");

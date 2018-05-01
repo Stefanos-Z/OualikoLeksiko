@@ -39,44 +39,14 @@ public class AddUserServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
         out.println("</head>");
         out.println("<body>");
         
-        User thisUser = CookieAndSessionManager.getUserFromSession(request);
         /* DISPLAY MENU BAR */
-        if(thisUser.getUserType().equals("Administrator")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/adminsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"/OualikoLeksiko/AddUserServlet\">Add Users</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
-        else if(thisUser.getUserType().equals("Instructor")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/instructorsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
-        else if(thisUser.getUserType().equals("Student")){
-
-            out.println("<div class=\"menuBar\">" +
-                "<ul id=\"listHolder\">" +
-                "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"/OualikoLeksiko/studentsLandingPage.xhtml\">Home</a></li>" +
-                "<li><a id=\"menuBar_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
-                "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"/OualikoLeksiko/HistoryServlet\">View History</a></li>" +
-                "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
-                "</ul>" +
-                "</div>");
-        }
+        User thisUser = CookieAndSessionManager.getUserFromSession(request);
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        out.println(menuBar);
         
         /* MANAGE MENU WITH JAVASCRIPT */
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
@@ -84,25 +54,8 @@ public class AddUserServlet extends HttpServlet {
         /* ADD USER BUTTON - MODAL */
         out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Member\"/>");
         
-        out.println("<div id=\"myModal\" class=\"modal\">" +
-                        "<div class=\"modal-content\">" +   
-                            "<span class=\"close\">&times;</span>" +
-                            "<label>Enter the following data to add a Member</label>" + 
-                            "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"username\"/>"+
-                            "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"password\" placeholder=\"password\"/>"+
-                            "<select>" +
-                            "<option>Choose Gender</option>" +
-                            "<option name=\"wordGender\" value=\"gender\" name=\"male\" >Male</option>" +
-                            "<option name=\"wordGender\" value=\"gender\" name=\"female\" >Female</option>" +
-                            "</select>" +
-                            "<form method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" + 
-                            "<input class=\"modal-button\" type=\"submit\" value=\"Create Word\"/>" +
-                            "</form>" +
-                            "<form>" +
-                            "<input class=\"modal-button\" type=\"submit\" value=\"Cancel\"/>" +
-                            "</form>" +
-                        "</div>");
-        out.println("</div>"); //End of MODAL DIV
+        String addModal = Modals.getAddMemberModal();
+        out.println(addModal);
         
         /* MANAGE MODAL WITH JAVASCRIPT */
         out.println("<script src=\"js/addWordModal.js\"></script>");

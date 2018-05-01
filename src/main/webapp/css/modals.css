@@ -59,6 +59,7 @@
 }
 .editModal-header h1{
     background-color: #FFFF00; /* YELLOW FOR EDIT MODAL */
+    color: #111;
 }
 .deleteModal-header h1{
     background-color: #FF0000; /* RED FOR DELETE MODAL */
