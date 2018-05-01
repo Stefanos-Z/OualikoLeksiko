@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
 import java.util.Date;
@@ -49,7 +44,7 @@ public class Modals {
         String modal = "<div id=\"editWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"editModal-header\">"+
-                    "<span onclick=\"hideModalOnExit()\"  class=\"editClose\">&times;</span>" + //Close Button
+                    "<span onclick=\"honcliideModalOnExit()\" class=\"editClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
@@ -75,18 +70,18 @@ public class Modals {
         return modal;
     }
     
-    public static String getDeleteWordModal(String wordWelsh, String wordEnglish, String gender) {
+    public static String getDeleteWordModal() {
         
         String modal = "<div id=\"deleteWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
-                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<span onclick=\"honcliideModalOnExit()\" class=\"deleteClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
-                    "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" disabled=\"disabled\" value=\" "+wordWelsh+" \"/>" +
-                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" disabled=\"disabled\" value=\" "+wordEnglish+" \"/>" +
-                    "<input class=\"modal-textField\" name=\"wordGender\" id=\"wordGender\" type=\"text\" disabled=\"disabled\" value=\" "+gender+" \"/>" +
+                    "<input class=\"modal-textField\" name=\"wordWelshInput\" id=\"wordWelsh\" type=\"text\" disabled=\"disabled\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordEnglishInput\" id=\"wordEnglish\" type=\"text\" disabled=\"disabled\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordGenderInput\" id=\"wordGender\" type=\"text\" disabled=\"disabled\"/>" +
                     "<br/>" +
 
                     "<br/>" +

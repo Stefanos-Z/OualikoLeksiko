@@ -106,10 +106,9 @@ public class WordsManagerServlet extends HttpServlet {
                                 ")\" id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
                 String editModal = Modals.getEditWordModal();
                 out.println(editModal);
-
-                out.println("<input type=\"image\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                String deleteModal = Modals.getDeleteWordModal(allWords.get(i).getWelshWord(),
-                        allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
+                
+                out.println("<input type=\"image\" onclick=\"displayModal("+i+")\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                String deleteModal = Modals.getDeleteWordModal();
                 out.println(deleteModal);
 
                 out.println("</td>");
