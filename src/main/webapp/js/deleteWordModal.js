@@ -31,6 +31,6 @@ function displayModal(index){
     
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
-    document.getElementById("wordGenderInput").value = gender;
+    //document.getElementById("wordGenderInput").value = gender;
 }
 

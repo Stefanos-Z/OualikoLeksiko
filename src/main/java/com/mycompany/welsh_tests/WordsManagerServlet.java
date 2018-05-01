@@ -102,12 +102,13 @@ public class WordsManagerServlet extends HttpServlet {
                 out.println("<td id=\"columnData\">"); //add modal on last column in every row
 
 
-                out.println("<input type=\"image\" onclick=\"displayModal("+i+", "+allWords.get(i).getWordID() +
-                                ")\" id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
+                out.println("<input id=\"editWordButton\" type=\"image\" onclick=\"displayModal("+i+","+allWords.get(i).getWordID() +
+                                ")\" class=\"editImage\" src=\"images/editWord.png\"/>");
                 String editModal = Modals.getEditWordModal();
                 out.println(editModal);
                 
-                out.println("<input type=\"image\" onclick=\"displayModal("+i+")\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                out.println("<input id=\"deleteWordButton\" type=\"image\" onclick=\"displayModal("+i+
+                        ")\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                 String deleteModal = Modals.getDeleteWordModal();
                 out.println(deleteModal);
 
@@ -115,7 +116,7 @@ public class WordsManagerServlet extends HttpServlet {
             out.println("</tr>");
         }
         out.println("<script src=\"js/editWordModal.js\"></script>");
-        out.println("<script src=\"js/deleteWordModal.js\"></script>");
+        //out.println("<script src=\"js/deleteWordModal.js\"></script>");
         
         out.println("</table>");
         out.println("</body>");

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.welsh_tests;
 
 import java.util.Date;
@@ -44,7 +49,7 @@ public class Modals {
         String modal = "<div id=\"editWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"editModal-header\">"+
-                    "<span onclick=\"honcliideModalOnExit()\" class=\"editClose\">&times;</span>" + //Close Button
+                    "<span class=\"editWordClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
@@ -75,7 +80,7 @@ public class Modals {
         String modal = "<div id=\"deleteWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
-                    "<span onclick=\"honcliideModalOnExit()\" class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
