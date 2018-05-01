@@ -44,18 +44,7 @@ public class Modals {
         return modal;
     }
     
-    public static String getEditWordModal(String wordWelsh, String wordEnglish, String gender) {
-        
-        String maleGenderInput = "";
-        String femaleGenderInput = "";
-        
-        if(gender.equals("M")){ //Male
-            maleGenderInput = "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"male\" checked>";
-            femaleGenderInput = "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\">";
-        }else if(gender.equals("F")){
-            maleGenderInput = "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"male\">";
-            femaleGenderInput = "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\" checked>";
-        }
+    public static String getEditWordModal() {
         
         String modal = "<div id=\"editWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
@@ -63,17 +52,17 @@ public class Modals {
                     "<span onclick=\"hideModalOnExit()\"  class=\"editClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshInput\" type=\"text\" placeholder=\"Word in Welsh\"/>" +
                     "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\" value\"\"\"/>" +
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            maleGenderInput+
+                            "<input id=\"radio1\" class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"male\" checked=\"checked\">"+
                             "<span> Male </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            femaleGenderInput+
+                            "<input id=\"radio2\" class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\">"+
                             "<span>Female </span>" +
                         "</label>" +
                     "</div>"+

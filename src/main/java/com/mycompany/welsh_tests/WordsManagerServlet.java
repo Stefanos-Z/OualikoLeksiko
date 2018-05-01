@@ -95,23 +95,24 @@ public class WordsManagerServlet extends HttpServlet {
         
         
         for(int i =0; i<allWords.size();i++){
-                out.println("<tr class=\"columnRow\">");
+                out.println("<tr id=\"wordTableRow"+i+"\" class=\"columnRow\">");
+                    out.println("<span id=\"addWordSpan"+i+"\" value=\""+allWords.get(i).getWordID()+"\"></span>");
                     out.println("<td id=\"WW"+i+"\" class=\"columnData \">"+allWords.get(i).getWelshWord()+"</td>");
                     out.println("<td id=\"EW"+i+"\" class=\"columnData\">"+allWords.get(i).getEnglishMeaning()+"</td>");
                     out.println("<td id=\"G"+i+"\" class=\"columnData\">"+allWords.get(i).getGender()+"</td>");
                     out.println("<td id=\"columnData\">"); //add modal on last column in every row
                     
                         
-                        out.println("<input type=\"image\" onclick=\"displayModal("+i+")\" id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                        String editModal = Modals.getEditWordModal(allWords.get(i).getWelshWord(),
-                                allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
-                        out.println(editModal);
-                        
-                        
-                        out.println("<input type=\"image\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                        String deleteModal = Modals.getDeleteWordModal(allWords.get(i).getWelshWord(),
-                                allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
-                        out.println(deleteModal);
+                    out.println("<input type=\"image\" onclick=\"displayModal("+i+","+allWords.get(i).getWordID() +
+                                    ")\" id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
+                    String editModal = Modals.getEditWordModal();
+                    out.println(editModal);
+
+
+                    out.println("<input type=\"image\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                    String deleteModal = Modals.getDeleteWordModal(allWords.get(i).getWelshWord(),
+                            allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
+                    out.println(deleteModal);
                         
         
                     out.println("</td>");

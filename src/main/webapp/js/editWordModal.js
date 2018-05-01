@@ -12,22 +12,25 @@ function hideModalOnExit() {
     editModal.style.display = "none";
 }
 
-function displayModal(id){
+function displayModal(index, wordID){
     editModal.style.display = "block";
-    console.log("num = "+id);
-    var welshWord = document.getElementById("WW"+id).innerHTML;
-    var englishWord = document.getElementById("EW"+id).innerHTML;
-    var gender = document.getElementById("G"+id).innerHTML;
+    console.log("num = "+index);
+    var welshWord = document.getElementById("WW"+index).innerHTML;
+    var englishWord = document.getElementById("EW"+index).innerHTML;
+    var gender = document.getElementById("G"+index).innerHTML;
     
-    console.log(welshWord);
-    console.log(englishWord);
-    console.log(gender);
-
+    console.log("ID EQUALS +======> " + wordID);
+    
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
-    //document.getElementById("wordWelsh").innerHTML = 'something something';
     
-    //document.getElementById('wordEnglish').setAttribute("value", englishWord);
+    if(gender == "M"){
+        document.getElementById("radio1").checked = true;
+        document.getElementById("radio2").checked = false;
+    }else if(gender == "F"){
+        document.getElementById("radio1").checked = false;
+        document.getElementById("radio2").checked = true;
+    }
 
 }
 
