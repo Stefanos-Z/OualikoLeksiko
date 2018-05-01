@@ -1,22 +1,20 @@
 /* OPEN MODALS BUTTON (CREATE WORD & CANCEL) */
 #addWordButton{
+    margin:0 auto;
+    margin-bottom: 50px;
+    display:block;
     text-transform: uppercase;
-    border: 0;
     padding: 15px;
-    color: #111;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
-    cursor: pointer;
     width: 20%;
 }
 /* OPEN MODAL BUTTON ACTIONS */
 #addWordButton:hover,#addWordButton:active,#addWordButton:focus {
-  background: #43A047;
-  cursor: pointer;
+    background: #43A047;
+    cursor: pointer;
 }
 
 /* MODAL DIV */
-#myModal {
+#addModal, #editModal, #deleteModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -37,26 +35,35 @@
 }
 
 /* MODAL CLOSE BUTTON */
-.close {
+.addClose, .editClose, .deleteClose {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 /* MODAL CLOSE BUTTON ACTIONS */
-.close:hover, .close:focus {
+.addClose:hover, .addClose:focus,
+.editClose:hover, .editClose:focus,
+.deleteClose:hover, .deleteClose:focus{
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
 /* MODAL HEADER */
-.modal-header h1{
-    background-color: #339958;
+.addModal-header h1, .editModal-header h1, .deleteModal-header h1{
+    background-color: #339958; /* GREEN FOR ADD MODAL */
     color: #FFFFFF;
     padding: 15;
     margin: 0;
 }
+.editModal-header h1{
+    background-color: #FFFF00; /* YELLOW FOR EDIT MODAL */
+}
+.deleteModal-header h1{
+    background-color: #FF0000; /* RED FOR DELETE MODAL */
+}
+
 .modal-form{
     padding: 20;
 }
@@ -78,21 +85,21 @@
 
 /* MODALS RADIO BUTTONS */
 .modal-radio-buttons-div{
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .modal-radio-label{
-  font-size: 25px;
+    font-size: 25px;
 }
 .modal-radio-button{
     width: 25px;
     height: 25px;
 }
 .modal-radio-button[type="radio"]:checked + span{
-  color:#0B8;  
+    color:#0B8;  /* Change the color of the selected radio button */
 }
 
-.modal-submit-button{
+.addModal-submit-button, .editModal-submit-button, .deleteModal-submit-button{
     text-transform: uppercase;
     border: 0;
     padding: 15px;
@@ -103,7 +110,18 @@
     width: 100%;
     
 }
-
+.addModal-submit-button:hover, .addModal-submit-button:focus{
+    background: #43A047; /* GREEN FOR ADD MODAL */
+    cursor: pointer;
+}
+.editModal-submit-button:hover, .editModal-submit-button:focus{
+    background: #FFFF00; /* YELLOW FOR EDIT MODAL */
+    cursor: pointer;
+}
+.deleteModal-submit-button:hover, .deleteModal-submit-button:focus{
+    background: #FF0000; /* RED FOR DELETE MODAL */
+    cursor: pointer;
+}
 
 
 
