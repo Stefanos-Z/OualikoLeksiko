@@ -101,7 +101,7 @@ public class TakeTestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("hello0");
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
         int score=0;
@@ -115,7 +115,6 @@ public class TakeTestServlet extends HttpServlet {
 
         User thisStudent = CookieAndSessionManager.getUserFromSession(request);
         TestsResults newTestResult = new TestsResults(thisStudent.getUserName(), score);
-        System.out.println(newTestResult.getUserName()+"   "+newTestResult.getDateSubmitted());
         inter.addToNewTable(newTestResult);
 
         response.setContentType("text/html;charset=UTF-8");

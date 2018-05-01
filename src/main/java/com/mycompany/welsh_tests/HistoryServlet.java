@@ -84,6 +84,11 @@ public class HistoryServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
                     out.println("<td id=\"columnData\">");
                         out.println("<img class=\"deleteHistoryImage\" src=\"images/deleteWord.png\"/>");
+                        String deleteHistoryModal = Modals.getDeleteHistoryModal(testResults.get(i).getUserName(),
+                                testResults.get(i).getGrade(), testResults.get(i).getDateSubmitted());
+                        out.println(deleteHistoryModal);
+                        out.println("<script src=\"js/deleteHistoryModal.js\"></script>");
+                        
                     out.println("</td>");
                 out.println("</tr>");
             }

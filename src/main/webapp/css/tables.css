@@ -31,7 +31,7 @@
     float: left;
 }
 .deleteHistoryImage{
-        /* SET DELETE BUTTON IF ITS ONLY IN THE MIDDLE */
+    margin-left: 46%; /* SET DELETE BUTTON IF ITS ONLY IN THE MIDDLE */
 }
 .deleteImage{
     float: right;

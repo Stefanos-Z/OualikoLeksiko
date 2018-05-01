@@ -74,12 +74,6 @@ public class WordsManagerServlet extends HttpServlet {
         String englishMeaning = request.getParameter("wordEnglish");
         String gender = request.getParameter("wordGender");
         
-        System.out.println("\n*****\n******\n*****\nMYMYMYMYMYMYMYMY");
-        System.out.println("word info " + wordID);
-        System.out.println("word info " + welshMeaning);
-        System.out.println("word info " + englishMeaning);
-        System.out.println("word info " + gender);
-        
         /* MANAGE MODAL WITH JAVASCRIPT */
         out.println("<script src=\"js/addWordModal.js\"></script>");
         

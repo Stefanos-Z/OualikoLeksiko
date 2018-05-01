@@ -80,18 +80,20 @@ public class AddUserServlet extends HttpServlet {
                         String editModal = Modals.getEditMemberModal(users.get(i).getUserName(),
                         users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
                         out.println(editModal);
-                        out.println("<script src=\"js/editMemberModal.js\"></script>");
+                        
                         
                         out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                         String deleteModal = Modals.getDeleteMemberModal(users.get(i).getUserName(),
                         users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
                         out.println(editModal);
                         out.println(deleteModal);
-                        out.println("<script src=\"js/deleteMemberModal.js\"></script>");
+                        
                     out.println("</td>");
                 out.println("</tr>");
 
         }
+        out.println("<script src=\"js/editMemberModal.js\"></script>");
+        out.println("<script src=\"js/deleteMemberModal.js\"></script>");
         out.println("</table>");
         
         

@@ -5,6 +5,8 @@
  */
 package com.mycompany.welsh_tests;
 
+import java.util.Date;
+
 /**
  *
  * @author loizo
@@ -196,6 +198,7 @@ public class Modals {
         
         return modal;
     }
+    
     public static String getDeleteMemberModal(String username, String password, String email, String userType) {
         
         String modal = "<div id=\"deleteMemberModal\" class=\"modal\">" +
@@ -211,6 +214,27 @@ public class Modals {
                     "<input class=\"modal-textField\" name=\"userType\" id=\"userType\" type=\"text\" value=\" "+userType+" \"/>"+
                     "<br/>" +
                     "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Member\"/>" +
+                "</form>" + //End of MODAL <form>
+            "</div>" + //End of MODAL CONTENT <div>
+        "</div>"; //End of MODAL <div>
+        
+        return modal;
+    }
+    
+    public static String getDeleteHistoryModal(String studentName, double grade, Date dateSubmitted) {
+        
+        String modal = "<div id=\"deleteHistoryModal\" class=\"modal\">" +
+            "<div class=\"modal-content\">" + 
+                "<header class=\"deleteModal-header\">"+
+                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<h1>Are you sure you want to delete the following History?</h1>" + 
+                "</header>" + //End of MODAL <header>
+                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
+                    "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\" "+studentName+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\" "+grade+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\" "+dateSubmitted+" \"/>"+
+                    "<br/>" +
+                    "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete History\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
