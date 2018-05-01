@@ -67,6 +67,8 @@ public class WordsManagerServlet extends HttpServlet {
         /* Create the modal for adding a new word */
         String addModal = Modals.getAddWordModal();
         out.println(addModal);
+        /* MANAGE MODAL WITH JAVASCRIPT */
+        out.println("<script src=\"js/addWordModal.js\"></script>");
         
         /* GET  VALUES FROM MODAL */
         int wordID = inter.getWelshWords().size()+1;
@@ -74,8 +76,7 @@ public class WordsManagerServlet extends HttpServlet {
         String englishMeaning = request.getParameter("wordEnglish");
         String gender = request.getParameter("wordGender");
         
-        /* MANAGE MODAL WITH JAVASCRIPT */
-        out.println("<script src=\"js/addWordModal.js\"></script>");
+        
         
 
                 
@@ -92,20 +93,22 @@ public class WordsManagerServlet extends HttpServlet {
                     out.println("Options<img class=\"columnDataImage\" src=\"images/option.png\"/></th>");
                 out.println("</tr>");
         
+        
         for(int i =0; i<allWords.size();i++){
                 out.println("<tr class=\"columnRow\">");
-                    out.println("<td id=\"columnData\">"+allWords.get(i).getWelshWord()+"</td>");
-                    out.println("<td id=\"columnData\">"+allWords.get(i).getEnglishMeaning()+"</td>");
-                    out.println("<td id=\"columnData\">"+allWords.get(i).getGender()+"</td>");
-                    out.println("<td id=\"columnData\">");
+                    out.println("<td id=\"WW"+i+"\" class=\"columnData \">"+allWords.get(i).getWelshWord()+"</td>");
+                    out.println("<td id=\"EW"+i+"\" class=\"columnData\">"+allWords.get(i).getEnglishMeaning()+"</td>");
+                    out.println("<td id=\"G"+i+"\" class=\"columnData\">"+allWords.get(i).getGender()+"</td>");
+                    out.println("<td id=\"columnData\">"); //add modal on last column in every row
+                    
                         
-                        out.println("<img id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
+                        out.println("<input type=\"image\" onclick=\"displayModal("+i+")\" id=\"editWordButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
                         String editModal = Modals.getEditWordModal(allWords.get(i).getWelshWord(),
                                 allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
                         out.println(editModal);
                         
                         
-                        out.println("<img id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                        out.println("<input type=\"image\" id=\"deleteWordButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                         String deleteModal = Modals.getDeleteWordModal(allWords.get(i).getWelshWord(),
                                 allWords.get(i).getEnglishMeaning(),allWords.get(i).getGender());
                         out.println(deleteModal);
@@ -115,7 +118,6 @@ public class WordsManagerServlet extends HttpServlet {
                 out.println("</tr>");
 
         }
-        
         out.println("<script src=\"js/editWordModal.js\"></script>");
         out.println("<script src=\"js/deleteWordModal.js\"></script>");
         

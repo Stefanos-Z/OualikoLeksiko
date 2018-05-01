@@ -18,7 +18,7 @@ public class Modals {
         String modal = "<div id=\"addWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"addModal-header\">"+
-                    "<span class=\"addClose\">&times;</span>" + //Close Button
+                    "<span class=\"addWordClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to create a Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
@@ -60,12 +60,12 @@ public class Modals {
         String modal = "<div id=\"editWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"editModal-header\">"+
-                    "<span class=\"editClose\">&times;</span>" + //Close Button
+                    "<span onclick=\"hideModalOnExit()\"  class=\"editClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
-                    "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\" value=\" "+wordWelsh+" \"/>" +
-                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\" value=\" "+wordEnglish+" \"/>" +
+                    "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshInput\" type=\"text\" placeholder=\"Word in Welsh\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\" value\"\"\"/>" +
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +

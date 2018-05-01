@@ -7,14 +7,28 @@ var editButton = document.getElementById("editWordButton");
 // Get the <span> element that closes the modal
 var editSpan = document.getElementsByClassName("editClose")[0];
 
-// When the user clicks the button, open the modal 
-editButton.onclick = function() {
-    editModal.style.display = "block";
+// When the user clicks on <span> (x), close the modal
+function hideModalOnExit() {
+    editModal.style.display = "none";
 }
 
-// When the user clicks on <span> (x), close the modal
-editSpan.onclick = function() {
-    editModal.style.display = "none";
+function displayModal(id){
+    editModal.style.display = "block";
+    console.log("num = "+id);
+    var welshWord = document.getElementById("WW"+id).innerHTML;
+    var englishWord = document.getElementById("EW"+id).innerHTML;
+    var gender = document.getElementById("G"+id).innerHTML;
+    
+    console.log(welshWord);
+    console.log(englishWord);
+    console.log(gender);
+
+    document.getElementById("wordWelshInput").value = welshWord;
+    document.getElementById("wordEnglishInput").value = englishWord;
+    //document.getElementById("wordWelsh").innerHTML = 'something something';
+    
+    //document.getElementById('wordEnglish').setAttribute("value", englishWord);
+
 }
 
 window.onclick = function(event){
