@@ -48,9 +48,6 @@ public class AddUserServlet extends HttpServlet {
         String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
         out.println(menuBar);
         
-        /* MANAGE MENU WITH JAVASCRIPT */
-        out.println("<script src=\"js/displayHomePageElements.js\"></script>");
-        
         /* ADD USER BUTTON - MODAL */
         out.println("<input id=\"addMemberButton\" type=\"button\" value=\"+ Add a Member\"/>");
         

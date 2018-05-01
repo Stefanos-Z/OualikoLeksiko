@@ -30,13 +30,16 @@
 .editImage{
     float: left;
 }
+.deleteHistoryImage{
+        /* SET DELETE BUTTON IF ITS ONLY IN THE MIDDLE */
+}
 .deleteImage{
     float: right;
 }
-.editImage, .deleteImage{
+.editImage, .deleteImage, .deleteHistoryImage{
     width: 25px;
     height: 25px;
 }
-.editImage:hover, .deleteImage:hover{
+.editImage:hover, .deleteImage:hover, .deleteHistoryImage:hover{
     cursor: pointer;
 }
