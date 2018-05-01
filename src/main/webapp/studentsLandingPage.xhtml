@@ -7,9 +7,11 @@
         <link rel="icon" href="images/homePage.png"/> <!-- Home Page Favicon -->
         <!-- Reference Cascade Style Sheet-->
         <link rel="stylesheet" type="text/css" href="css/menu_and_background.css"/>
+        <script src="js/Lock_Files.js"></script>
     </head>
-    <body>
-        
+    <body onload="getCookie()">
+        <p1 id="lockform"></p1>
+       
         <!-- Menu Bar -->
         <div class="menuBar"> 
             <ul id="listHolder">
@@ -40,5 +42,6 @@
                 </div>
             </div>
         </div> <!-- End of main Container -->
+        
     </body>
 </html>
