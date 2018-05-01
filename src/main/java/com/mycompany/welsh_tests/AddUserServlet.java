@@ -52,13 +52,13 @@ public class AddUserServlet extends HttpServlet {
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
         
         /* ADD USER BUTTON - MODAL */
-        out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Member\"/>");
+        out.println("<input id=\"addMemberButton\" type=\"button\" value=\"+ Add a Member\"/>");
         
         String addModal = Modals.getAddMemberModal();
         out.println(addModal);
         
         /* MANAGE MODAL WITH JAVASCRIPT */
-        out.println("<script src=\"js/addWordModal.js\"></script>");
+        out.println("<script src=\"js/addMemberModal.js\"></script>");
         
         /* DISPLAY TABLE OF USERS FROM DATABASE */
         out.println("<table class=\"wordsTable\">");
@@ -77,8 +77,20 @@ public class AddUserServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserType()+"</td>");
                     out.println("<td id=\"columnData\">");
-                        out.println("<img class=\"editImage\" src=\"images/editWord.png\"/>");
-                        out.println("<img class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                    
+                    
+                        out.println("<img id=\"editMemberButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
+                        String editModal = Modals.getEditMemberModal(users.get(i).getUserName(),
+                        users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
+                        out.println(editModal);
+                        out.println("<script src=\"js/editMemberModal.js\"></script>");
+                        
+                        out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                        String deleteModal = Modals.getDeleteMemberModal(users.get(i).getUserName(),
+                        users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
+                        out.println(editModal);
+                        out.println(deleteModal);
+                        out.println("<script src=\"js/deleteMemberModal.js\"></script>");
                     out.println("</td>");
                 out.println("</tr>");
 

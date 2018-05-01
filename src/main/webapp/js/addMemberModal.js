@@ -1,8 +1,8 @@
 // Get the modal
-var addModal = document.getElementById('addModal');
+var addModal = document.getElementById('addMemberModal');
 
 // Get the button that opens the modal
-var addButton = document.getElementById('addWordButton');
+var addButton = document.getElementById('addMemberButton');
 
 // Get the <span> element that closes the modal
 var addClose = document.getElementsByClassName('addClose');

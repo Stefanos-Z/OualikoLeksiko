@@ -13,11 +13,11 @@ public class Modals {
     
     public static String getAddWordModal() {
         
-        String modal = "<div id=\"addModal\" class=\"modal\">" +
+        String modal = "<div id=\"addWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"addModal-header\">"+
                     "<span class=\"addClose\">&times;</span>" + //Close Button
-                    "<h1>Enter the following data to create a word</h1>" + 
+                    "<h1>Enter the following data to create a Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
@@ -44,8 +44,6 @@ public class Modals {
     
     public static String getEditWordModal(String wordWelsh, String wordEnglish, String gender) {
         
-        System.out.println("GENDER + +++ ===== ==++++ = " + gender);
-        
         String maleGenderInput = "";
         String femaleGenderInput = "";
         
@@ -57,11 +55,11 @@ public class Modals {
             femaleGenderInput = "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\" checked>";
         }
         
-        String modal = "<div id=\"editModal\" class=\"modal\">" +
+        String modal = "<div id=\"editWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"editModal-header\">"+
                     "<span class=\"editClose\">&times;</span>" + //Close Button
-                    "<h1>Validate the following data to edit the word</h1>" + 
+                    "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\" value=\" "+wordWelsh+" \"/>" +
@@ -88,11 +86,11 @@ public class Modals {
     
     public static String getDeleteWordModal(String wordWelsh, String wordEnglish, String gender) {
         
-        String modal = "<div id=\"deleteModal\" class=\"modal\">" +
+        String modal = "<div id=\"deleteWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
                     "<span class=\"deleteClose\">&times;</span>" + //Close Button
-                    "<h1>Are you sure you want to delete the following word?</h1>" + 
+                    "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" disabled=\"disabled\" value=\" "+wordWelsh+" \"/>" +
@@ -110,11 +108,12 @@ public class Modals {
     }
     
     public static String getAddMemberModal() {
-        String modal = "<div id=\"addModal\" class=\"modal\">" +
+        
+        String modal = "<div id=\"addMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"addModal-header\">"+
                     "<span class=\"addClose\">&times;</span>" + //Close Button
-                    "<h1>Enter the following data to add a Memer</h1>" + 
+                    "<h1>Enter the following data to add a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
                     "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" placeholder=\"Enter username\"/>"+
@@ -123,11 +122,11 @@ public class Modals {
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"administrator\" checked>" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\" checked>" +
                             "<span> Administrator </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"instructor\">" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">" +
                             "<span> Instructor </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
@@ -136,7 +135,7 @@ public class Modals {
                         "</label>" +
                     "</div>"+
                     "<br/>" +
-                    "<input class=\"addModal-submit-button\" type=\"submit\" value=\"Create Word\"/>" +
+                    "<input class=\"addModal-submit-button\" type=\"submit\" value=\"Create Member\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
@@ -144,15 +143,77 @@ public class Modals {
         
         return modal;
     }
-    public static String getEditMemberModal() {
+    public static String getEditMemberModal(String username, String password, String email, String userType) {
         
-        String modal = "";
+        String userTypeADMINISTRATOR = "";
+        String userTypeINSTRACTOR = "";
+        String userTypeSTUDENT = "";
+        
+        if(userType.equals("Administrator")){ //Male
+            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\" checked>";
+            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">";
+            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">";
+        }else if(userType.equals("Instructor")){
+            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\">";
+            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\" checked>";
+            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">";
+        }else if(userType.equals("Student")){
+            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\">";
+            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">";
+            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\" checked>";
+        }
+        
+       String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
+            "<div class=\"modal-content\">" + 
+                "<header class=\"editModal-header\">"+
+                    "<span class=\"editClose\">&times;</span>" + //Close Button
+                    "<h1>Modify the following data to edit a Member</h1>" + 
+                "</header>" + //End of MODAL <header>
+                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\" "+username+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\" "+password+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\" "+email+" \"/>"+
+                    "<br/>" +
+                    "<div class=\"modal-radio-buttons-div\">" +
+                        "<label class=\"modal-radio-label\">" +
+                            userTypeADMINISTRATOR +
+                            "<span> Administrator </span>" +
+                        "</label>" +
+                        "<label class=\"modal-radio-label\">" +
+                            userTypeINSTRACTOR +
+                            "<span> Instructor </span>" +
+                        "</label>" +
+                        "<label class=\"modal-radio-label\">" +
+                            userTypeSTUDENT +
+                            "<span> Student </span>" +
+                        "</label>" +
+                    "</div>"+
+                    "<br/>" +
+                    "<input class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Member\"/>" +
+                "</form>" + //End of MODAL <form>
+            "</div>" + //End of MODAL CONTENT <div>
+        "</div>"; //End of MODAL <div>
         
         return modal;
     }
-    public static String getDeleteMemberModal() {
+    public static String getDeleteMemberModal(String username, String password, String email, String userType) {
         
-        String modal = "";
+        String modal = "<div id=\"deleteMemberModal\" class=\"modal\">" +
+            "<div class=\"modal-content\">" + 
+                "<header class=\"deleteModal-header\">"+
+                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<h1>Are you sure you want to delete the following Member?</h1>" + 
+                "</header>" + //End of MODAL <header>
+                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\" "+username+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\" "+password+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\" "+email+" \"/>"+
+                    "<input class=\"modal-textField\" name=\"userType\" id=\"userType\" type=\"text\" value=\" "+userType+" \"/>"+
+                    "<br/>" +
+                    "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Member\"/>" +
+                "</form>" + //End of MODAL <form>
+            "</div>" + //End of MODAL CONTENT <div>
+        "</div>"; //End of MODAL <div>
         
         return modal;
     }

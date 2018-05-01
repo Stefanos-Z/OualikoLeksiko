@@ -1,8 +1,8 @@
 // Get the modal
-var editModal = document.getElementById('editWordModal');
+var editModal = document.getElementById('editMemberModal');
 
 // Get the button that opens the modal
-var editButton = document.getElementById("editWordButton");
+var editButton = document.getElementById("editMemberButton");
 
 // Get the <span> element that closes the modal
 var editSpan = document.getElementsByClassName("editClose")[0];
@@ -22,3 +22,5 @@ window.onclick = function(event){
         editModal.style.display = "none";
     }
 }
+
+

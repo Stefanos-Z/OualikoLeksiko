@@ -1,5 +1,5 @@
 /* OPEN MODALS BUTTON (CREATE WORD & CANCEL) */
-#addWordButton{
+#addWordButton, #addMemberButton{
     margin:0 auto;
     margin-bottom: 50px;
     display:block;
@@ -8,13 +8,15 @@
     width: 20%;
 }
 /* OPEN MODAL BUTTON ACTIONS */
-#addWordButton:hover,#addWordButton:active,#addWordButton:focus {
+#addWordButton:hover, #addWordButton:active, #addWordButton:focus,
+#addMemberButton:hover, #addMemberButton:active, #addMemberButton:focus {
     background: #43A047;
     cursor: pointer;
 }
 
 /* MODAL DIV */
-#addModal, #editModal, #deleteModal {
+#addWordModal, #editWordModal, #deleteWordModal,
+#addMemberModal, #editMemberModal, #deleteMemberModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */

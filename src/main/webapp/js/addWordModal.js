@@ -1,5 +1,5 @@
 // Get the modal
-var modal = document.getElementById('addModal');
+var modal = document.getElementById('addWordModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("addWordButton");

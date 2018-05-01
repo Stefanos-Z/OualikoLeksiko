@@ -1,8 +1,8 @@
 // Get the modal
-var deleteModal = document.getElementById('deleteWordModal');
+var deleteModal = document.getElementById('deleteMemberModal');
 
 // Get the button that opens the modal
-var deleteButton = document.getElementById("deleteWordButton");
+var deleteButton = document.getElementById("deleteMemberButton");
 
 // Get the <span> element that closes the modal
 var deleteSpan = document.getElementsByClassName("deleteClose")[0];
