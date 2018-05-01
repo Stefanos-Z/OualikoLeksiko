@@ -14,12 +14,11 @@ function hideModalOnExit() {
 
 function displayModal(index, wordID){
     editModal.style.display = "block";
-    console.log("num = "+index);
+    console.log("num = "+index+"+======> " + wordID);
     var welshWord = document.getElementById("WW"+index).innerHTML;
     var englishWord = document.getElementById("EW"+index).innerHTML;
     var gender = document.getElementById("G"+index).innerHTML;
     
-    console.log("ID EQUALS +======> " + wordID);
     
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
