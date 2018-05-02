@@ -57,7 +57,7 @@ public class MembersManagerServlet extends HttpServlet {
         out.println(addModal);
         
         /* MANAGE MODAL WITH JAVASCRIPT */
-        out.println("<script src=\"js/addMemberModal.js\"></script>");
+//        out.println("<script src=\"js/addMemberModal.js\"></script>");
         
         /* DISPLAY TABLE OF USERS FROM DATABASE */
         out.println("<table class=\"wordsTable\">");
@@ -76,14 +76,14 @@ public class MembersManagerServlet extends HttpServlet {
             
             for(int i =0; i<users.size();i++){
                 out.println("<tr class=\"columnRow\">"); //Every row has the following data
-                    out.println("<td id=\"uName"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserName()+"</td>");
-                    out.println("<td id=\"pWord"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
-                    out.println("<td id=\"uEmail"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
-                    out.println("<td id=\"uType"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserType()+"</td>");
+                    out.println("<td id=\"uName"+i+"\" class=\"columnData\">"+users.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"pWord"+i+"\" class=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
+                    out.println("<td id=\"uEmail"+i+"\" class=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
+                    out.println("<td id=\"uType"+i+"\" class=\"columnData\">"+users.get(i).getUserType()+"</td>");
                     out.println("<td class=\"columnData\">");
                         out.println("<img id=\"editMemberButton\" onclick=\"displayEditUserModal("+(i+1)+")\" class=\"editImage\" src=\"images/editWord.png\"/>");
                         if(!users.get(i).getUserName().equals(thisUser.getUserName()))
-                            out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                            out.println("<img id=\"deleteMemberButton\" onclick=\"displayUserDeleteModal("+i+")\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>"); //End of options (edit, delete)
                 out.println("</tr>"); //End of every row
 
@@ -110,7 +110,10 @@ public class MembersManagerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Empty Abstract Method
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        String username = request.getParameter("username");
+        inter.deleteUser(username);
     }
 
     /**

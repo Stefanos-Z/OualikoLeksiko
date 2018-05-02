@@ -130,7 +130,7 @@ public class WordsManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Empty Abstract Method
-        System.out.println("in post########################################");
+        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
         String wordId = request.getParameter("wordId");

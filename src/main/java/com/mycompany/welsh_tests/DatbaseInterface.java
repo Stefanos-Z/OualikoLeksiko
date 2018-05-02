@@ -355,5 +355,15 @@ public class DatbaseInterface {
         }
     }
 
+    public void deleteUser(String username) {
+        try {
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(username);
+            manager.deleteRowFromTable(users, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }
