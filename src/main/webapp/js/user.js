@@ -1,7 +1,13 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
+
+/**
+ * This is where substract the name of the user from the current cookie. And place 
+ * it on the menu bar at the top right side
  */
 
 function getuserID(){

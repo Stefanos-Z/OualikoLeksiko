@@ -1,8 +1,10 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
+
 
 
 $(document).ready(function(){
@@ -31,6 +33,7 @@ $(document).ready(function(){
         }
     };
     
+    //Adding the new user to the database server and also keep a log of the new update
     $("#addUserDB").click(function() {
         
         var uName = $("#userNameAdd").val();

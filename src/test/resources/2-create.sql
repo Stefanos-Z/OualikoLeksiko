@@ -1,40 +1,66 @@
-CREATE TABLE student(
-student_id varchar(10) NOT NULL CHECK (student_id <> ''),
-student_name varchar(100) NOT NULL,
-student_scheme varchar(100),
-PRIMARY KEY (student_id)
-);
+CREATE TABLE Users(
+    user_name VARCHAR(50) NOT NULL,
+    user_password VARCHAR(50) NOT NULL,
+    user_email VARCHAR(100),
+    user_type ENUM('Student','Instructor','Administrator'),
+    PRIMARY KEY (user_name)
+) Engine = InnoDB;
 
-CREATE TABLE staff(
-staff_Id varchar(10) NOT NULL CHECK (student_id <> ''),
-staff_name varchar(100)NOT NULL,
-staff_grade varchar(100),
-PRIMARY KEY (staff_Id)
-);
 
-CREATE TABLE module(
-module_Id varchar(10)NOT NULL CHECK (student_id <> ''),
-module_name VARCHAR(100)NOT NULL,
-credits INT,
-PRIMARY KEY (module_Id)
-);
 
-CREATE TABLE registered(
-student_Id varchar(10),
-module_Id varchar(10),
-PRIMARY KEY (student_Id, module_Id),
-FOREIGN KEY (student_Id) REFERENCES student(student_Id)
-ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (module_Id) REFERENCES module(module_Id)
-ON DELETE CASCADE ON UPDATE CASCADE
-);
 
-CREATE TABLE teaches(
-staff_Id varchar(10),
-module_Id varchar(10),
-PRIMARY KEY (staff_Id, module_Id),
-FOREIGN KEY (staff_iD) REFERENCES staff(staff_Id)
-ON DELETE CASCADE ON UPDATE CASCADE,
-FOREIGN KEY (module_Id) REFERENCES module(module_Id)
-ON DELETE CASCADE ON UPDATE CASCADE
-);
+CREATE TABLE QuestionType(
+	question_id INT AUTO_INCREMENT NOT NULL,
+    question_text VARCHAR(100) NOT NULL,
+	PRIMARY KEY (question_id)
+) Engine = InnoDB;
+
+
+CREATE TABLE WelshWords(
+	word_id INT AUTO_INCREMENT NOT NULL,
+    welsh_word VARCHAR(100) NOT NULL,
+    english_meaning VARCHAR(100) NOT NULL,
+    gender ENUM('M','F') NOT NULL DEFAULT 'M',
+	PRIMARY KEY (word_id)
+) Engine = InnoDB;
+
+
+
+CREATE TABLE TestsResults(
+	test_id INT AUTO_INCREMENT NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    grade INT NOT NULL,
+	date_submitted DATETIME,
+    PRIMARY KEY (test_id),
+    FOREIGN KEY (user_name) REFERENCES Users (user_name)
+    ON UPDATE CASCADE ON DELETE CASCADE
+) Engine = InnoDB;
+
+
+
+
+CREATE TABLE Sessions(
+	session_id VARCHAR(100) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    expiration_date DATETIME NOT NULL,
+    PRIMARY KEY(session_id),
+    FOREIGN KEY (user_name) REFERENCES Users(user_name)
+    ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (user_name) REFERENCES Users(user_name)
+    ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=InnoDB;
+
+
+CREATE TABLE TestQuestions(
+	respondent_question_id INT AUTO_INCREMENT NOT NULL, 
+	question_id INT NOT NULL,
+    word_id INT NOT NULL,
+    question_full VARCHAR(100) NOT NULL,
+    correct_answer VARCHAR(100) NOT NULL,
+    PRIMARY KEY(respondent_question_id),
+    FOREIGN KEY(question_id) REFERENCES QuestionType(question_id)
+	ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(word_id) REFERENCES WelshWords(word_id)
+	ON UPDATE CASCADE ON DELETE CASCADE
+)ENGINE=InnoDB;
+
