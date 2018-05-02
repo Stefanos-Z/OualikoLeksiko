@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
 import java.util.Date;
@@ -105,7 +100,7 @@ public class Modals {
         String modal = "<div id=\"addMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"addModal-header\">"+
-                    "<span class=\"addClose\">&times;</span>" + //Close Button
+                    "<span class=\"addMemberClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to add a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
