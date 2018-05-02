@@ -49,7 +49,7 @@ public class Modals {
                 "</header>" + //End of MODAL <header>
                 "<form id=\"formModal\" class=\"modal-form\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshInput\" type=\"text\" placeholder=\"Word in Welsh\"/>" +
-                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\" value\"\"\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\"/>" +
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
@@ -80,14 +80,14 @@ public class Modals {
                     "<span class=\"deleteWordClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"WordsManagerServlet\">" +
-                    "<input class=\"modal-textField\" name=\"wordWelshInput\" id=\"wordWelsh\" type=\"text\" disabled=\"disabled\"/>" +
-                    "<input class=\"modal-textField\" name=\"wordEnglishInput\" id=\"wordEnglish\" type=\"text\" disabled=\"disabled\"/>" +
-                    "<input class=\"modal-textField\" name=\"wordGenderInput\" id=\"wordGender\" type=\"text\" disabled=\"disabled\"/>" +
+                "<form class=\"modal-form\">" +
+                    "<input class=\"modal-textField\" name=\"wordWelshInput\" type=\"text\" disabled=\"disabled\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordEnglishInput\" type=\"text\" disabled=\"disabled\"/>" +
+                    "<input class=\"modal-textField\" name=\"wordGenderInput\" type=\"text\" disabled=\"disabled\"/>" +
                     "<br/>" +
-
+                    "<input id=\"hidenTextDelete\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
                     "<br/>" +
-                    "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Word\"/>" +
+                    "<input id=\"deleteWordDB\" class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Word\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
