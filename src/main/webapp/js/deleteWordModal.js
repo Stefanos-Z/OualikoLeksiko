@@ -31,12 +31,5 @@ window.onclick = function(event){
 function displayDeleteModal(wordId){
     deleteModal.style.display = "block";
     document.getElementById("hidenTextDelete").value = wordId;
-//    var welshWord = document.getElementById("WW"+index).innerHTML;
-//    var englishWord = document.getElementById("EW"+index).innerHTML;
-//    var gender = document.getElementById("G"+index).innerHTML;
-//    
-//    document.getElementById("wordWelshInput").value = welshWord;
-//    document.getElementById("wordEnglishInput").value = englishWord;
-    //document.getElementById("wordGenderInput").value = gender;
 }
 

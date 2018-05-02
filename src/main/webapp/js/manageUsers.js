@@ -85,4 +85,28 @@ $(document).ready(function(){
     });
     
     
+    $("#deleteUserDB").click(function() {
+        
+        var uName = $("#hidenTextDeleteUser").val();
+        var data = {"username":uName};
+        
+        $.ajax({
+            type : 'POST',
+            contentType : "application/x-www-form-urlencoded",
+            url : "/Welsh_tests/MembersManagerServlet",
+            data : data,
+            dataType : 'text',
+            success : function(response) {
+                console.log("Success!");
+            },
+            error : function(e) {
+                alert("ERROR");
+                    
+            }
+        });
+        
+        
+    });
+    
+    
 });
