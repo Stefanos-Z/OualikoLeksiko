@@ -1,15 +1,13 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
+
 
     
 $(document).ready(function(){
-    
-    
-    
-    
     
     console.log('hello');
     // Get the modal
@@ -38,7 +36,7 @@ $(document).ready(function(){
         }
     };
     
-    
+     //When deleting a world then update the table and the database
     
     $("#deleteWordDB").click(function() {
         var wordID = $("#hidenTextDelete").val();
@@ -64,7 +62,7 @@ $(document).ready(function(){
     
     
     
-    
+    //When edit a world then update the table and the database
     
     $("#editWordDB").click(function() {
         var wordID = $("#hidenTextEdit").val();
@@ -104,7 +102,7 @@ $(document).ready(function(){
     
     
     
-    
+     //When adding a world then update the table and the database
     
     
     
