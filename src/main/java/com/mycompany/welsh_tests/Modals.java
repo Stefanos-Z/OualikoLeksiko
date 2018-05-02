@@ -181,12 +181,13 @@ public class Modals {
                     "<span class=\"deleteHistoryClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following History?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"HistoryServlet\">" +
+                "<form class=\"modal-form\">" +
                     "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\"\"/>"+
                     "<br/>" +
-                    "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete History\"/>" +
+                    "<input id=\"hidenTextDeleteHistory\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
+                    "<input id=\"deleteHistoryDB\" class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete History\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
