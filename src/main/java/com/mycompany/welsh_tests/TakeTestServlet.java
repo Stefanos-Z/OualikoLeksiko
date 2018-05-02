@@ -53,7 +53,7 @@ public class TakeTestServlet extends HttpServlet {
         out.println("<link rel=\"icon\" href=\"images/take_test.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
-        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/testStyles.css\"/>");
         out.println("</head>");
         out.println("<body>");
         
@@ -66,16 +66,16 @@ public class TakeTestServlet extends HttpServlet {
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
         
         /* DISPLAY TEST */
-        out.println("<form method=\"post\" action=\"TakeTestServlet\">");
+        out.println("<form  id=\"questionView\" method=\"post\" action=\"TakeTestServlet\">");
         for(int i = 0;i<numberOfQuestions;i++)
         {
             out.println("<label>"+ allQuestions.get(i).getFullQuestion()+"</label><br/>");
             if(allQuestions.get(i).getQuestionType()==0){
-                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"M\" checked=\"checked\" />Male<br/>");
-                out.println("<input name=\"answer"+i+"\" type=\"radio\" value=\"F\" />Female<br/>");
+                out.println("<input  name=\"answer"+i+"\" type=\"radio\" value=\"M\" checked=\"checked\" />Male<br/>");
+                out.println("<input  name=\"answer"+i+"\" type=\"radio\" value=\"F\" />Female<br/>");
             }
             else
-                out.println("<input name=\"answer"+i+"\" type=\"text\" placeholder=\"Enter Answer\"/>");
+                out.println("<input  name=\"answer"+i+"\" type=\"text\" placeholder=\"Enter Answer\"/>");
             out.println("<br/><br/>");
             
         }

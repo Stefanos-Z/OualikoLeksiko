@@ -1,0 +1,11 @@
+
+#questionView{
+    box-sizing: border-box;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-width:100px;
+    background-color: green;
+    text-align: center;
+}
