@@ -108,7 +108,8 @@
 }
 
 /* MODAL's SUBMISSION BUTTONS */
-.addModal-submit-button, .editModal-submit-button, .deleteModal-submit-button{
+.addModal-submit-button, .editModal-submit-button, 
+.deleteModal-submit-button, #deleteModal-cancel-button{
     text-transform: uppercase;
     border: 0;
     padding: 15px;
@@ -130,6 +131,9 @@
 }
 .deleteModal-submit-button:hover, .deleteModal-submit-button:focus{
     background: #FF0000; /* RED FOR DELETE MODAL */
+    cursor: pointer;
+}
+#deleteModal-cancel-button:hover, #deleteModal-cancel-button:focus{
     cursor: pointer;
 }
 

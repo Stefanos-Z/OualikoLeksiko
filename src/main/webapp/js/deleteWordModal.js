@@ -4,6 +4,8 @@ var deleteModal = document.getElementById('deleteWordModal');
 // Get the button that opens the modal
 var deleteButton = document.getElementById('deleteWordButton');
 
+var deleteCancelButton = document.getElementById('deleteModal-cancel-button');
+
 // Get the <span> element that closes the modal
 var deleteSpan = document.getElementsByClassName("deleteWordClose")[0];
 
@@ -17,10 +19,13 @@ var deleteSpan = document.getElementsByClassName("deleteWordClose")[0];
 //    deleteModal.style.display = "none";
 //}
 
-deleteSpan.onclick = function() {
+deleteCancelButton.onclick = function() {
     deleteModal.style.display = "none";
 }
 
+deleteSpan.onclick = function() {
+    deleteModal.style.display = "none";
+}
 
 window.onclick = function(event){
     if(event.target == deleteModal){

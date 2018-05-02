@@ -81,13 +81,13 @@ public class Modals {
                     "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\">" +
-                    "<input class=\"modal-textField\" name=\"wordWelshInput\" type=\"text\" disabled=\"disabled\"/>" +
-                    "<input class=\"modal-textField\" name=\"wordEnglishInput\" type=\"text\" disabled=\"disabled\"/>" +
-                    "<input class=\"modal-textField\" name=\"wordGenderInput\" type=\"text\" disabled=\"disabled\"/>" +
-                    "<br/>" +
+                    
                     "<input id=\"hidenTextDelete\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
                     "<br/>" +
                     "<input id=\"deleteWordDB\" class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Word\"/>" +
+                    "<br/>" +
+                
+                    "<input class=\"deleteModal-submit-button\" id=\"deleteModal-cancel-button\" type=\"button\" value=\"Cancel\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
@@ -136,7 +136,7 @@ public class Modals {
                 String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" +
                 "<header class=\"editModal-header\">" +
-                    "<span class=\"editMemberClose\">×</span>" +
+                    "<span class=\"editMemberClose\">&times;</span>" +
                     "<h1>Modify the following data to edit a Member</h1>" +
                 "</header>" +
                 "<form class=\"modal-form\">" +
