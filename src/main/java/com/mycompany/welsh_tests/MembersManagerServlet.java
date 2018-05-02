@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.User;
 
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
 public class MembersManagerServlet extends HttpServlet {
 
     /**
@@ -102,19 +108,25 @@ public class MembersManagerServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Called by the server (via the service method) to 
+     * allow a servlet to handle a POST request. 
+     * @param request an HttpServletRequest object that contains the request the client has made of the servlet
+     * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the POST could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the request
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /* GET CONNECTION WITH THE DATABASE */
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        
+        /* Needed Variables */
         String username = request.getParameter("username");
+        
+        /* DELETE THE WORD FROM THE DATABASE */
         inter.deleteUser(username);
     }
 

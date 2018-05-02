@@ -12,35 +12,38 @@ import models.User;
 import models.WelshWord;
 
 /**
- *
- * @author oneZt
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class WordsManagerServlet extends HttpServlet {
 
-
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Called by the server (via the service method) 
+     * to allow a servlet to handle a GET request.
+     * @param request an object that contains the request the client has made of the servlet
+     * @param response an object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        /* GET CONNECTION WITH THE DATABASE */
         if(!CookieAndSessionManager.checkValidation(request)){
             response.sendRedirect("login.xhtml");
         }
-        
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        
+        /* NEEDED VARIABLES */
+        User thisUser = CookieAndSessionManager.getUserFromSession(request);
         ArrayList<WelshWord> allWords = inter.getWelshWords();
         response.setContentType("text/html;charset=UTF-8");
                 
+        /* Create responsive and dynamic Servlet */
         PrintWriter out = response.getWriter();
         out.println("<html>");
         out.println("<head>");
@@ -58,25 +61,21 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("<body>");
         
         /* GET USER TYPE AND DISPLAY APPROPRIATE MENU BAR */
-        User thisUser = CookieAndSessionManager.getUserFromSession(request);
         String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
-        /* Create the button that will display the modal */
+        /* Create the button that will display the modal (add word)*/
         out.println("<input id=\"addWordButton\" type=\"button\" value=\"+ Add a Word\"/>");
         
-        /* Create the modal for adding a new word */
+        /* Create the modals */
         String addModal = Modals.getAddWordModal();
         out.println(addModal);
-        /* MANAGE MODAL WITH JAVASCRIPT */
-        out.println("<script src=\"js/addWordModal.js\"></script>");
+        String editModal = Modals.getEditWordModal();
+        out.println(editModal);
+        String deleteModal = Modals.getDeleteWordModal();
+        out.println(deleteModal);
         
-        
-        
-        
-        
-
-                
+        /* CREATE THE LIST OF WORDS */
         out.println("<table class=\"wordsTable\">");
             out.println("<tr>");
                 out.println("<th align=\"center\" class=\"columnLabel\">");
@@ -90,10 +89,6 @@ public class WordsManagerServlet extends HttpServlet {
                     out.println("Options<img class=\"columnDataImage\" src=\"images/option.png\"/></th>");
                 out.println("</tr>");
         
-        String editModal = Modals.getEditWordModal();
-        out.println(editModal);
-        String deleteModal = Modals.getDeleteWordModal();
-        out.println(deleteModal);
         for(int i =0; i<allWords.size();i++){
             out.println("<tr id=\"wordTableRow"+i+"\" class=\"columnRow\">");
                 out.println("<td id=\"WW"+i+"\" class=\"columnData \">"+allWords.get(i).getWelshWord()+"</td>");
@@ -109,10 +104,12 @@ public class WordsManagerServlet extends HttpServlet {
                 out.println("</td>");
             out.println("</tr>");
         }
+        /* MANAGE MODAL WITH JAVASCRIPT */
+        out.println("<script src=\"js/addWordModal.js\"></script>");
         out.println("<script src=\"js/editWordModal.js\"></script>");
         out.println("<script src=\"js/deleteWordModal.js\"></script>");
         
-        out.println("</table>");
+        out.println("</table>"); //End of table (words)
         out.println("</body>");
         out.println("</html>");
         out.close();
@@ -120,22 +117,26 @@ public class WordsManagerServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Called by the server (via the service method) to 
+     * allow a servlet to handle a POST request. 
+     * @param request an HttpServletRequest object that contains the request the client has made of the servlet
+     * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the POST could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the request
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Empty Abstract Method
         
+        /* GET CONNECTION WITH THE DATABASE */
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        
+        /* Needed Variables */
         String wordId = request.getParameter("wordId");
         System.out.println(wordId);
+        
+        /* DELETE THE WORD FROM THE DATABASE */
         inter.deleteWelshWord(wordId);
     }
 

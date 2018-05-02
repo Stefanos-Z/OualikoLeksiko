@@ -1,13 +1,17 @@
 package com.mycompany.welsh_tests;
 
-import java.util.Date;
-
 /**
- *
- * @author loizo
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class Modals {
     
+    /**
+     * Holds the modal Content for adding a word in the table
+     * @return a string representation of HTML Modal
+     */
     public static String getAddWordModal() {
         
         String modal = "<div id=\"addWordModal\" class=\"modal\">" +
@@ -39,6 +43,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for editing a word in the table
+     * @return a string representation of HTML Modal
+     */
     public static String getEditWordModal() {
         
         String modal = "<div id=\"editWordModal\" class=\"modal\">" +
@@ -72,6 +80,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for deleting a word from the table
+     * @return a string representation of HTML Modal
+     */
     public static String getDeleteWordModal() {
         
         String modal = "<div id=\"deleteWordModal\" class=\"modal\">" +
@@ -95,6 +107,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for adding a member in the table
+     * @return a string representation of HTML Modal
+     */
     public static String getAddMemberModal() {
         
         String modal = "<div id=\"addMemberModal\" class=\"modal\">" +
@@ -131,6 +147,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for editing a member in the table
+     * @return a string representation of HTML Modal
+     */
     public static String getEditMemberModal() {
         
                 String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
@@ -154,6 +174,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for deleting a member from the table
+     * @return a string representation of HTML Modal
+     */
     public static String getDeleteMemberModal() {
         
         String modal = "<div id=\"deleteMemberModal\" class=\"modal\">" +
@@ -173,6 +197,10 @@ public class Modals {
         return modal;
     }
     
+    /**
+     * Holds the modal Content for deleting a history from the table
+     * @return a string representation of HTML Modal
+     */
     public static String getDeleteHistoryModal() {
         
         String modal = "<div id=\"deleteHistoryModal\" class=\"modal\">" +
