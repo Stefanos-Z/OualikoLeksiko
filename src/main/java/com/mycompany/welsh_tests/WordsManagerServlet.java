@@ -52,6 +52,7 @@ public class WordsManagerServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
         out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
         
+        out.println("<script src=\"js/deleteHistoryPost.js\"></script>");
         out.println("<script src=\"js/wordManagerjs.js\"></script>");
         out.println("</head>");
         out.println("<body>");

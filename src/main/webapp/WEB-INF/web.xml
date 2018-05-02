@@ -5,6 +5,14 @@
         <servlet-class>com.mycompany.welsh_tests.LoginServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.EditUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditWordServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.EditWordServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>TakeTestServlet</servlet-name>
         <servlet-class>com.mycompany.welsh_tests.TakeTestServlet</servlet-class>
     </servlet>
@@ -19,6 +27,14 @@
     <servlet>
         <servlet-name>MembersManagerServlet</servlet-name>
         <servlet-class>com.mycompany.welsh_tests.MembersManagerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.AddUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddWordServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.AddWordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -37,8 +53,24 @@
         <url-pattern>/MembersManagerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>EditWordServlet</servlet-name>
+        <url-pattern>/EditWordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>
         <url-pattern>/HistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/EditUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddWordServlet</servlet-name>
+        <url-pattern>/AddWordServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

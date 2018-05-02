@@ -16,24 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oneZt
  */
-public class EditUserServlet extends HttpServlet {
+public class AddUserServlet extends HttpServlet {
 
-    
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -48,14 +32,12 @@ public class EditUserServlet extends HttpServlet {
             throws ServletException, IOException {
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
-        String oldUName = request.getParameter("oldUsername");
-        String newUName = request.getParameter("newUsername");
+        String uName = request.getParameter("username");
         String pWord = request.getParameter("password");
         String email = request.getParameter("email");
         String uType = request.getParameter("userType");
-
-        System.out.println(oldUName+newUName+pWord+email);
-        inter.editUser(newUName,pWord,email,uType,oldUName);
+        inter.addUser(uName, pWord, email, uType);
+        
     }
 
     /**
