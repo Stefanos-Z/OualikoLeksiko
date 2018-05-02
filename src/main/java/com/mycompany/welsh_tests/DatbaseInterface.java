@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
+/* Libraries Declaration */
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+/* Reference Models */
 import models.Question;
 import models.QuestionType;
 import models.Sessions;
@@ -24,10 +19,14 @@ import models.User;
 import models.WelshWord;
 
 /**
- *
- * @author oneZt
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class DatbaseInterface {
+    
+    /* Variables Declaration */
     private DatabaseManager manager = null;
     private Random r = new Random();
     
@@ -40,14 +39,17 @@ public class DatbaseInterface {
     Map<String, String> sessions = new HashMap<>();//map for the teaches table
     Map<String, String> testQuestions = new HashMap<>();//map for the teaches table
     
+    /**
+     * Constructor instantiate Maps
+     */
     public DatbaseInterface()
     {
         intatiateMaps();
     }
     
     /**
-     * gets a connection going with the database
-     * @return boolean if connections is established
+     * Checks for a valid connection
+     * @return true/false if connection is valid or not
      */
     public boolean getConection(){
         try {
@@ -62,10 +64,9 @@ public class DatbaseInterface {
         return true;
     }
     
-    
     /**
-     * Create a session corresponding to the person logged in
-     * @param session the session which should be inputed in the database
+     * Creates the Session of a user
+     * @param session manages Sessions
      */
     public void createSession(Sessions session)
     {
@@ -80,7 +81,6 @@ public class DatbaseInterface {
         
     }
     
-
     /**
      * initializes the maps that correspond to the database
      */

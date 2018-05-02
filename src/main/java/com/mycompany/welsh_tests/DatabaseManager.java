@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
+/* Libaries Declaration */
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import models.QuestionType;
@@ -26,17 +18,26 @@ import models.TestsResults;
 import models.User;
 import models.WelshWord;
 
-
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
 public class DatabaseManager {
+    
+    /* Variables Declaration */
     private static String url;
     private static String username;
     private static String password;
     
-
-    
+    /**
+     * Gives connection to the Web-App
+     * @throws IOException if connection is not able
+     * @throws ClassNotFoundException properties not found
+     */
     public DatabaseManager() throws IOException, ClassNotFoundException
     {
-        
         InputStream stream = DatabaseManager.class.getResourceAsStream("/database.properties");
         Properties props = new Properties();
         props.load(stream);
@@ -48,8 +49,6 @@ public class DatabaseManager {
         password = props.getProperty("jdbc.password");
         if (password == null) { password = ""; }
         if (driver != null) { Class.forName(driver); }
-        
-
     }
     
 
@@ -83,7 +82,7 @@ public class DatabaseManager {
         query = query.substring(0,query.length()-1)+")";
         values = values.substring(0,values.length()-1)+")";
         query = query+" VALUES "+values;
-        System.out.println(query);
+        //System.out.println(query);
         PreparedStatement pstat = conn.prepareStatement(query);
         pstat.executeUpdate();
         pstat.close();
@@ -111,7 +110,7 @@ public class DatabaseManager {
         }
         query = query.substring(0,query.length()-5);//deletes the last AND
         PreparedStatement pstat = conn.prepareStatement(query);      
-        System.out.println(query);
+        //System.out.println(query);
         int deletedrows = pstat.executeUpdate();
         
         pstat.close();
@@ -205,7 +204,11 @@ public class DatabaseManager {
         return new User(user, pass, email, type);
     }
     
-    
+    /**
+     * Finds the primary key of an entry
+     * @param thisMap is the Map needed to get the entries
+     * @return the string representation of the key
+     */
     private String findPrimaryKey(Map<String, String> thisMap)
     {
         for (Map.Entry<String, String> e : thisMap.entrySet())
@@ -218,11 +221,13 @@ public class DatabaseManager {
         return null;
     }
 
-    
-    
-    
-
-
+    /**
+     * Gets the Word in Welsh
+     * @param thisMap is the Map to find the entries
+     * @param wordID is the current word ID need to be found
+     * @return a Welsh Word Object
+     * @throws SQLException if there is an error in the query
+     */
     WelshWord getWelshWord(Map<String, String> thisMap, int wordID) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
         String query = "SELECT * FROM "+thisMap.get("Table")+" WHERE "+findPrimaryKey(thisMap)+" = "+wordID+";";
@@ -238,6 +243,12 @@ public class DatabaseManager {
         return thisWord;
     }
 
+    /**
+     * Get the list of all Welsh Words
+     * @param thisMap is the Map needed to find entries
+     * @return an Array List of All Welsh Words as Objects
+     * @throws SQLException if there is an error in the query
+     */
     public ArrayList<WelshWord> getAllWelshWords(Map<String, String> thisMap) throws SQLException {
         ArrayList<WelshWord> allWords = new ArrayList<>();
         Connection conn = DriverManager.getConnection(url, username, password);
@@ -258,6 +269,12 @@ public class DatabaseManager {
         
     }
     
+    /**
+     * Get the list of all Question Types
+     * @param thisMap is the Map needed to find entries
+     * @return an Array List of All Question Types as Objects
+     * @throws SQLException if there is an error in the query
+     */
     public ArrayList<QuestionType> getAllQuestionTypes(Map<String, String> thisMap) throws SQLException {
         ArrayList<QuestionType> allQuestionTypes = new ArrayList<>();
         Connection conn = DriverManager.getConnection(url, username, password);
@@ -278,6 +295,12 @@ public class DatabaseManager {
         
     }
 
+    /**
+     * Gets the sessions by checking the id
+     * @param thisMap is the Map needed to find entries
+     * @return a Session Object
+     * @throws SQLException if there is an error in the query
+     */
     public Sessions getSessionByID(Map<String, String> thisMap, String sessionID) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
         String query = "SELECT * " +
@@ -299,11 +322,15 @@ public class DatabaseManager {
         pstat.close();
         conn.close();
         return new Sessions(thisSessionID, username, thisDate);
-        
-        
-        
+       
     }
 
+    /**
+     * Gets an ArrayList Test Results
+     * @param thisMap is the Map needed to find entries
+     * @return an Array List of All TestsResults as Objects
+     * @throws SQLException if there is an error in the query
+     */
     public ArrayList<TestsResults> getTestAllResults(Map<String, String> thisMap) throws SQLException {
         
         Connection conn = DriverManager.getConnection(url, username, password);
@@ -327,6 +354,15 @@ public class DatabaseManager {
         return results;
     }
 
+    /**
+     * 
+     /**
+     * Get the list of all Test Results
+     * @param thisMap is the Map needed to find entries
+     * @param name is the current Student taking a test
+     * @return an Array List of All Test Results as Objects
+     * @throws SQLException if there is an error in the query
+     */
     public ArrayList<TestsResults> getTestResultsForStudent(Map<String, String> thisMap, String name) throws SQLException {
         
         Connection conn = DriverManager.getConnection(url, username, password);
@@ -344,13 +380,17 @@ public class DatabaseManager {
             results.add(thisResult);
         }
 
-
-        
         pstat.close();
         conn.close();
         return results;
     }
 
+    /**
+     * Gets an array List of All Users
+     * @param thisMap is the Map needed to find entries
+     * @return an Array List of All Users as Objects
+     * @throws SQLException if there is an error in the query
+     */
     public ArrayList<User> getAllUsers(Map<String, String> thisMap) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
         ArrayList<User> allUsers = new ArrayList<>();
@@ -360,18 +400,13 @@ public class DatabaseManager {
 
         ResultSet rs = pstat.executeQuery();
 
-
         while(rs.next()){
             User thisUser = new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
             allUsers.add(thisUser);
         }
-
-
         
         pstat.close();
         conn.close();
         return allUsers;
     }
-
-    
 }

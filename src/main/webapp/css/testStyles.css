@@ -1,4 +1,3 @@
-
 #questionView{
     
     box-sizing: border-box;
@@ -22,4 +21,19 @@
     font-size: 40px;
     color: white; /* WHITE TEXT FOR SCORE */
     text-align: center;
+}
+
+/* Submit Button */
+#submitTestButton{
+    margin:0 auto;
+    margin-bottom: 50px;
+    display:block;
+    text-transform: uppercase;
+    padding: 15px;
+    width: 20%;
+}
+/* OSubmit Button Actions */
+#submitTestButton:hover, #submitTestButton:active, #submitTestButton:focus{
+    background: #43A047;
+    cursor: pointer;
 }

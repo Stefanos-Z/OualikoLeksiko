@@ -12,12 +12,16 @@ import models.Sessions;
 import models.User;
 
 /**
- *
- * @author Loizos Vasileiou (eeu905)
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class LoginServlet extends HttpServlet {
      
+    /* Variables Declaration */
     private String userType;
+    
     /**
      * Called by the server (via the service method) 
      * to allow a servlet to handle a GET request.
@@ -29,6 +33,8 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        /* Reset Cookies if not accepted */
         deleteCookiesOnPage(request, response);
         response.sendRedirect("login.xhtml");
         
@@ -46,20 +52,17 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        /* GET CONNECTION WITH THE DATABASE */
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
-        
         response.setContentType("text/html;charset=UTF-8");
         
+        /* Needed Variables */
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        User user = inter.getUseByUserName(username);
         
-//        System.out.println("username = " + username);
-//        System.out.println("password  = " + password);
-        
-        User user= inter.getUseByUserName(username);
-        
-        if(user!=null)
+        if(user != null)
         {
             if(user.getUserPassword().equals(password))
             {
@@ -77,8 +80,6 @@ public class LoginServlet extends HttpServlet {
                 System.out.println("Cookie Value: "+ myCookie.getName());
                 
                 response.addCookie(myCookie);
-                
-                System.out.println("\n\nuserType = " + userType);
                 
                 if(userType.equals("Administrator")){
                     response.sendRedirect("adminsLandingPage.xhtml");
@@ -116,11 +117,11 @@ public class LoginServlet extends HttpServlet {
         return userType;
     }
     
-    
-    
-    
-    
-    
+    /**
+     * Deletes the cookies of the page
+     * @param request is getting the current cookies
+     * @param response resets the cookies
+     */
     private void deleteCookiesOnPage(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] allCookies = request.getCookies();
         if (allCookies != null)
