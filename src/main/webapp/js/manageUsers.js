@@ -59,11 +59,16 @@ $(document).ready(function(){
     $("#editUserDB").click(function() {
         
         var newUserName = $("#userNameEdit").val();
+        
         var oldUserName = $("#hidenTextEditUsername").val();
         var userType = $("#hidenTextEditUserType").val();
         var pWord = $("#passwordEdit").val();
         var uEmail = $("#emailEdit").val();
-
+        console.log(newUserName);
+        console.log(userType);
+        console.log(pWord);
+        console.log(uEmail);
+        
         var data = {"newUsername":newUserName,"password":pWord, "email":uEmail, "oldUsername":oldUserName, "userType":userType};
         
         $.ajax({
@@ -110,3 +115,8 @@ $(document).ready(function(){
     
     
 });
+
+
+
+
+
