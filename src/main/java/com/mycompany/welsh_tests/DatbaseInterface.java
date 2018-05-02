@@ -302,5 +302,19 @@ public class DatbaseInterface {
         return allUsers;
     }
 
+    public void updateWelshWord(String wordId, String wWord, String eWord, String string) {
+        try {
+            welshWords.put("welsh_word",wWord);
+            welshWords.put("english_meaning",eWord);
+            welshWords.put("gender",string);
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(wordId);
+            manager.updateRowFromTable(welshWords, pk);
+        } catch (SQLException ex) {
+            System.out.println("!!Error in update word");
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

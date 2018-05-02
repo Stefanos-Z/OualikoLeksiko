@@ -70,11 +70,7 @@ public class WordsManagerServlet extends HttpServlet {
         /* MANAGE MODAL WITH JAVASCRIPT */
         out.println("<script src=\"js/addWordModal.js\"></script>");
         
-        /* GET  VALUES FROM MODAL */
-        int wordID = inter.getWelshWords().size()+1;
-        String welshMeaning = request.getParameter("wordWelsh");
-        String englishMeaning = request.getParameter("wordEnglish");
-        String gender = request.getParameter("wordGender");
+        
         
         
         
@@ -100,7 +96,6 @@ public class WordsManagerServlet extends HttpServlet {
                 out.println("<td id=\"EW"+i+"\" class=\"columnData\">"+allWords.get(i).getEnglishMeaning()+"</td>");
                 out.println("<td id=\"G"+i+"\" class=\"columnData\">"+allWords.get(i).getGender()+"</td>");
                 out.println("<td id=\"columnData\">"); //add modal on last column in every row
-
 
                 out.println("<input id=\"editWordButton\" type=\"image\" onclick=\"displayModal("+i+","+allWords.get(i).getWordID() +
                                 ")\" class=\"editImage\" src=\"images/editWord.png\"/>");

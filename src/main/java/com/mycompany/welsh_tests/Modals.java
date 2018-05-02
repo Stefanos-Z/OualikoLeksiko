@@ -22,11 +22,11 @@ public class Modals {
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"male\" checked>" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"genderForAdd\" value=\"male\" checked>" +
                             "<span> Male </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\">" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"genderForAdd\" value=\"female\">" +
                             "<span>Female </span>" +
                         "</label>" +
                     "</div>"+
@@ -47,22 +47,24 @@ public class Modals {
                     "<span class=\"editWordClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"WordsManagerServlet\">" +
+                "<form id=\"formModal\" class=\"modal-form\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshInput\" type=\"text\" placeholder=\"Word in Welsh\"/>" +
                     "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\" value\"\"\"/>" +
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input id=\"radio1\" class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"male\" checked=\"checked\">"+
+                            "<input id=\"radio1\" class=\"modal-radio-button\" type=\"radio\" name=\"genderForEdit\" value=\"male\" checked=\"checked\">"+
                             "<span> Male </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input id=\"radio2\" class=\"modal-radio-button\" type=\"radio\" name=\"gender\" value=\"female\">"+
+                            "<input id=\"radio2\" class=\"modal-radio-button\" type=\"radio\" name=\"genderForEdit\" value=\"female\">"+
                             "<span>Female </span>" +
                         "</label>" +
                     "</div>"+
                     "<br/>" +
-                    "<input class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Word\"/>" +
+                    "<input id=\"hidenTextEdit\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
+                    "<br/>" +
+                    "<input id=\"editWordDB\"class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Word\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
@@ -173,7 +175,7 @@ public class Modals {
                     "<span class=\"deleteMemberClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Member?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet">" +
+                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
