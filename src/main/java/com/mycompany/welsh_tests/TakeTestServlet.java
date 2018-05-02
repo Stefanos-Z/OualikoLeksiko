@@ -86,7 +86,8 @@ public class TakeTestServlet extends HttpServlet {
         }
         
         /* SUBMIT BUTTON */
-        out.println("<input type=\"submit\" value\"Submit\" />");
+        out.println("<input id=\"submitTestButton\" type=\"submit\" value\"Submit\" />");
+        out.println("<br/>");
         
         out.println("</form>"); //End of form 
         out.println("</body>");
