@@ -22,7 +22,7 @@ import models.User;
  */
 public class TakeTestServlet extends HttpServlet {
     
-    private int numberOfQuestions = 5;
+    private int numberOfQuestions = 20;
     private ArrayList<Question> allQuestions;
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +67,7 @@ public class TakeTestServlet extends HttpServlet {
         
         /* DISPLAY TEXT TITLE */
         out.println("<br/><br/>");
-        out.println("<h1 class=\"scoreText\">Hello, gather as many points as you can!</h1>");
+        out.println("<h1 class=\"scoreText\">Please fill the test, good luck!</h1>");
         out.println("<br/>");
         
         /* DISPLAY TEST */
