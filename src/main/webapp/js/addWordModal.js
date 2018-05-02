@@ -1,4 +1,12 @@
-//// Get the modal
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
+
+//
+////// Get the modal
 //var addModal = document.getElementById('addWordModal');
 //
 //// Get the button that opens the modal

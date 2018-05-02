@@ -1,3 +1,11 @@
+
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
+
 // Get the modal
 var editModal = document.getElementById('editWordModal');
 
@@ -16,6 +24,9 @@ editSpan.onclick = function() {
 //    editModal.style.display = "block";
 //}
 
+
+//set where the welsh and the english words are going to be appear and the gender as well
+//
 function displayModal(index, wordID){
     
     editModal.style.display = "block";
@@ -28,7 +39,7 @@ function displayModal(index, wordID){
     document.getElementById("hidenTextEdit").value = wordID;
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
-    
+    //if a words gender is f then set the m radio checked
     if(gender == "M"){
         document.getElementById("radio1").checked = true;
         document.getElementById("radio2").checked = false;
