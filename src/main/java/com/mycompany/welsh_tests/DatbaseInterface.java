@@ -341,5 +341,19 @@ public class DatbaseInterface {
         
     }
 
+    public void editUser(String newUName, String pWord, String email,String uType, String oldUName) {
+        try {
+            users.put("user_name",newUName);
+            users.put("user_password",pWord);
+            users.put("user_email",email);
+            users.put("user_type",uType);
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(oldUName);
+            manager.updateRowFromTable(users, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }
