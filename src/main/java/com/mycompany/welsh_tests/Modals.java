@@ -128,9 +128,9 @@ public class Modals {
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
         
-        
         return modal;
     }
+    
     public static String getEditMemberModal() {
         
         String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
@@ -139,7 +139,7 @@ public class Modals {
                     "<span class=\"editMemberClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
+                "<form class=\"modal-form\" action=\"MemberManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
@@ -175,7 +175,7 @@ public class Modals {
                     "<span class=\"deleteMemberClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Member?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
+                "<form class=\"modal-form\" action=\"MemberManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
                     "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
