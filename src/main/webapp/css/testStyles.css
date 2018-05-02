@@ -1,11 +1,19 @@
 
 #questionView{
+    
     box-sizing: border-box;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
+    margin-left:5%;
+    margin-right:5%;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
     border-width:100px;
-    background-color: green;
+    
+    background-color: gray;
+    background: rgb(169,169,169);
     text-align: center;
+}
+#questionView label{
+    font-size:20px;
 }
