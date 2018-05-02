@@ -12,9 +12,9 @@ editSpan.onclick = function() {
     editModal.style.display = "none";
 }
 
-editButton.onclick = function() {
-    editModal.style.display = "block";
-}
+//editButton.onclick = function() {
+//    editModal.style.display = "block";
+//}
 
 function displayModal(index, wordID){
     

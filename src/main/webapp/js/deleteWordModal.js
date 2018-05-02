@@ -8,9 +8,9 @@ var deleteButton = document.getElementById('deleteWordButton');
 var deleteSpan = document.getElementsByClassName("deleteWordClose")[0];
 
 // When the user clicks the button, open the modal 
-deleteButton.onclick = function() {
-    deleteModal.style.display = "block";
-}
+//deleteButton.onclick = function() {
+//    deleteModal.style.display = "block";
+//}
 
 //// When the user clicks on <span> (x), close the modal
 //function hideModalOnExit() {

@@ -144,7 +144,9 @@ public class Modals {
                     "<input class=\"modal-textField\" name=\"password\" id=\"passwordEdit\" type=\"password\">" +
                     "<input class=\"modal-textField\" name=\"email\" id=\"emailEdit\" type=\"text\">" +
                     "<br>" +
-                    "<input class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Member\">" +
+                    "<input id=\"hidenTextEditUserType\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
+                    "<input id=\"hidenTextEditUsername\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
+                    "<input id=\"editUserDB\" class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Member\">" +
                 "</form>" +
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>

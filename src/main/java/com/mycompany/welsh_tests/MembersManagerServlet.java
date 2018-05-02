@@ -82,7 +82,8 @@ public class MembersManagerServlet extends HttpServlet {
                     out.println("<td id=\"uType"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserType()+"</td>");
                     out.println("<td class=\"columnData\">");
                         out.println("<img id=\"editMemberButton\" onclick=\"displayEditUserModal("+(i+1)+")\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                        out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
+                        if(!users.get(i).getUserName().equals(thisUser.getUserName()))
+                            out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>"); //End of options (edit, delete)
                 out.println("</tr>"); //End of every row
 

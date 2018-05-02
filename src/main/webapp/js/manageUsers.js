@@ -56,6 +56,33 @@ $(document).ready(function(){
         
         
     });
+    $("#editUserDB").click(function() {
+        
+        var newUserName = $("#userNameEdit").val();
+        var oldUserName = $("#hidenTextEditUsername").val();
+        var userType = $("#hidenTextEditUserType").val();
+        var pWord = $("#passwordEdit").val();
+        var uEmail = $("#emailEdit").val();
+
+        var data = {"newUsername":newUserName,"password":pWord, "email":uEmail, "oldUsername":oldUserName, "userType":userType};
+        
+        $.ajax({
+            type : 'POST',
+            contentType : "application/x-www-form-urlencoded",
+            url : "/Welsh_tests/EditUserServlet",
+            data : data,
+            dataType : 'text',
+            success : function(response) {
+                console.log("Success!");
+            },
+            error : function(e) {
+                alert("ERROR");
+                    
+            }
+        });
+        
+        
+    });
     
     
 });
