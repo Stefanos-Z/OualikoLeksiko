@@ -14,10 +14,10 @@ $(document).ready(function(){
         
         var data = {};
         $.ajax({
-            type : "POST",
+            type : 'POST',
             contentType : "application/x-www-form-urlencoded",
-            url : "/Welsh_test/AddWordServlet",
-            data : word,
+            url : "/Welsh_tests/AddWordServlet",
+            //data : data,
             dataType : 'text',
             success : function(response) {
                 console.log("Success!");

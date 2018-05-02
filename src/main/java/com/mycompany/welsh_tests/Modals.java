@@ -21,7 +21,7 @@ public class Modals {
                     "<span class=\"addWordClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to create a Word</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                "<form class=\"modal-form\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshAdd\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
                     "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishAdd\" type=\"text\" placeholder=\"Word in English\"/>"+
                     "<br/>" +

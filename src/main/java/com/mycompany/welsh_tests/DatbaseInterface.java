@@ -220,8 +220,6 @@ public class DatbaseInterface {
         } catch (SQLException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for(WelshWord e: allWords)
-            System.out.println(e.getWordID()+"     "+ e.getEnglishMeaning()+"       "+e.getWelshWord()+"       "+e.getGender() );
         return allWords;
     }
 
@@ -255,7 +253,7 @@ public class DatbaseInterface {
         testResults.put("user_name",newTestResult.getUserName());
         testResults.put("grade",""+newTestResult.getGrade());
         testResults.put("date_submitted",""+newTestResult.getDateSubmitted());
-        System.out.println("****************************"+newTestResult.getDateSubmitted());
+        //System.out.println("****************************"+newTestResult.getDateSubmitted());
         try {
             manager.addNewRowToTable(testResults);
         } catch (SQLException ex) {
