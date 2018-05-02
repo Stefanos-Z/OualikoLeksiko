@@ -22,7 +22,7 @@ import models.User;
  */
 public class TakeTestServlet extends HttpServlet {
     
-    private int numberOfQuestions = 5;
+    private int numberOfQuestions = 20;
     private ArrayList<Question> allQuestions;
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
