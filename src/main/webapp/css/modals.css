@@ -82,7 +82,9 @@
     font-size: 14px;    
 }
 
-
+.hidenTextFields{
+    display: none;
+}
 
 
 

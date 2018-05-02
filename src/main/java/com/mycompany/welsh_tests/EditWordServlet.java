@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author oneZt
  */
-public class AddWordServlet extends HttpServlet {
+public class EditWordServlet extends HttpServlet {
 
     
 
@@ -32,6 +32,7 @@ public class AddWordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
     }
 
     /**
@@ -45,14 +46,15 @@ public class AddWordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            DatbaseInterface inter = new DatbaseInterface();
-            inter.getConection();
-            System.out.println("!!!!!!!!!!!hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            String wWord = request.getParameter("welshWord");
-            String eWord = request.getParameter("englishWord");
-            String gender = request.getParameter("gender");
-            inter.addWelshWord(wWord, eWord, ""+gender.charAt(0));
-            
+        System.out.println("hello");
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        System.out.println("!!!!!!!!!!!hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        String wWord = request.getParameter("welshWord");
+        String eWord = request.getParameter("englishWord");
+        String gender = request.getParameter("gender");
+        String wordId = request.getParameter("wordId");
+        inter.updateWelshWord(wordId,wWord, eWord, ""+gender.charAt(0));
     }
 
     /**

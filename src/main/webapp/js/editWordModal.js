@@ -25,7 +25,7 @@ function displayModal(index, wordID){
     var englishWord = document.getElementById("EW"+index).innerHTML;
     var gender = document.getElementById("G"+index).innerHTML;
     
-    
+    document.getElementById("hidenTextEdit").value = wordID;
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
     

@@ -249,7 +249,7 @@ public class DatabaseManager {
             }
         }
         query = query.substring(0, query.length()-5);
-        
+
         PreparedStatement pstat = conn.prepareStatement(query);
         int rows = pstat.executeUpdate();
         pstat.close();
