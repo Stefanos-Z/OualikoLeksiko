@@ -163,13 +163,9 @@ public class Modals {
                     "<h1>Are you sure you want to delete the following Member?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\">" +
-                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
-                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
-                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
-                    "<input class=\"modal-textField\" name=\"userType\" id=\"userType\" type=\"text\" value=\"\"/>"+
-                    "<br/>" +
                     "<input id=\"hidenTextDeleteUser\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
                     "<input id=\"deleteUserDB\" class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Member\"/>" +
+                    "<input class=\"deleteModal-submit-button\" id=\"deleteModal-cancel-button\" type=\"button\" value=\"Cancel\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>

@@ -16,6 +16,10 @@
         <servlet-name>HistoryServlet</servlet-name>
         <servlet-class>com.mycompany.welsh_tests.HistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MembersManagerServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.MembersManagerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>WordsManagerServlet</servlet-name>
         <url-pattern>/WordsManagerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MembersManagerServlet</servlet-name>
+        <url-pattern>/MembersManagerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>
