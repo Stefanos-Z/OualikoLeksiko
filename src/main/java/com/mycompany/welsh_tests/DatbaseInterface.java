@@ -82,7 +82,7 @@ public class DatbaseInterface {
     
 
     /**
-     * initialize the maps that correspond to the database
+     * initializes the maps that correspond to the database
      */
     private void intatiateMaps() {
         
@@ -125,16 +125,15 @@ public class DatbaseInterface {
         testQuestions.put("word_id","");
         testQuestions.put("question_full","");
         testQuestions.put("correct_answer","");
-        //testQuestions.put("PRIMARY KEY1","respondent_question_id");
         
     }
-//    public static void main(String[] args) {
-//        DatbaseInterface ins = new DatbaseInterface();
-//        ins.getConection();
-//        //ins.createAndGetQuestions(5);
-//        
-//    }
 
+
+    /**
+     * Gets the user by a given username
+     * @param username the username of the user
+     * @return the user
+     */
     public User getUseByUserName(String username) {
         try {
             User thisUser = manager.getUser(username, users);
@@ -145,6 +144,12 @@ public class DatbaseInterface {
         return null;
     }
     
+    
+    /**
+     * Returns a list with questions and their answers
+     * @param numOfQuestions the amount of questions 
+     * @return the list
+     */
     public ArrayList<Question> createAndGetQuestions(int numOfQuestions)
     {
         ArrayList<Question> allQuestions = new ArrayList<>();
@@ -159,8 +164,6 @@ public class DatbaseInterface {
                 
                 int questionTypeID = r.nextInt(numOfQuestionType);
                 testQuestions.put("question_id",""+questionTypeID);
-//                int welshWordID = r.nextInt(numOfWelshWords);
-//                testQuestions.put("word_id",""+welshWordID);
                 
                 //WelshWord thisWord = manager.getWelshWord(welshWords, welshWordID);
                 //String questionText = manager.getQuestionText(questionTypeID,questionType);
@@ -171,21 +174,17 @@ public class DatbaseInterface {
                 switch (questionTypeID){
                     case 0:
                         questionText= questionText.replaceAll("<>", thisWord.getWelshWord());
-                        testQuestions.put("correct_answer",thisWord.getGender());
                         answer = thisWord.getGender();
                     break;
                     case 1:
                         questionText = questionText.replaceAll("<>", thisWord.getWelshWord());
-                        testQuestions.put("correct_answer",thisWord.getEnglishMeaning());
                         answer = thisWord.getEnglishMeaning();
                         break;
                     case 2:
                         questionText= questionText.replaceAll("<>", thisWord.getEnglishMeaning());
-                        testQuestions.put("correct_answer",thisWord.getWelshWord());
                         answer = thisWord.getWelshWord();
                         break;
                 }
-                testQuestions.put("question_full",questionText);
                 allQuestions.add(new Question(questionText,answer,questionTypeID));
                 //manager.addNewRowToTable(testQuestions);
                 
@@ -201,7 +200,12 @@ public class DatbaseInterface {
         
     }
     
-    //MODAL
+    /**
+     * Adds a welsh word to the database
+     * @param welshMeaning the welsh meaning of the word
+     * @param englishMeaning the English meaning of the word
+     * @param gender the gender of the word
+     */
     public void addWelshWord(String welshMeaning, String englishMeaning, String gender)
     {
         welshWords.put("welsh_word",welshMeaning);
@@ -217,6 +221,10 @@ public class DatbaseInterface {
 
     }
     
+    /**
+     * gets a list with all welsh words from the database
+     * @return the list with the words
+     */
     public ArrayList<WelshWord> getWelshWords()
     {
         ArrayList<WelshWord> allWords = null;
@@ -228,6 +236,11 @@ public class DatbaseInterface {
         return allWords;
     }
 
+    
+    /**
+     * updates the session coresponding to the user logged on
+     * @param session of the user
+     */
     public void updateSession(Sessions session) {
         sessions.put("session_id",session.getSessionID());
         sessions.put("user_name",session.getUserName());
@@ -242,6 +255,11 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * gets the session
+     * @param sessionID the session id
+     * @return  the session
+     */
     public Sessions getSessionbyID(String sessionID) {
         Sessions thisSession = null;
         
@@ -254,6 +272,10 @@ public class DatbaseInterface {
                  
     }
 
+    /**
+     * Adds a new test to the database
+     * @param newTestResult the new test result
+     */
     public void addTestResult(TestsResults newTestResult) {
         testResults.put("user_name",newTestResult.getUserName());
         testResults.put("grade",""+newTestResult.getGrade());
@@ -266,6 +288,10 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * Adds a new test to the database
+     * @param newTestResult the new test result
+     */
     void addToNewTable(TestsResults newTestResult) {
         testResults.put("user_name",newTestResult.getUserName());
         testResults.put("grade",""+newTestResult.getGrade());
@@ -277,6 +303,11 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * gets a list with the test results
+     * @param thisUser is the user requesting the results
+     * @return the list with the results
+     */
     public ArrayList<TestsResults> getTestHistory(User thisUser) {
         ArrayList<TestsResults> results = null;
         try {
@@ -296,6 +327,10 @@ public class DatbaseInterface {
     }
     
     
+    /**
+     * gets all users in the database
+     * @return the list of users
+     */
     public ArrayList<User> getAllUsers(){
         ArrayList<User> allUsers = null;
         
@@ -307,11 +342,18 @@ public class DatbaseInterface {
         return allUsers;
     }
 
-    public void updateWelshWord(String wordId, String wWord, String eWord, String string) {
+    /**
+     * updates a welsh word in the database
+     * @param wordId the words unique id
+     * @param wWord the welsh meaning of the word
+     * @param eWord the English meaning of the word
+     * @param gender the gender of the word 
+     */
+    public void updateWelshWord(String wordId, String wWord, String eWord, String gender) {
         try {
             welshWords.put("welsh_word",wWord);
             welshWords.put("english_meaning",eWord);
-            welshWords.put("gender",string);
+            welshWords.put("gender",gender);
             ArrayList<String> pk = new ArrayList<>();
             pk.add(wordId);
             manager.updateRowFromTable(welshWords, pk);
@@ -321,6 +363,10 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * deletes the welsh word
+     * @param wordId the id of the welsh word
+     */
     public void deleteWelshWord(String wordId) {
         
         try {
@@ -332,6 +378,13 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * Adds a new user to the database
+     * @param uName the username of the user
+     * @param pWord the password of the user
+     * @param email the email of the user
+     * @param type the user type
+     */
     void addUser(String uName, String pWord, String email, String type) {
         try {
             users.put("user_name",uName);
@@ -346,6 +399,14 @@ public class DatbaseInterface {
         
     }
 
+    /**
+     * Updates the user in the database
+     * @param newUName the new username of the user
+     * @param pWord the password of the user
+     * @param email the email of the user
+     * @param uType the user type
+     * @param oldUName 
+     */
     public void editUser(String newUName, String pWord, String email,String uType, String oldUName) {
         try {
             users.put("user_name",newUName);
@@ -360,6 +421,10 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * deletes the user
+     * @param username the username of the user
+     */
     public void deleteUser(String username) {
         try {
             ArrayList<String> pk = new ArrayList<>();
@@ -370,6 +435,10 @@ public class DatbaseInterface {
         }
     }
 
+    /**
+     * deletes a history record in the database
+     * @param testID the id of the test to be deleted
+     */
     public void deleteHistoryByTestID(String testID) {
         try {
             ArrayList<String> pk = new ArrayList<>();
