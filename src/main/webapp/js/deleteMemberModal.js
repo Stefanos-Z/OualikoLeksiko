@@ -2,10 +2,10 @@
 var deleteModal = document.getElementById('deleteMemberModal');
 
 // Get the button that opens the modal
-var deleteButton = document.getElementsByClassName("deleteImage");
+var deleteButton = document.getElementById("deleteMemberButton");
 
 // Get the <span> element that closes the modal
-var deleteSpan = document.getElementsByClassName("deleteClose")[0];
+var deleteSpan = document.getElementsByClassName("deleteMemberClose")[0];
 
 // When the user clicks the button, open the modal 
 deleteButton.onclick = function() {
@@ -22,4 +22,3 @@ window.onclick = function(event){
         deleteModal.style.display = "none";
     }
 }
-

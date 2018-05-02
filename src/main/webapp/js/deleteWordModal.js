@@ -5,7 +5,7 @@ var deleteModal = document.getElementById('deleteWordModal');
 var deleteButton = document.getElementById('deleteWordButton');
 
 // Get the <span> element that closes the modal
-var deleteSpan = document.getElementsByClassName("deleteClose")[0];
+var deleteSpan = document.getElementsByClassName("deleteWordClose")[0];
 
 // When the user clicks the button, open the modal 
 deleteButton.onclick = function() {
@@ -23,14 +23,14 @@ window.onclick = function(event){
     }
 }
 
-function displayModal(index){
-    
+function displayModal(){
+    /*
     var welshWord = document.getElementById("WW"+index).innerHTML;
     var englishWord = document.getElementById("EW"+index).innerHTML;
     var gender = document.getElementById("G"+index).innerHTML;
     
     document.getElementById("wordWelshInput").value = welshWord;
     document.getElementById("wordEnglishInput").value = englishWord;
-    //document.getElementById("wordGenderInput").value = gender;
+    //document.getElementById("wordGenderInput").value = gender;*/
 }
 

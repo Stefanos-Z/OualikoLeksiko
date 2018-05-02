@@ -47,7 +47,7 @@ public class Modals {
                     "<span class=\"editWordClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit the Word</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                "<form id=\"formModal\" class=\"modal-form\" method=\"post\" action=\"WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshInput\" type=\"text\" placeholder=\"Word in Welsh\"/>" +
                     "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishInput\" type=\"text\" placeholder=\"Word in English\" value\"\"\"/>" +
                     "<br/>" +
@@ -75,10 +75,10 @@ public class Modals {
         String modal = "<div id=\"deleteWordModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
-                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<span class=\"deleteWordClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Word?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
+                "<form class=\"modal-form\" method=\"post\" action=\"WordsManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"wordWelshInput\" id=\"wordWelsh\" type=\"text\" disabled=\"disabled\"/>" +
                     "<input class=\"modal-textField\" name=\"wordEnglishInput\" id=\"wordEnglish\" type=\"text\" disabled=\"disabled\"/>" +
                     "<input class=\"modal-textField\" name=\"wordGenderInput\" id=\"wordGender\" type=\"text\" disabled=\"disabled\"/>" +
@@ -101,7 +101,7 @@ public class Modals {
                     "<span class=\"addMemberClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to add a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
+                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
                     "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" placeholder=\"Enter username\"/>"+
                     "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" placeholder=\"Enter password\"/>"+
                     "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" placeholder=\"Enter email address\"/>"+
@@ -129,48 +129,30 @@ public class Modals {
         
         return modal;
     }
-    public static String getEditMemberModal(String username, String password, String email, String userType) {
+    public static String getEditMemberModal() {
         
-        String userTypeADMINISTRATOR = "";
-        String userTypeINSTRACTOR = "";
-        String userTypeSTUDENT = "";
-        
-        if(userType.equals("Administrator")){ //Male
-            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\" checked>";
-            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">";
-            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">";
-        }else if(userType.equals("Instructor")){
-            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\">";
-            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\" checked>";
-            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">";
-        }else if(userType.equals("Student")){
-            userTypeADMINISTRATOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\">";
-            userTypeINSTRACTOR = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">";
-            userTypeSTUDENT = "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\" checked>";
-        }
-        
-       String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
+        String modal = "<div id=\"editMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"editModal-header\">"+
-                    "<span class=\"editClose\">&times;</span>" + //Close Button
+                    "<span class=\"editMemberClose\">&times;</span>" + //Close Button
                     "<h1>Modify the following data to edit a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
-                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\" "+username+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\" "+password+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\" "+email+" \"/>"+
+                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            userTypeADMINISTRATOR +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\" checked>" +
                             "<span> Administrator </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            userTypeINSTRACTOR +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">" +
                             "<span> Instructor </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            userTypeSTUDENT +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">" +
                             "<span> Student </span>" +
                         "</label>" +
                     "</div>"+
@@ -183,19 +165,19 @@ public class Modals {
         return modal;
     }
     
-    public static String getDeleteMemberModal(String username, String password, String email, String userType) {
+    public static String getDeleteMemberModal() {
         
         String modal = "<div id=\"deleteMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
-                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<span class=\"deleteMemberClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following Member?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
-                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\" "+username+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\" "+password+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\" "+email+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"userType\" id=\"userType\" type=\"text\" value=\" "+userType+" \"/>"+
+                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"userType\" id=\"userType\" type=\"text\" value=\"\"/>"+
                     "<br/>" +
                     "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete Member\"/>" +
                 "</form>" + //End of MODAL <form>
@@ -205,18 +187,18 @@ public class Modals {
         return modal;
     }
     
-    public static String getDeleteHistoryModal(String studentName, double grade, Date dateSubmitted) {
+    public static String getDeleteHistoryModal() {
         
         String modal = "<div id=\"deleteHistoryModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"deleteModal-header\">"+
-                    "<span class=\"deleteClose\">&times;</span>" + //Close Button
+                    "<span class=\"deleteHistoryClose\">&times;</span>" + //Close Button
                     "<h1>Are you sure you want to delete the following History?</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
-                    "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\" "+studentName+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\" "+grade+" \"/>"+
-                    "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\" "+dateSubmitted+" \"/>"+
+                "<form class=\"modal-form\" method=\"post\" action=\"HistoryServlet\">" +
+                    "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\"\"/>"+
+                    "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\"\"/>"+
                     "<br/>" +
                     "<input class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete History\"/>" +
                 "</form>" + //End of MODAL <form>

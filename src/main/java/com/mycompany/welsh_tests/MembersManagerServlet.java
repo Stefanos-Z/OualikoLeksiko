@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.User;
 
-public class AddUserServlet extends HttpServlet {
+public class MembersManagerServlet extends HttpServlet {
 
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +67,7 @@ public class AddUserServlet extends HttpServlet {
                 out.println("<th class=\"columnLabel\">Options</th>");
             out.println("</tr>");
         
-        for(int i =0; i<users.size();i++){
+            for(int i =0; i<users.size();i++){
                 out.println("<tr class=\"columnRow\">");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserName()+"</td>");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
@@ -77,15 +77,12 @@ public class AddUserServlet extends HttpServlet {
                     
                     
                         out.println("<img id=\"editMemberButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                        String editModal = Modals.getEditMemberModal(users.get(i).getUserName(),
-                        users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
+                        String editModal = Modals.getEditMemberModal();
                         out.println(editModal);
                         
                         
                         out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                        String deleteModal = Modals.getDeleteMemberModal(users.get(i).getUserName(),
-                        users.get(i).getUserPassword(), users.get(i).getUserEmail(), users.get(i).getUserType());
-                        out.println(editModal);
+                        String deleteModal = Modals.getDeleteMemberModal();
                         out.println(deleteModal);
                         
                     out.println("</td>");

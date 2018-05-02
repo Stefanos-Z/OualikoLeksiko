@@ -16,7 +16,8 @@
 
 /* MODAL DIV */
 #addWordModal, #editWordModal, #deleteWordModal,
-#addMemberModal, #editMemberModal, #deleteMemberModal {
+#addMemberModal, #editMemberModal, #deleteMemberModal 
+#deleteHistoryModal{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -37,16 +38,20 @@
 }
 
 /* MODAL CLOSE BUTTON */
-.addWordClose, .editWordClose, .deleteClose {
+.addWordClose, .editWordClose, .deleteWordClose,
+.addMemberClose, .editMemberClose, .deleteMemberClose,
+.deleteHistoryClose{
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 /* MODAL CLOSE BUTTON ACTIONS */
-.addClose:hover, .addClose:focus,
-.editWordClose:hover, .editWordClose:focus,
-.deleteClose:hover, .deleteClose:focus{
+.addWordClose:hover, .addWordClose:focus, .editWordClose:hover, 
+.editWordClose:focus, .deleteWordClose:hover, .deleteWordClose:focus,
+.addMemberClose:hover, .addMemberClose:focus, .editMemberClose:hover, 
+.editMemberClose:focus, .deleteMemberClose:hover, .deleteMemberClose:focus,
+.deleteHistoryClose:hover, .deleteHistoryClose:focus{
     color: black;
     text-decoration: none;
     cursor: pointer;
