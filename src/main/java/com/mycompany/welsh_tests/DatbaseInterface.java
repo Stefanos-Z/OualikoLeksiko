@@ -316,5 +316,54 @@ public class DatbaseInterface {
         }
     }
 
+    public void deleteWelshWord(String wordId) {
+        
+        try {
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(wordId);
+            manager.deleteRowFromTable(welshWords, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void addUser(String uName, String pWord, String email, String type) {
+        try {
+            users.put("user_name",uName);
+            users.put("user_password",pWord);
+            users.put("user_email",email);
+            users.put("user_type",type);
+            
+            manager.addNewRowToTable(users);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    public void editUser(String newUName, String pWord, String email,String uType, String oldUName) {
+        try {
+            users.put("user_name",newUName);
+            users.put("user_password",pWord);
+            users.put("user_email",email);
+            users.put("user_type",uType);
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(oldUName);
+            manager.updateRowFromTable(users, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteUser(String username) {
+        try {
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(username);
+            manager.deleteRowFromTable(users, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

@@ -7,6 +7,10 @@
     
 $(document).ready(function(){
     
+    
+    
+    
+    
     console.log('hello');
     // Get the modal
     var addModal = document.getElementById('addWordModal');
@@ -36,8 +40,27 @@ $(document).ready(function(){
     
     
     
-    
-    
+    $("#deleteWordDB").click(function() {
+        var wordID = $("#hidenTextDelete").val();
+        var data = {"wordId":""+wordID};
+        $.ajax({
+            type : 'POST',
+            contentType : "application/x-www-form-urlencoded",
+            url : "/Welsh_tests/WordsManagerServlet",
+            data : data,
+            dataType : 'text',
+            success : function(response) {
+                console.log("Success!");
+            },
+            error : function(e) {
+                    alert("ERROR");
+                    
+            }
+        });
+        
+        
+        
+    });
     
     
     

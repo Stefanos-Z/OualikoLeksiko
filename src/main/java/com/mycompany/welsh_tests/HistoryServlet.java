@@ -44,6 +44,7 @@ public class HistoryServlet extends HttpServlet {
         out.println("<link rel=\"icon\" href=\"images/history.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
         out.println("</head>");
         out.println("<body>");
 
@@ -51,6 +52,10 @@ public class HistoryServlet extends HttpServlet {
         String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
+        /* DISPLAY MODAL FOR DELETING A HISTORY (ALL BUT STUDENT) */
+        String deleteHistoryModal = Modals.getDeleteHistoryModal();
+        out.println(deleteHistoryModal);
+                        
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
         out.println("<table class=\"wordsTable\">");
         if(thisUser.getUserType().equals("Student")){
@@ -83,16 +88,13 @@ public class HistoryServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
                     out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
                     out.println("<td id=\"columnData\">");
-                        out.println("<img class=\"deleteHistoryImage\" src=\"images/deleteWord.png\"/>");
-                        String deleteHistoryModal = Modals.getDeleteHistoryModal(testResults.get(i).getUserName(),
-                                testResults.get(i).getGrade(), testResults.get(i).getDateSubmitted());
-                        out.println(deleteHistoryModal);
-                        out.println("<script src=\"js/deleteHistoryModal.js\"></script>");
-                        
+                        out.println("<img id=\"deleteHistoryButton\" class=\"deleteHistoryImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>");
                 out.println("</tr>");
             }
         }
+        out.println("<script src=\"js/deleteHistoryModal.js\"></script>");
+        
         out.println("</table>");
         
         
