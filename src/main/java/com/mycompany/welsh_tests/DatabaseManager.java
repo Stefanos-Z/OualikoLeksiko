@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
+/* Libaries Declaration */
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,10 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -26,17 +20,26 @@ import models.TestsResults;
 import models.User;
 import models.WelshWord;
 
-
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
 public class DatabaseManager {
+    
+    /* Variables Declaration */
     private static String url;
     private static String username;
     private static String password;
     
-
-    
+    /**
+     * Gives connection to the Web-App
+     * @throws IOException if connection is not able
+     * @throws ClassNotFoundException properties not found
+     */
     public DatabaseManager() throws IOException, ClassNotFoundException
     {
-        
         InputStream stream = DatabaseManager.class.getResourceAsStream("/database.properties");
         Properties props = new Properties();
         props.load(stream);
@@ -48,8 +51,6 @@ public class DatabaseManager {
         password = props.getProperty("jdbc.password");
         if (password == null) { password = ""; }
         if (driver != null) { Class.forName(driver); }
-        
-
     }
     
 
@@ -537,18 +538,13 @@ public class DatabaseManager {
 
         ResultSet rs = pstat.executeQuery();
 
-
         while(rs.next()){
             User thisUser = new User(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
             allUsers.add(thisUser);
         }
-
-
         
         pstat.close();
         conn.close();
         return allUsers;
     }
-
-    
 }

@@ -1,5 +1,6 @@
 package com.mycompany.welsh_tests;
 
+/* Libraries Declaration */
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -7,35 +8,38 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Sessions;
 import models.TestsResults;
 import models.User;
 
-
+/**
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
+ */
 public class HistoryServlet extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Called by the server (via the service method) 
+     * to allow a servlet to handle a GET request.
+     * @param request an object that contains the request the client has made of the servlet
+     * @param response an object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the GET could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the GET request
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
-        
+        /* GET CONNECTION WITH THE DATABASE */
         DatbaseInterface inter = new DatbaseInterface();
         inter.getConection();
+        
+        /* Needed Variables */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
         ArrayList<TestsResults> testResults = inter.getTestHistory(thisUser);
         
-        
-        
+        /* Create responsive and dynamic Servlet */
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         out.println("<html>");
@@ -58,7 +62,7 @@ public class HistoryServlet extends HttpServlet {
                         
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
         out.println("<table class=\"wordsTable\">");
-        if(thisUser.getUserType().equals("Student")){
+        if(thisUser.getUserType().equals("Student")){ //If Studnt
         
             out.println("<tr>");
                 out.println("<th class=\"columnLabel\">Student Name</th>");
@@ -73,7 +77,7 @@ public class HistoryServlet extends HttpServlet {
                     out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
                 out.println("</tr>");
             }
-        }else{
+        }else{ //If (Instructor or Administrator)
             
             out.println("<tr>");
                 out.println("<th class=\"columnLabel\">Student Name</th>");
@@ -93,21 +97,25 @@ public class HistoryServlet extends HttpServlet {
                 out.println("</tr>");
             }
         }
+        
+        /* Display Delete Senction only on Admin and Instructor */
         out.println("<script src=\"js/deleteHistoryModal.js\"></script>");
         
-        out.println("</table>");
-        
-        
-        
-        
-        
+        out.println("</table>"); //End of History Table
         
         out.println("</body>");
         out.println("</html>");
         out.close();
     }
 
-
+    /**
+     * Called by the server (via the service method) to 
+     * allow a servlet to handle a POST request. 
+     * @param request an HttpServletRequest object that contains the request the client has made of the servlet
+     * @param response an HttpServletResponse object that contains the response the servlet sends to the client
+     * @throws ServletException if the request for the POST could not be handled
+     * @throws IOException if an input or output error is detected when the servlet handles the request
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -123,5 +131,4 @@ public class HistoryServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

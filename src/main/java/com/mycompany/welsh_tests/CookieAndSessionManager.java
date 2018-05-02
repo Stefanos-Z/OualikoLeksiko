@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
 import java.util.Date;
@@ -12,12 +7,18 @@ import models.Sessions;
 import models.User;
 
 /**
- *
- * @author oneZt
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class CookieAndSessionManager {
     
-    
+    /**
+     * Checks if its able to access the request
+     * @param request is the current Request
+     * @return a boolean of true / false connection
+     */
     public static boolean checkValidation(HttpServletRequest request)
     {
         DatbaseInterface inter = new DatbaseInterface();
@@ -30,14 +31,8 @@ public class CookieAndSessionManager {
             return false;
         }
         
-        
-        //System.out.println(c.length);
         Cookie myCookie = c[0];
-
         Sessions session = inter.getSessionbyID(myCookie.getValue());
-        
-        //Find user role
-        //User user = inter.findByUserId(session.getUserId());
         
         boolean isValid = false;
         
@@ -63,10 +58,14 @@ public class CookieAndSessionManager {
         }else   
             System.out.println("notVALID!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         
-        return isValid;
+        return isValid; //Returb Request Validation
     }
     
-    
+    /**
+     * Gets the User From the current session
+     * @param request is the request to validate the correct user
+     * @return the User object currently logged-in
+     */
     public static User getUserFromSession(HttpServletRequest request)
     {
         DatbaseInterface inter = new DatbaseInterface();
@@ -86,6 +85,12 @@ public class CookieAndSessionManager {
         
     }
 
+    /**
+     * This method checks the Usertype and loads 
+     * the appropriate menu bar for navigation
+     * @param thisUser is the current user logged-in
+     * @return the string representation of the menu content (HTML)
+     */
     static String getMenuBar(User thisUser) {
         String userType = thisUser.getUserType();
         String username = thisUser.getUserName();

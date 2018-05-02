@@ -1,21 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
+/* Libraries Declaration */
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+/* Reference Models */
 import models.Question;
 import models.QuestionType;
 import models.Sessions;
@@ -24,15 +19,17 @@ import models.User;
 import models.WelshWord;
 
 /**
- *
- * @author oneZt
+ * Group        : 06
+ * Module       : ICP-2152 (JAVA Technologies)
+ * Project      : Programming Group Project
+ * University   : Bangor University (United Kingdom)
  */
 public class DatbaseInterface {
+    
+    /* Variables Declaration */
     private DatabaseManager manager = null;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Random r = new Random();
-    
-    
     Map<String, String> users = new HashMap<>();//map for the student table
     Map<String, String> questionType = new HashMap<>();//map for the staff table
     Map<String, String> welshWords = new HashMap<>();//map for the module table
@@ -41,11 +38,18 @@ public class DatbaseInterface {
     Map<String, String> sessions = new HashMap<>();//map for the teaches table
     Map<String, String> testQuestions = new HashMap<>();//map for the teaches table
     
+    /**
+     * Constructor instantiate Maps
+     */
     public DatbaseInterface()
     {
         intatiateMaps();
     }
     
+    /**
+     * Checks for a valid connection
+     * @return true/false if connection is valid or not
+     */
     public boolean getConection(){
         try {
             manager = new DatabaseManager();
@@ -59,6 +63,10 @@ public class DatbaseInterface {
         return true;
     }
     
+    /**
+     * Creates the Session of a user
+     * @param session manages Sessions
+     */
     public void createSession(Sessions session)
     {
         sessions.put("session_id",session.getSessionID());
@@ -72,7 +80,9 @@ public class DatbaseInterface {
         
     }
     
-
+    /**
+     * Instantiate the Maps with adding elements in the tables
+     */
     private void intatiateMaps() {
         users.put("Table","Users");
         users.put("user_name","");
@@ -123,13 +133,12 @@ public class DatbaseInterface {
         //testQuestions.put("PRIMARY KEY1","respondent_question_id");
         
     }
-//    public static void main(String[] args) {
-//        DatbaseInterface ins = new DatbaseInterface();
-//        ins.getConection();
-//        //ins.createAndGetQuestions(5);
-//        
-//    }
 
+    /**
+     * Gets the 
+     * @param username
+     * @return 
+     */
     public User getUseByUserName(String username) {
         try {
             User thisUser = manager.getUser(username, users);
