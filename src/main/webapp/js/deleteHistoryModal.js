@@ -18,10 +18,9 @@ window.onclick = function(event){
     }
 }
 
-
-//DONT KNOW IF NEEDED
-// 
-//function displayDeleteModal(wordId){
-//    deleteModal.style.display = "block";
-//    document.getElementById("hidenTextDelete").value = wordId;
-//}
+ 
+function displayDeleteHistoryModal(testID){
+    deleteModal.style.display = "block";
+    console.log(testID);
+    document.getElementById("hidenTextDeleteHistory").value = testID;
+}

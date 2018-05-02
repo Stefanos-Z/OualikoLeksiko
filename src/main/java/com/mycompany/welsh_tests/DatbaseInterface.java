@@ -84,6 +84,7 @@ public class DatbaseInterface {
      * Instantiate the Maps with adding elements in the tables
      */
     private void intatiateMaps() {
+        
         users.put("Table","Users");
         users.put("user_name","");
         users.put("user_password","");
@@ -102,14 +103,7 @@ public class DatbaseInterface {
         welshWords.put("english_meaning","");
         welshWords.put("gender","");
         welshWords.put("PRIMARY KEY1","word_id");
-        
-        tests.put("Table", "Test");
-        tests.put("test_id", "");
-        tests.put("test_title", "");
-        tests.put("date_created", "");
-        tests.put("user_name", "");
-        tests.put("PRIMARY KEY1", "test_id");
-        
+
         
         testResults.put("Table","TestsResults");
         testResults.put("user_name","");
@@ -369,6 +363,16 @@ public class DatbaseInterface {
             ArrayList<String> pk = new ArrayList<>();
             pk.add(username);
             manager.deleteRowFromTable(users, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteHistoryByTestID(String testID) {
+        try {
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(testID);
+            manager.deleteRowFromTable(testResults, pk);
         } catch (SQLException ex) {
             Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
         }

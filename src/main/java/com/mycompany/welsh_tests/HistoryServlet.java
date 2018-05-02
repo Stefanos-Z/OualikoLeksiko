@@ -49,6 +49,7 @@ public class HistoryServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
+        out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
         out.println("</head>");
         out.println("<body>");
 
@@ -59,7 +60,8 @@ public class HistoryServlet extends HttpServlet {
         /* DISPLAY MODAL FOR DELETING A HISTORY (ALL BUT STUDENT) */
         String deleteHistoryModal = Modals.getDeleteHistoryModal();
         out.println(deleteHistoryModal);
-                        
+        out.println("<script src=\"js/deleteHistoryPost.js\"></script>");                
+        out.println("<script src=\"js/deleteHistoryModal.js\"></script>");                
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
         out.println("<table class=\"wordsTable\">");
         if(thisUser.getUserType().equals("Student")){ //If Studnt
@@ -88,11 +90,11 @@ public class HistoryServlet extends HttpServlet {
 
             for(int i =0; i<testResults.size();i++){
                 out.println("<tr class=\"columnRow\">");
-                    out.println("<td id=\"columnData\">"+testResults.get(i).getUserName()+"</td>");
-                    out.println("<td id=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
-                    out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
-                    out.println("<td id=\"columnData\">");
-                        out.println("<img id=\"deleteHistoryButton\" class=\"deleteHistoryImage\" src=\"images/deleteWord.png\"/>");
+                    out.println("<td class=\"columnData\">"+testResults.get(i).getUserName()+"</td>");
+                    out.println("<td class=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
+                    out.println("<td class=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
+                    out.println("<td class=\"columnData\">");
+                        out.println("<img id=\"deleteHistoryButton\" onclick=\"displayDeleteHistoryModal("+testResults.get(i).getTestID()+")\" class=\"deleteHistoryImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>");
                 out.println("</tr>");
             }
@@ -119,7 +121,12 @@ public class HistoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Empty Abstract Method
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        
+        String testID = request.getParameter("testID");
+        System.out.println("****************************************"+testID);
+        inter.deleteHistoryByTestID(testID);
     }
 
     /**
