@@ -82,10 +82,15 @@ public class CookieAndSessionManager {
 
         Sessions session = inter.getSessionbyID(myCookie.getValue());
         String username = session.getUserName();
+        String userID=username;
         return inter.getUseByUserName(username);
+        
     }
 
-    static String getMenuBar(String userType) {
+    static String getMenuBar(User thisUser) {
+        String userType = thisUser.getUserType();
+        String username = thisUser.getUserName();
+        
         if(userType.equals("Administrator")){
 
             return ("<div class=\"menuBar\">" +
@@ -93,6 +98,7 @@ public class CookieAndSessionManager {
                 "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"adminsLandingPage.xhtml\">Home</a></li>" +
                 "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"HistoryServlet\">View History</a></li>" +
                 "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"AddUserServlet\">Add Users</a></li>" +
+                "<li><a id=\"logeduser\" class=\"link\"\">User:"+username+"</a></li>" +
                 "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
                 "</ul>" +
                 "</div>");
@@ -104,6 +110,7 @@ public class CookieAndSessionManager {
                 "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"instructorsLandingPage.xhtml\">Home</a></li>" +
                 "<li><a id=\"menuBar_INSTRUCTOR\" class=\"link\" href=\"WordsManagerServlet\">Words Manager</a></li>" +
                 "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"HistoryServlet\">View History</a></li>" +
+                "<li><a id=\"logeduser\" class=\"link\"\">User:"+username+"</a></li>" +
                 "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
                 "</ul>" +
                 "</div>");
@@ -115,6 +122,7 @@ public class CookieAndSessionManager {
                 "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"studentsLandingPage.xhtml\">Home</a></li>" +
                 "<li><a id=\"menuBar_STUDENT\" class=\"link\" href=\"TakeTestServlet\">Take a Test</a></li>" +
                 "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"HistoryServlet\">View History</a></li>" +
+                "<li><a id=\"logeduser\" class=\"link\"\">User:"+username+"</a></li>" +
                 "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
                 "</ul>" +
                 "</div>");

@@ -58,7 +58,7 @@ public class WordsManagerServlet extends HttpServlet {
         
         /* GET USER TYPE AND DISPLAY APPROPRIATE MENU BAR */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
-        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
         /* Create the button that will display the modal */

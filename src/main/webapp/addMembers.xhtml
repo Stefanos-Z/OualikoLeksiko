@@ -12,8 +12,9 @@
         <script src="js/displayMenuButtons.js"></script>
         <script src="js/addMemberModal.js"></script>
         <script src="js/Lock_Files.js"></script>
+        <script src="js/user.js"></script>
     </head>
-    <body onload="getCookie()">
+    <body onload="getCookie(), getuserID()">
         <p1 id="lockform"></p1>
         <!-- Menu Bar -->
         <div class="menuBar"> 
@@ -23,7 +24,7 @@
                 <li><a id="menuBar_STUDENT" class="link" href="TakeTestServlet">Take a Test</a></li>
                 <li><a id="menuBar_HISTORY" class="link" href="HistoryServlet">View History</a></li>
                 <li><a id="menuBar_ADMINISTRATOR" class="link" href="AddUserServlet">Add Users</a></li>
-               
+               <li><a id="logeduser" class="link">User:</a></li>
                 <!-- Logout Button -->
                 <li id="logoutButton"><a id="menuBar_LOGOUT" class="link" onclick="lock" href="LoginServlet">Logout</a></li>
             </ul>

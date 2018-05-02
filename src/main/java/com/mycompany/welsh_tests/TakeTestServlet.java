@@ -59,7 +59,7 @@ public class TakeTestServlet extends HttpServlet {
         
         /* DISPLAY MENU BAR */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
-        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
         /* MANAGE MENU WITH JAVASCRIPT */
@@ -133,7 +133,7 @@ public class TakeTestServlet extends HttpServlet {
         
         /* DISPLAY MENU BAR */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
-        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
         /* DISPLAY SCORE TO THE USER */

@@ -9,7 +9,9 @@ body {
     background: linear-gradient(to left, #7FCC9B, #339958);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;        
+    -moz-osx-font-smoothing: grayscale;  
+    margin:0px;
+    
 }
 .menuBar{
 
@@ -47,17 +49,27 @@ body {
     background-color: #b3b3b3;
 }
 
+
 #logoutButton{
     float: right;
 }
 
 /* Menu List (All Elements) Hide all elements, show only from javascript */
 #menuBar_HOME, #menuBar_INSTRUCTOR, #menuBar_STUDENT, 
-#menuBar_HISTORY, #menuBar_ADMINISTRATOR, #menuBar_LOGOUT{
+#menuBar_HISTORY, #menuBar_ADMINISTRATOR,#menuBar_LOGINUSER, #menuBar_LOGOUT{
    display: block;
 }
 #menuBar_LOGOUT:hover{
     background-color: red;
+}
+#logeduser{
+    float:right;
+    background-color: green;
+}
+
+#logeduser:hover{
+    
+    
 }
 
 /* Elements in the body (4 possible options (Words Manager, Take a Test, View History, Add Members) ) */

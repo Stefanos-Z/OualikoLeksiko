@@ -71,8 +71,10 @@ public class LoginServlet extends HttpServlet {
                 Cookie myCookie = new Cookie(user.getUserName(), newSession.getSessionID());
                 myCookie.setMaxAge(60*60);//sets the the lifespan of the cooki in seconds
                 myCookie.setPath("/");
-                //System.out.println("Mycookie name: "+ myCookie);
-                //System.out.println("Cookie Value: "+ myCookie.getValue());
+                //Debugging of cookies identity
+                System.out.println("Mycookie name: "+ myCookie);
+                System.out.println("Cookie Value: "+ myCookie.getValue());
+                System.out.println("Cookie Value: "+ myCookie.getName());
                 
                 response.addCookie(myCookie);
                 

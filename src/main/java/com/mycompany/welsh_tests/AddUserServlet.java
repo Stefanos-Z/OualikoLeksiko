@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import models.User;
 
 public class AddUserServlet extends HttpServlet {
@@ -45,7 +46,7 @@ public class AddUserServlet extends HttpServlet {
         
         /* DISPLAY MENU BAR */
         User thisUser = CookieAndSessionManager.getUserFromSession(request);
-        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
         /* ADD USER BUTTON - MODAL */

@@ -48,7 +48,7 @@ public class HistoryServlet extends HttpServlet {
         out.println("<body>");
 
         /* DISPLAY MENU BAR */
-        String menuBar = CookieAndSessionManager.getMenuBar(thisUser.getUserType());
+        String menuBar = CookieAndSessionManager.getMenuBar(thisUser);
         out.println(menuBar);
         
         /* DISPLAY TABLE OF HISTORY FROM DATABASE */
