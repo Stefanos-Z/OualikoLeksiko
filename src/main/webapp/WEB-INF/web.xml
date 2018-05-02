@@ -20,6 +20,10 @@
         <servlet-name>HistoryServlet</servlet-name>
         <servlet-class>com.mycompany.welsh_tests.HistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddWordServlet</servlet-name>
+        <servlet-class>com.mycompany.welsh_tests.AddWordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>
         <url-pattern>/HistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddWordServlet</servlet-name>
+        <url-pattern>/AddWordServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
