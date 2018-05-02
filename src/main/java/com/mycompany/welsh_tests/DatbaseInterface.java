@@ -29,15 +29,14 @@ import models.WelshWord;
  */
 public class DatbaseInterface {
     private DatabaseManager manager = null;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Random r = new Random();
     
     
-    Map<String, String> users = new HashMap<>();//map for the student table
-    Map<String, String> questionType = new HashMap<>();//map for the staff table
-    Map<String, String> welshWords = new HashMap<>();//map for the module table
-    Map<String, String> tests = new HashMap<>();//map for the registration table
-    Map<String, String> testResults = new HashMap<>();//map for the teaches table
+    Map<String, String> users = new HashMap<>();//map for the users table
+    Map<String, String> questionType = new HashMap<>();//map for the question type table
+    Map<String, String> welshWords = new HashMap<>();//map for the welsh words table
+    //Map<String, String> tests = new HashMap<>();//map for the tests table
+    Map<String, String> testResults = new HashMap<>();//map for the testResults table
     Map<String, String> sessions = new HashMap<>();//map for the teaches table
     Map<String, String> testQuestions = new HashMap<>();//map for the teaches table
     
@@ -46,6 +45,10 @@ public class DatbaseInterface {
         intatiateMaps();
     }
     
+    /**
+     * gets a connection going with the database
+     * @return boolean if connections is established
+     */
     public boolean getConection(){
         try {
             manager = new DatabaseManager();
@@ -59,6 +62,11 @@ public class DatbaseInterface {
         return true;
     }
     
+    
+    /**
+     * Create a session corresponding to the person logged in
+     * @param session the session which should be inputed in the database
+     */
     public void createSession(Sessions session)
     {
         sessions.put("session_id",session.getSessionID());
@@ -73,6 +81,9 @@ public class DatbaseInterface {
     }
     
 
+    /**
+     * initialize the maps that correspond to the database
+     */
     private void intatiateMaps() {
         
         users.put("Table","Users");

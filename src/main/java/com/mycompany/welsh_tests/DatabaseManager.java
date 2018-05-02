@@ -53,106 +53,7 @@ public class DatabaseManager {
     }
     
 
-    
-    /**
-     * Decides the formated message and titles to add in the array list returned
-     * @param thisMap the map corresponding to the table
-     * @param userChoice corresponding to column titles based on the users choice
-     * @return an array list of rows
-     * @throws SQLException if the connection or query is faulty
-     */
-    public List<String[]> list(Map<String, String> thisMap, int userChoice) throws SQLException
-    {
-        List<String[]> listOfContent = null;
-        Connection conn = DriverManager.getConnection(url, username, password);//establish a connection
-        String query = "SELECT * FROM "+ thisMap.get("Table");//formated query
-        PreparedStatement pstat = conn.prepareStatement(query);//prepared statement for the query
 
-        ResultSet rs = pstat.executeQuery();
-        //gets a result set
-        
-        
-        //for each case the firs row is the desired format
-        //the second is the coloumn titles
-        //the third is the column underline
-        switch(userChoice)
-        {
-            case 1:
-                listOfContent = getRows(rs);
-                listOfContent.add(0,new String[]{"%-22s","%-22s","%-22s"});
-                listOfContent.add(1,new String[]{"Student ID","Student Name","Scheme"});
-                listOfContent.add(2,new String[]{"**********","************","******"});
-                break;
-            case 2:
-                listOfContent = getRows(rs);
-                listOfContent.add(0,new String[]{"%-22s","%-22s","%-22s"});
-                listOfContent.add(1,new String[]{"Staff ID","Staff Name","Staff Grade"});
-                listOfContent.add(2,new String[]{"*************","******************","********************"});
-                break;
-            case 3:
-                listOfContent = getRows(rs);
-                listOfContent.add(0,new String[]{"%-22s","%-33s","%-22s"});
-                listOfContent.add(1,new String[]{"Module ID","Module Name","Credits"});
-                listOfContent.add(2,new String[]{"*************","******************","*******"});
-                break;
-            case 4:
-                listOfContent = getRows(rs);
-                listOfContent.add(0,new String[]{"%-20s","%-20s"});
-                listOfContent.add(1,new String[]{"Student ID","Module ID"});
-                listOfContent.add(2,new String[]{"**********","*********"});
-                break;
-            case 5:
-                listOfContent = getRows(rs);
-                listOfContent.add(0,new String[]{"%-20s","%-20s"});
-                listOfContent.add(1,new String[]{"Staff ID","Module ID"});
-                listOfContent.add(2,new String[]{"**********","*********"});
-                break;
-        }
-        rs.close();
-        pstat.close();
-        conn.close();
-
-        return listOfContent;
-    }
-
-
-
-    /**
-     * Deletes a student from the student table
-     * @param id the id of the student
-     */
-    public void deleteStudentbyId(String id) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "DELETE FROM student WHERE student_id = ?";
-        
-        PreparedStatement pstat = conn.prepareStatement(query);
-        pstat.setString(1, id);
-        pstat.executeUpdate();
-        pstat.close();
-        conn.close();
-    }
-
-    /**
-     * Updates a row in the student table
-     * @param oldId the old Id which we needs to be found in order to update
-     * @param newId the Students new ID
-     * @param name the students new name
-     * @param scheme the students new scheme
-     */
-    public void updateStudentbyId(String oldId, String newId, String name, String scheme) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "UPDATE student SET student_id = ?, student_name = ?, student_scheme = ? WHERE student_id = ?";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        
-        pstat.setString(1, newId);
-        pstat.setString(2, name);
-        pstat.setString(3, scheme);
-        pstat.setString(4, oldId);
-        pstat.executeUpdate();
-        
-        pstat.close();
-        conn.close();
-    }
 
     
     /**
@@ -238,7 +139,6 @@ public class DatabaseManager {
             }
         }
         
-        //Example: Student_id = 'foo'
         query = query.substring(0, query.length()-1) + " WHERE ";
         int i = 0;//index in the arraylist for the PK Values
         for (Map.Entry<String, String> e : thisMap.entrySet())
@@ -260,31 +160,7 @@ public class DatabaseManager {
     
     
     
-    /**
-     * finds the teachers who teach more than 1 module
-     * @return a formated list of rows
-     * @throws SQLException 
-     */
-    public List<String[]> findTeachesWhoTeachMoreThanOne() throws SQLException
-    {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "SELECT s.staff_Id, s.staff_name " +
-            "FROM staff s INNER JOIN teaches t ON s.staff_Id = t.staff_Id "+
-            "GROUP BY t.staff_Id "+
-            "HAVING COUNT(t.staff_Id) > 1;";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        ResultSet rs = pstat.executeQuery();
-        List<String[]> queryResults = getRows(rs);
-        
-        queryResults.add(0, new String[]{"%-20s","%-20s"});//add a formater
-        queryResults.add(1, new String[]{"Staff ID","Staff Name"});//coloumn titles of the query
-        queryResults.add(2, new String[]{"********","**********"});//Coloumn title underline
-        
-        pstat.close();
-        rs.close();
-        conn.close();
-        return queryResults;
-    }
+    
 
     /**
      * checks if a string contains the sequence "PRIMARY KEY"
@@ -298,32 +174,7 @@ public class DatabaseManager {
     }
     
     
-    /**
-     * Gets the results from  
-     * @param rs the result set 
-     * @return a formated array list of string arrays
-     */
-    private List<String[]> getRows(ResultSet rs) throws SQLException
-    {
-        List<String[]> resultList = new ArrayList<String[]>();//creates a new list
-        
-        ResultSetMetaData metaData = rs.getMetaData();
-        
-        
-        Integer columnCount = metaData.getColumnCount();
-
-        
-        while (rs.next()) 
-        {
-            String[] row = new String[columnCount];//creates new String array
-            for (int i = 1; i <= columnCount; i++) {
-                row[i-1] = rs.getString(i);
-            }
-            resultList.add(row);
-        }
-        
-        return resultList;
-    }
+    
     
     /**
      * Searchers the database for a specific user 
@@ -367,38 +218,10 @@ public class DatabaseManager {
         return null;
     }
 
-    public int getNumberOfRecords(Map<String, String> thisMap) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "SELECT COUNT("+ findPrimaryKey(thisMap)+") FROM "+thisMap.get("Table")+";";
-        PreparedStatement pstat = conn.prepareStatement(query);
-        ResultSet rs = pstat.executeQuery();
-        rs.next();
-        
-        int numberOfRecords = rs.getInt(1);
-        
-        pstat.close();
-        conn.close();
-        return numberOfRecords;
-    }
+    
     
     
 
-    String getQuestionText(int questionTypeID, Map<String, String> thisMap) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, username, password);
-        String query = "SELECT * FROM "+thisMap.get("Table")+" WHERE "+findPrimaryKey(thisMap)+" = "+questionTypeID+";";
-        System.out.println("this is the query  "+query);
-        PreparedStatement pstat = conn.prepareStatement(query);
-        System.out.println("hello 0");
-        ResultSet rs = pstat.executeQuery();
-        rs.next();
-        System.out.println("hello 1 ");
-        String questionText = rs.getString(2);
-        
-        System.out.println("hello 2");
-        pstat.close();
-        conn.close();
-        return questionText;
-    }
 
     WelshWord getWelshWord(Map<String, String> thisMap, int wordID) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
