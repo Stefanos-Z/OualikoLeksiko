@@ -38,7 +38,6 @@ public class MembersManagerServlet extends HttpServlet {
         out.println("<link rel=\"icon\" href=\"images/add_member.png\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
-        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
         out.println("</head>");
         out.println("<body>");
@@ -67,35 +66,29 @@ public class MembersManagerServlet extends HttpServlet {
                 out.println("<th class=\"columnLabel\">Options</th>");
             out.println("</tr>");
         
+            String editModal = Modals.getEditMemberModal();
+            out.println(editModal);
+            String deleteModal = Modals.getDeleteMemberModal(); 
+            out.println(deleteModal);
+            
             for(int i =0; i<users.size();i++){
-                out.println("<tr class=\"columnRow\">");
+                out.println("<tr class=\"columnRow\">"); //Every row has the following data
                     out.println("<td id=\"columnData\">"+users.get(i).getUserName()+"</td>");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
                     out.println("<td id=\"columnData\">"+users.get(i).getUserType()+"</td>");
                     out.println("<td id=\"columnData\">");
-                    
-                    
                         out.println("<img id=\"editMemberButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                        String editModal = Modals.getEditMemberModal();
-                        out.println(editModal);
-                        
-                        
                         out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                        String deleteModal = Modals.getDeleteMemberModal();
-                        out.println(deleteModal);
-                        
-                    out.println("</td>");
-                out.println("</tr>");
+                    out.println("</td>"); //End of options (edit, delete)
+                out.println("</tr>"); //End of every row
 
         }
+        /* Manage Modals with JAVASCRIPT */
         out.println("<script src=\"js/editMemberModal.js\"></script>");
         out.println("<script src=\"js/deleteMemberModal.js\"></script>");
-        out.println("</table>");
         
-        
-        
-        
+        out.println("</table>"); //End of the whole Table
         
         out.println("</body>");
         out.println("</html>");

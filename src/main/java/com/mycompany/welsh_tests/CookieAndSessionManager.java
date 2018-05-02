@@ -92,7 +92,7 @@ public class CookieAndSessionManager {
                 "<ul id=\"listHolder\">" +
                 "<li><a id=\"menuBar_HOME\" class=\"link\" href=\"adminsLandingPage.xhtml\">Home</a></li>" +
                 "<li><a id=\"menuBar_HISTORY\" class=\"link\" href=\"HistoryServlet\">View History</a></li>" +
-                "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"AddUserServlet\">Add Users</a></li>" +
+                "<li><a id=\"menuBar_ADMINISTRATOR\" class=\"link\" href=\"MembersManagerServlet\">Add Users</a></li>" +
                 "<li id=\"logoutButton\"><a id=\"menuBar_LOGOUT\" class=\"link\" href=\"LoginServlet\">Logout</a></li>" +
                 "</ul>" +
                 "</div>");
