@@ -17,3 +17,9 @@
 #questionView label{
     font-size:20px;
 }
+
+.scoreText{
+    font-size: 40px;
+    color: white; /* WHITE TEXT FOR SCORE */
+    text-align: center;
+}

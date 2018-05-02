@@ -65,6 +65,11 @@ public class TakeTestServlet extends HttpServlet {
         /* MANAGE MENU WITH JAVASCRIPT */
         out.println("<script src=\"js/displayHomePageElements.js\"></script>");
         
+        /* DISPLAY TEXT TITLE */
+        out.println("<br/><br/>");
+        out.println("<h1 class=\"scoreText\">Hello, gather as many points as you can!</h1>");
+        out.println("<br/>");
+        
         /* DISPLAY TEST */
         out.println("<form  id=\"questionView\" method=\"post\" action=\"TakeTestServlet\">");
         for(int i = 0;i<numberOfQuestions;i++)
@@ -128,6 +133,7 @@ public class TakeTestServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/wordsManager.css\"/>");
+        out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/testStyles.css\"/>");
         out.println("</head>");
         out.println("<body>");
         
@@ -137,11 +143,33 @@ public class TakeTestServlet extends HttpServlet {
         out.println(menuBar);
         
         /* DISPLAY SCORE TO THE USER */
-        out.println("<h2>Your score is"+score+"</h2>");
+        out.println("<br/><br/>");
+        out.println("<h1 class=\"scoreText\">Well Done! You have completed a test.</h1>");
+        out.println("<br/>");
+        out.println("<h2 class=\"scoreText\">Your score is " + score + "</h2>");
+        out.println("<br/><br/>");
         
-        /* RETURN BUTTON */
+        /* DISPLAY TABLE OF HISTORY FROM DATABASE */
+        ArrayList<TestsResults> testResults = inter.getTestHistory(thisUser);
+        out.println("<table class=\"wordsTable\">");
+        if(thisUser.getUserType().equals("Student")){
         
+            out.println("<tr>");
+                out.println("<th class=\"columnLabel\">Student Name</th>");
+                out.println("<th class=\"columnLabel\">Grade</th>");
+                out.println("<th class=\"columnLabel\">Date Submitted</th>");
+            out.println("</tr>");
+
+            for(int i =0; i<testResults.size();i++){
+                out.println("<tr class=\"columnRow\">");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getGrade()+"</td>");
+                    out.println("<td id=\"columnData\">"+testResults.get(i).getDateSubmitted()+"</td>");
+                out.println("</tr>");
+            }
+        }
         
+        out.println("</table>"); //End of 
         
         out.println("</body>");
         out.println("</html>");
