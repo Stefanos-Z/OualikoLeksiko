@@ -89,7 +89,10 @@ public class WordsManagerServlet extends HttpServlet {
                     out.println("Options<img class=\"columnDataImage\" src=\"images/option.png\"/></th>");
                 out.println("</tr>");
         
-        
+        String editModal = Modals.getEditWordModal();
+        out.println(editModal);
+        String deleteModal = Modals.getDeleteWordModal();
+        out.println(deleteModal);
         for(int i =0; i<allWords.size();i++){
             out.println("<tr id=\"wordTableRow"+i+"\" class=\"columnRow\">");
                 out.println("<td id=\"WW"+i+"\" class=\"columnData \">"+allWords.get(i).getWelshWord()+"</td>");
@@ -99,19 +102,14 @@ public class WordsManagerServlet extends HttpServlet {
 
                 out.println("<input id=\"editWordButton\" type=\"image\" onclick=\"displayModal("+i+","+allWords.get(i).getWordID() +
                                 ")\" class=\"editImage\" src=\"images/editWord.png\"/>");
-                String editModal = Modals.getEditWordModal();
-                out.println(editModal);
+                out.println("<input id=\"deleteWordButton\" type=\"image\" onclick=\"displayDeleteModal("+allWords.get(i).getWordID()+")\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                 
-                out.println("<input id=\"deleteWordButton\" type=\"image\" onclick=\"displayModal("+i+
-                        ")\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
-                String deleteModal = Modals.getDeleteWordModal();
-                out.println(deleteModal);
 
                 out.println("</td>");
             out.println("</tr>");
         }
         out.println("<script src=\"js/editWordModal.js\"></script>");
-        //out.println("<script src=\"js/deleteWordModal.js\"></script>");
+        out.println("<script src=\"js/deleteWordModal.js\"></script>");
         
         out.println("</table>");
         out.println("</body>");
@@ -132,6 +130,12 @@ public class WordsManagerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Empty Abstract Method
+        System.out.println("in post########################################");
+        DatbaseInterface inter = new DatbaseInterface();
+        inter.getConection();
+        String wordId = request.getParameter("wordId");
+        System.out.println(wordId);
+        inter.deleteWelshWord(wordId);
     }
 
     /**

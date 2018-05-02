@@ -195,21 +195,22 @@ public class DatabaseManager {
      * row needed to be deleted
      * @throws SQLException 
      */
-    public int deleteRowFromTable(Map<String, String> thisMap) throws SQLException {
+    public int deleteRowFromTable(Map<String, String> thisMap, ArrayList<String> primaryKeys) throws SQLException {
         Connection conn = DriverManager.getConnection(url, username, password);
         String query = "DELETE FROM "+thisMap.get("Table")+" WHERE ";
-        
+        int i =0;
         for (Map.Entry<String, String> e : thisMap.entrySet())//for every entry in the map
         {
             if (checkIfPrimaryKey(e.getKey()))//checks if the key is primary key
             {
                 
-                query=query + e.getValue()+"=" +"'"+ thisMap.get(e.getValue()) +"'" + " AND ";
+                query=query + e.getValue()+"=" +"'"+ primaryKeys.get(i) +"'" + " AND ";
+                i++;
             }
         }
         query = query.substring(0,query.length()-5);//deletes the last AND
         PreparedStatement pstat = conn.prepareStatement(query);      
-
+        System.out.println(query);
         int deletedrows = pstat.executeUpdate();
         
         pstat.close();

@@ -316,5 +316,16 @@ public class DatbaseInterface {
         }
     }
 
+    public void deleteWelshWord(String wordId) {
+        
+        try {
+            ArrayList<String> pk = new ArrayList<>();
+            pk.add(wordId);
+            manager.deleteRowFromTable(welshWords, pk);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

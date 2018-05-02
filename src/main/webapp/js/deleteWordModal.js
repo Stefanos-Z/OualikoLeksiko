@@ -12,10 +12,15 @@ deleteButton.onclick = function() {
     deleteModal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-function hideModalOnExit() {
+//// When the user clicks on <span> (x), close the modal
+//function hideModalOnExit() {
+//    deleteModal.style.display = "none";
+//}
+
+deleteSpan.onclick = function() {
     deleteModal.style.display = "none";
 }
+
 
 window.onclick = function(event){
     if(event.target == deleteModal){
@@ -23,14 +28,15 @@ window.onclick = function(event){
     }
 }
 
-function displayModal(){
-    /*
-    var welshWord = document.getElementById("WW"+index).innerHTML;
-    var englishWord = document.getElementById("EW"+index).innerHTML;
-    var gender = document.getElementById("G"+index).innerHTML;
-    
-    document.getElementById("wordWelshInput").value = welshWord;
-    document.getElementById("wordEnglishInput").value = englishWord;
-    //document.getElementById("wordGenderInput").value = gender;*/
+function displayDeleteModal(wordId){
+    deleteModal.style.display = "block";
+    document.getElementById("hidenTextDelete").value = wordId;
+//    var welshWord = document.getElementById("WW"+index).innerHTML;
+//    var englishWord = document.getElementById("EW"+index).innerHTML;
+//    var gender = document.getElementById("G"+index).innerHTML;
+//    
+//    document.getElementById("wordWelshInput").value = welshWord;
+//    document.getElementById("wordEnglishInput").value = englishWord;
+    //document.getElementById("wordGenderInput").value = gender;
 }
 
