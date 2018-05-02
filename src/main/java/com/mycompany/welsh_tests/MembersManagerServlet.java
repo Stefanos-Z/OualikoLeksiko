@@ -76,12 +76,12 @@ public class MembersManagerServlet extends HttpServlet {
             
             for(int i =0; i<users.size();i++){
                 out.println("<tr class=\"columnRow\">"); //Every row has the following data
-                    out.println("<td id=\"columnData\">"+users.get(i).getUserName()+"</td>");
-                    out.println("<td id=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
-                    out.println("<td id=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
-                    out.println("<td id=\"columnData\">"+users.get(i).getUserType()+"</td>");
-                    out.println("<td id=\"columnData\">");
-                        out.println("<img id=\"editMemberButton\" class=\"editImage\" src=\"images/editWord.png\"/>");
+                    out.println("<td id=\"uName"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserName()+"</td>");
+                    out.println("<td id=\"pWord"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserPassword()+"</td>");
+                    out.println("<td id=\"uEmail"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserEmail()+"</td>");
+                    out.println("<td id=\"uType"+(i+1)+"\" class=\"columnData\">"+users.get(i).getUserType()+"</td>");
+                    out.println("<td class=\"columnData\">");
+                        out.println("<img id=\"editMemberButton\" onclick=\"displayEditUserModal("+(i+1)+")\" class=\"editImage\" src=\"images/editWord.png\"/>");
                         out.println("<img id=\"deleteMemberButton\" class=\"deleteImage\" src=\"images/deleteWord.png\"/>");
                     out.println("</td>"); //End of options (edit, delete)
                 out.println("</tr>"); //End of every row

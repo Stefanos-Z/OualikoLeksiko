@@ -24,3 +24,31 @@ window.onclick = function(event){
 }
 
 
+function displayEditUserModal(index){
+    editModal.style.display = "block";
+    var userName = document.getElementById("uName"+index).innerHTML;
+    var pWord = document.getElementById("pWord"+index).innerHTML;
+    var email = document.getElementById("uEmail"+index).innerHTML;
+//    editModal.style.display = "block";
+//    console.log("num = "+index+"+======> " + wordID);
+//    
+//    var welshWord = document.getElementById("WW"+index).innerHTML;
+//    var englishWord = document.getElementById("EW"+index).innerHTML;
+//    var gender = document.getElementById("G"+index).innerHTML;
+  
+    document.getElementById("userNameEdit").value = userName;
+    document.getElementById("passwordEdit").value = pWord;
+    document.getElementById("emailEdit").value = email;
+//    document.getElementById("hidenTextEdit").value = wordID;
+//    document.getElementById("wordWelshInput").value = welshWord;
+//    document.getElementById("wordEnglishInput").value = englishWord;
+//    
+//    if(gender == "M"){
+//        document.getElementById("radio1").checked = true;
+//        document.getElementById("radio2").checked = false;
+//    }else if(gender == "F"){
+//        document.getElementById("radio1").checked = false;
+//        document.getElementById("radio2").checked = true;
+//    }
+
+}

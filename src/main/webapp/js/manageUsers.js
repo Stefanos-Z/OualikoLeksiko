@@ -37,11 +37,7 @@ $(document).ready(function(){
         var pWord = $("#passwordAdd").val();
         var uEmail = $("#emailAdd").val();
         var uTupe = $('input[name=userTypeAdd]:checked').val();
-        console.log(uName);
-        console.log(pWord);
-        console.log(uEmail);
-        console.log(uTupe);
-        var data = {"username":""+uName,"password":pWord, "email":uEmail, "userType":uTupe};
+        var data = {"username":uName,"password":pWord, "email":uEmail, "userType":uTupe};
         
         $.ajax({
             type : 'POST',

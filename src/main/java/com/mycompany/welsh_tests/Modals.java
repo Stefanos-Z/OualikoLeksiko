@@ -140,9 +140,9 @@ public class Modals {
                     "<h1>Modify the following data to edit a Member</h1>" +
                 "</header>" +
                 "<form class=\"modal-form\">" +
-                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\">" +
-                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\">" +
-                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userNameEdit\" type=\"text\">" +
+                    "<input class=\"modal-textField\" name=\"password\" id=\"passwordEdit\" type=\"password\">" +
+                    "<input class=\"modal-textField\" name=\"email\" id=\"emailEdit\" type=\"text\">" +
                     "<br>" +
                     "<input class=\"editModal-submit-button\" type=\"submit\" value=\"Edit Member\">" +
                 "</form>" +
