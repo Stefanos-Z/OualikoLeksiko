@@ -103,27 +103,27 @@ public class Modals {
                     "<span class=\"addMemberClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to add a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"MemberManagerServlet\">" +
-                    "<input class=\"modal-textField\" name=\"username\" id=\"userName\" type=\"text\" placeholder=\"Enter username\"/>"+
-                    "<input class=\"modal-textField\" name=\"password\" id=\"password\" type=\"password\" placeholder=\"Enter password\"/>"+
-                    "<input class=\"modal-textField\" name=\"email\" id=\"email\" type=\"text\" placeholder=\"Enter email address\"/>"+
+                "<form class=\"modal-form\">" +
+                    "<input class=\"modal-textField\" name=\"username\" id=\"userNameAdd\" type=\"text\" placeholder=\"Enter username\"/>"+
+                    "<input class=\"modal-textField\" name=\"password\" id=\"passwordAdd\" type=\"password\" placeholder=\"Enter password\"/>"+
+                    "<input class=\"modal-textField\" name=\"email\" id=\"emailAdd\" type=\"text\" placeholder=\"Enter email address\"/>"+
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Administrator\" checked>" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userTypeAdd\" value=\"Administrator\" checked>" +
                             "<span> Administrator </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Instructor\">" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userTypeAdd\" value=\"Instructor\">" +
                             "<span> Instructor </span>" +
                         "</label>" +
                         "<label class=\"modal-radio-label\">" +
-                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userType\" value=\"Student\">" +
+                            "<input class=\"modal-radio-button\" type=\"radio\" name=\"userTypeAdd\" value=\"Student\">" +
                             "<span> Student </span>" +
                         "</label>" +
                     "</div>"+
                     "<br/>" +
-                    "<input class=\"addModal-submit-button\" type=\"submit\" value=\"Create Member\"/>" +
+                    "<input id=\"addUserDB\"class=\"addModal-submit-button\" type=\"submit\" value=\"Create Member\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>

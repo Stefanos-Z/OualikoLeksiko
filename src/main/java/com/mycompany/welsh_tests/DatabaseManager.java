@@ -182,7 +182,7 @@ public class DatabaseManager {
         query = query.substring(0,query.length()-1)+")";
         values = values.substring(0,values.length()-1)+")";
         query = query+" VALUES "+values;
-        
+        System.out.println(query);
         PreparedStatement pstat = conn.prepareStatement(query);
         pstat.executeUpdate();
         pstat.close();

@@ -327,5 +327,19 @@ public class DatbaseInterface {
         }
     }
 
+    void addUser(String uName, String pWord, String email, String type) {
+        try {
+            users.put("user_name",uName);
+            users.put("user_password",pWord);
+            users.put("user_email",email);
+            users.put("user_type",type);
+            
+            manager.addNewRowToTable(users);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatbaseInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
     
 }

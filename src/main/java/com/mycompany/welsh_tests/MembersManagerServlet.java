@@ -39,6 +39,9 @@ public class MembersManagerServlet extends HttpServlet {
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/menu_and_background.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tables.css\"/>");
         out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/modals.css\"/>");
+        out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>");
+        
+        out.println("<script src=\"js/manageUsers.js\"></script>");
         out.println("</head>");
         out.println("<body>");
         
