@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.welsh_tests;
 
 import java.util.Date;
@@ -21,9 +16,9 @@ public class Modals {
                     "<span class=\"addWordClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to create a Word</h1>" + 
                 "</header>" + //End of MODAL <header>
-                "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/WordsManagerServlet\">" +
-                    "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelsh\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
-                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglish\" type=\"text\" placeholder=\"Word in English\"/>"+
+                "<form class=\"modal-form\">" +
+                    "<input class=\"modal-textField\" name=\"wordWelsh\" id=\"wordWelshAdd\" type=\"text\" placeholder=\"Word in Welsh\"/>"+
+                    "<input class=\"modal-textField\" name=\"wordEnglish\" id=\"wordEnglishAdd\" type=\"text\" placeholder=\"Word in English\"/>"+
                     "<br/>" +
                     "<div class=\"modal-radio-buttons-div\">" +
                         "<label class=\"modal-radio-label\">" +
@@ -36,7 +31,7 @@ public class Modals {
                         "</label>" +
                     "</div>"+
                     "<br/>" +
-                    "<input class=\"addModal-submit-button\" type=\"submit\" value=\"Create Word\"/>" +
+                    "<input id=\"AddWordToDB\" class=\"addModal-submit-button\" type=\"submit\" value=\"Create Word\"/>" +
                 "</form>" + //End of MODAL <form>
             "</div>" + //End of MODAL CONTENT <div>
         "</div>"; //End of MODAL <div>
@@ -103,7 +98,7 @@ public class Modals {
         String modal = "<div id=\"addMemberModal\" class=\"modal\">" +
             "<div class=\"modal-content\">" + 
                 "<header class=\"addModal-header\">"+
-                    "<span class=\"addClose\">&times;</span>" + //Close Button
+                    "<span class=\"addMemberClose\">&times;</span>" + //Close Button
                     "<h1>Enter the following data to add a Member</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\" method=\"post\" action=\"/OualikoLeksiko/AddUserServlet\">" +
