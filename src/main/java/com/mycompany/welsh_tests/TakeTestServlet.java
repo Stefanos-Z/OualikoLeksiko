@@ -67,7 +67,7 @@ public class TakeTestServlet extends HttpServlet {
         
         /* DISPLAY TEXT TITLE */
         out.println("<br/><br/>");
-        out.println("<h1 class=\"scoreText\">Hello, gather as many points as you can!</h1>");
+        out.println("<h1 class=\"scoreText\">Please fill the test, good luck!</h1>");
         out.println("<br/>");
         
         /* DISPLAY TEST */
