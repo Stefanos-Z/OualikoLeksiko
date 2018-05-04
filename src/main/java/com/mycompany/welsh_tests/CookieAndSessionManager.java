@@ -36,11 +36,7 @@ public class CookieAndSessionManager {
         
         boolean isValid = false;
         
-        if(session.getExpirationDate().equals(new Date()))
-            System.out.println(session.getExpirationDate()+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        //true if valid
-         if(session.getExpirationDate().before(new Date()))
-             System.out.println("hellllllllllooooooooooooooooooossssssssssssssseeeeeeeeeeeexyyyyyyyyyy");
+
         if(session.getExpirationDate().after(new Date()))
         {
             isValid = true;

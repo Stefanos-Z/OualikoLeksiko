@@ -210,9 +210,9 @@ public class Modals {
                     "<h1>Are you sure you want to delete the following History?</h1>" + 
                 "</header>" + //End of MODAL <header>
                 "<form class=\"modal-form\">" +
-                    "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\"\"/>"+
-                    "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\"\"/>"+
-                    "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\"\"/>"+
+//                    "<input class=\"modal-textField\" name=\"studentName\" id=\"studentName\" type=\"text\" value=\"\"/>"+
+//                    "<input class=\"modal-textField\" name=\"grade\" id=\"grade\" type=\"number\" value=\"\"/>"+
+//                    "<input class=\"modal-textField\" name=\"dateSubmited\" id=\"dateSubmitted\" type=\"date\" value=\"\"/>"+
                     "<br/>" +
                     "<input id=\"hidenTextDeleteHistory\" class=\"hidenTextFields\" name=\"hidenTextField\" type=\"text\" />"+
                     "<input id=\"deleteHistoryDB\" class=\"deleteModal-submit-button\" type=\"submit\" value=\"Delete History\"/>" +

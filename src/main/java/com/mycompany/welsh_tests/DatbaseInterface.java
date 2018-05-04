@@ -82,7 +82,7 @@ public class DatbaseInterface {
     }
     
     /**
-     * initializes the maps that correspond to the database
+     * Instantiate the Maps with adding elements in the tables
      */
     private void intatiateMaps() {
         
@@ -128,11 +128,10 @@ public class DatbaseInterface {
         
     }
 
-
     /**
-     * Gets the user by a given username
-     * @param username the username of the user
-     * @return the user
+     * Gets the 
+     * @param username
+     * @return 
      */
     public User getUseByUserName(String username) {
         try {
